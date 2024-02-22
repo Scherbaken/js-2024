@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 2 - Task 6</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 6</h1>
+	<p>З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного товару окремо та
+		загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.</p>
+
+	<script>
+		// 1 Введення данних
+		let priceFirstItem = parseInt(prompt("Вкажіть вартість першого товару", "30"))
+		let priceSecondItem = parseInt(prompt("Вкажіть вартість другого товару", "120"))
+		let priceThirdItem = parseInt(prompt("Вкажіть вартість третього товару", "37.50"))
+		let countFirstItem = parseInt(prompt("Вкажіть кількість першого товару", "5"))
+		let countSecondItem = parseInt(prompt("Вкажіть кількість другого товару", "2"))
+		let countThirdItem = parseInt(prompt("Вкажіть кількість третього товару", "4"))
+		// 2 Знаходимо результат
+		let totalPriceFirstItems = priceFirstItem * countFirstItem
+		let totalPriceSecondItems = priceSecondItem * countSecondItem
+		let totalPriceThirdItems = priceThirdItem * countThirdItem
+		let totalPrice = totalPriceFirstItems + totalPriceSecondItems + totalPriceThirdItems
+		// 3 Виводимо результат
+
+		document.write(`
+		<div style="max-width: 500px">
+			<div style="text-align: center; text-transform: uppercase">
+				<p>Іваненко Іван Іванович</p>
+				<p>Україна, Сумська обл., м. Суми, вул. Харитоненка, буд. 5</p>
+				<p>ПН 1231231231</p>
+			</div>
+			<table border="1px" style="width: 100%">
+				<tr>
+					<td style="text-align: left">${countFirstItem.toFixed(3)}x${priceFirstItem.toFixed(2)}</td>
+				</tr>	
+				<tr>
+					<th style="text-align: left">Носки чоловічі, пара</th>
+				</tr>
+				<tr>
+					<th style="text-align: right">${totalPriceFirstItems.toFixed(2)}грн</th>
+				</tr>
+				<tr>
+					<td style="text-align: left">${countSecondItem.toFixed(3)}x${priceSecondItem.toFixed(2)}</td>
+				</tr>	
+				<tr>
+					<th style="text-align: left">Тунець консервований, банка</th>
+				</tr>
+				<tr>
+					<th style="text-align: right">${totalPriceSecondItems.toFixed(2)}грн</th>
+				</tr>
+				<tr>
+					<td style="text-align: left">${countThirdItem.toFixed(3)}x${priceThirdItem.toFixed(2)}</td>
+				</tr>	
+				<tr>
+					<th style="text-align: left">Яблуко Голден, кг</th>
+				</tr>
+				<tr>
+					<th style="text-align: right">${totalPriceThirdItems.toFixed(2)}грн</th>
+				</tr>
+				<tr>
+					<th style="display: flex; justify-content: space-between"><span>СУМА</span> <span>${totalPrice.toFixed(2)}грн</span></th>
+				</tr>
+			</table>	
+			<br>
+			<p>22.02.2024</p>
+			<p style="text-align: center">Фіскальний чек</p>
+		</div>	
+		`)
+	</script>
+
+</body>
+
+</html>
