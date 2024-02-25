@@ -14,17 +14,17 @@
 
 	<script>
 		//1 Вводимо необхіні дані
-		let a = parseFloat(prompt("Введіть значення першого дійсного числа", "100"))
-		let b = parseFloat(prompt("Введіть значення другого дійсного числа", "0.5"))
+		let firstRealNumber = parseFloat(prompt("Введіть значення першого дійсного числа", "100"))
+		let secondRealNumber = parseFloat(prompt("Введіть значення другого дійсного числа", "0.5"))
 		//2 Знаходимо результат
-		let sum = a + b
-		let prod = a * b
-		let div = a / b
+		let sum = firstRealNumber + secondRealNumber
+		let prod = firstRealNumber * secondRealNumber
+		let div = firstRealNumber / secondRealNumber
 		//3 Виводимо результат у вигляді таблиці
 		document.write(`
 		Введені дані: <br>
-		a = ${a}<br>
-		b = ${b}<br>	
+		a = ${firstRealNumber}<br>
+		b = ${secondRealNumber}<br>	
 		<br>	
 		<table border="2px" style="text-align: center">
 			<tr>
