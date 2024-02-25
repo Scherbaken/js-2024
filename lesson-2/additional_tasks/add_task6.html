@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 2 - Additional Task 6</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 6</h1>
+	<p>Дано три дійсні змінні a, b і c. Скласти алгоритм, який міняє місцями значення цих змінних наступним чином: змінна
+		a набуває значення змінної b, змінна b набуває значення змінної c, а змінна c – попереднє значення змінної a.</p>
+
+	<script>
+		//1 Вводимо необхіні дані
+		let a = parseFloat(prompt('Введіть число а'))
+		let b = parseFloat(prompt('Введіть число b'))
+		let c = parseFloat(prompt('Введіть число c'))
+		document.write(`Початкові значення: a = ${a}, b = ${b}, c = ${c}. <br>`)
+		//2 Знаходимо результат
+		let aStart = a
+		a = b
+		b = c
+		c = aStart
+		//3 Виводимо результат
+		document.write(`Кінцеві значення: a = ${a}, b = ${b}, c = ${c}`)
+	</script>
+</body>
+
+</html>

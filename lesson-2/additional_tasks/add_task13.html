@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 2 - Additional Task 13</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 13</h1>
+	<p>Визначити скільки повних тижнів є у вказаній кількості днів.</p>
+
+	<script>
+		//1 Вводимо необхіні дані
+		const daysQuantity = parseInt(prompt('Вкажіть кількість днів', '30'))
+		const daysInOneWeek = 7
+		//2 Знаходимо результат
+		const weekQuantity = Math.floor(daysQuantity / daysInOneWeek)
+		//3 Виводимо результат
+		document.write(`${daysQuantity} дні(в) - це повних ${weekQuantity} тиждня(ів)`)
+	</script>
+</body>
+
+</html>

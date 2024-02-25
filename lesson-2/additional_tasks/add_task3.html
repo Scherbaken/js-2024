@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 2 - Additional Task 3</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 3</h1>
+	<p>З клавіатури вводяться вартість одиниці та кількість одиниць двох товарів. Вивести на екран вартість кожного
+		з видів товарів окремо і загальну вартість.</p>
+
+	<script>
+		//1 Вводимо необхіні дані
+		const appleCost = parseFloat(prompt('Введіть ціну 1кг яблук'))
+		const appleQuantity = parseInt(prompt('Введіть кількість кг яблук'))
+		const orangeCost = parseFloat(prompt('Введіть ціна 1кг апельсинів'))
+		const orangeQuantity = parseInt(prompt('Введіть кількість кг апельсинів'))
+		//2 Знаходимо результат
+		const appleTotalCost = appleCost * appleQuantity
+		const orangeTotalCost = orangeCost * orangeQuantity
+		const totalCost = appleTotalCost + orangeTotalCost
+		//3 Виводимо результат
+		document.write(`При ціні на 1кг яблук ${appleCost}грн, а на 1кг апельсинів ${orangeCost}грн, та їх кількості у розмірі ${appleQuantity}кг та ${orangeQuantity}кг відповідно, маємо загальну ціну за яблука ${appleTotalCost}грн, та за апельсини ${orangeTotalCost}грн. Загальна ціна всіх фруктів складе ${totalCost}грн.`)
+	</script>
+</body>
+
+</html>

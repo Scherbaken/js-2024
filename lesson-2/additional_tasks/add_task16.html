@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 2 - Additional Task 16</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 16</h1>
+	<p>ЗЗ клавіатури вводиться номер місяця. Визначити, який буде місяць через вказану кількість N місяців.</p>
+
+	<script>
+		//1 Вводимо необхіні дані
+		const monthOfYearNumber = parseInt(prompt('Введіть поточний номер місяця у році (від 1 до 12)', '7'))
+		const totalAddMonths = parseInt(prompt('Вкажіть кількість місяців, що минула'))
+		const monthInOneYear = 12
+		//2 Знаходимо результат
+		const finalMonthNumber = (monthOfYearNumber + totalAddMonths - 1) % monthInOneYear + 1
+		//3 Виводимо результат
+		document.write(`Якщо номер поточного місяця ${monthOfYearNumber}, то через ${totalAddMonths} місяці(в) поточним буде ${finalMonthNumber}(й) місяць`)
+	</script>
+</body>
+
+</html>

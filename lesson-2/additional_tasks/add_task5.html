@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 2 - Additional Task 5</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 5</h1>
+	<p>Визначити, яку платню одержить на фірмі сумісник за виконану роботу, якщо йому нараховано S грн., а податок
+		становить 20%.</p>
+
+	<script>
+		//1 Вводимо необхіні дані
+		const accruedSalary = parseInt(prompt('Введіть нараховану заробітну плату', '10000'))
+		const taxPercent = 20
+		//2 Знаходимо результат
+		const totalTax = accruedSalary * taxPercent / 100
+		const issuedSalary = accruedSalary - totalTax
+		//3 Виводимо результат
+		document.write(`Якщо податок складає ${taxPercent}%, то при нарахуванні зп у розмірі ${accruedSalary}грн, сумісник отримає ${issuedSalary}грн`)
+	</script>
+</body>
+
+</html>

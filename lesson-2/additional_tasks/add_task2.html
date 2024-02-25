@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 2 - Additional Task 2</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 2</h1>
+	<p>З клавіатури вводиться розмір заробітної плати та розмір прожиткового мінімуму. Визначити розмір соціальної
+		допомоги (ввжаємо, що заробітна плата є меншою).</p>
+
+	<script>
+		//1 Вводимо необхіні дані
+		const salary = parseInt(prompt('Вкажіть розмір заробітної плати', '3000'))
+		const costOfLiving = parseInt(prompt('Вкажіть прожитковий мінімум', '6500'))
+		//2 Знаходимо результат
+		const socialAssist = costOfLiving - salary
+		//3 Виводимо результат
+		document.write(`Якщо заробітна плата становить ${salary}грн, а прожитковий мінімум ${costOfLiving}грн, тоді розмір соц. допомоги має складати ${socialAssist}грн`)
+	</script>
+</body>
+
+</html>

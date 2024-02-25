@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 2 - Additional Task 14</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 14</h1>
+	<p>З клавіатури вводиться номер дня тижня (від 1 до 7). Визначити який буде день тижня через N днів.</p>
+
+	<script>
+		//1 Вводимо необхіні дані
+		const dayOfWeekNumber = parseInt(prompt('Введіть номер дня тиджня (від 1 до 7)', '5'))
+		const totalAddDays = parseInt(prompt('Вкажіть кількість днів, що минула'))
+		const daysInOneWeek = 7
+		//2 Знаходимо результат
+		const finalDayNumber = (dayOfWeekNumber + totalAddDays - 1) % daysInOneWeek + 1
+		//3 Виводимо результат
+		document.write(`Якщо номер поточного дня тиждня ${dayOfWeekNumber}, то через ${totalAddDays} дні(в) поточним буде ${finalDayNumber}(й) день тиждня`)
+	</script>
+</body>
+
+</html>

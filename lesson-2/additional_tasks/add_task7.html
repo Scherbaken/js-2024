@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 2 - Additional Task 7</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 7</h1>
+	<p>Скласти алгоритм, який обчислює цілу і дробову частину даного числа х. Наприклад: число 23,56 => ціла: 23,
+		дробова: 0,56.</p>
+
+	<script>
+		//1 Вводимо необхіні дані
+		const realNumber = parseFloat(prompt('Введіть дійсне число', '15.75'))
+		console.log(realNumber);
+		//2 Знаходимо результат
+		const integerPartOfNumber = Math.floor(realNumber)
+		console.log(integerPartOfNumber);
+		const fractionalPartOfNumber = realNumber - integerPartOfNumber
+		console.log(fractionalPartOfNumber);
+		//3 Виводимо результат
+		document.write(`У заданого числа ${realNumber} цілою частиною буде ${integerPartOfNumber}, а дробовою ${fractionalPartOfNumber}`)
+	</script>
+</body>
+
+</html>

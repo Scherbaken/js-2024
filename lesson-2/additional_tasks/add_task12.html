@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 2 - Additional Task 12</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 12</h1>
+	<p>З клавіатури вводиться кількість монет номіналом 2 копійки (5коп, 25коп, 50 коп). Визначити скільки гривень і
+		копійок є у даній сумі.</p>
+
+	<script>
+		//1 Вводимо необхіні дані
+		const totalCoinsOf2Kopecks = parseInt(prompt('Введіть кількість монет номіналом 2коп.', '30'))
+		const totalCoinsOf5Kopecks = parseInt(prompt('Введіть кількість монет номіналом 5коп.', '12'))
+		const totalCoinsOf25Kopecks = parseInt(prompt('Введіть кількість монет номіналом 25коп.', '10'))
+		const totalCoinsOf50Kopecks = parseInt(prompt('Введіть кількість монет номіналом 50коп.', '8'))
+		const kopecksInOneHruvnia = 100
+		//2 Знаходимо результат
+		const totalCoins = totalCoinsOf2Kopecks * 2 + totalCoinsOf5Kopecks * 5 + totalCoinsOf25Kopecks * 25 + totalCoinsOf50Kopecks * 50
+		const totalHruvnia = Math.floor(totalCoins / kopecksInOneHruvnia)
+		const totalKopecks = totalCoins % kopecksInOneHruvnia
+		//3 Виводимо результат
+		document.write(`Якщо у Вас є ${totalCoinsOf2Kopecks} монет номінало 2коп., ${totalCoinsOf5Kopecks} монет номінало 5 коп., ${totalCoinsOf25Kopecks} монет номінало 25 коп. та ${totalCoinsOf50Kopecks} монет номінало 50 коп., загалом це складає ${totalHruvnia} грн ${totalKopecks} коп.`)
+	</script>
+</body>
+
+</html>

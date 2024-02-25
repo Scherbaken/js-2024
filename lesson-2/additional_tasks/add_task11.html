@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 2 - Additional Task 11</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 11</h1>
+	<p>Дано поточну кількість годи, хвилин, секунд (як на годиннику). Визначити: 1. яка кількість секунд буде на
+		годиннику через N секунд. 2. яка кількість хвилин буде на годиннику через N секунд, X хвилин.</p>
+
+	<script>
+		//1 Вводимо необхіні дані
+		const currentHours = parseInt(prompt('Введіть скільки годин', '13'))
+		const currentMinutes = parseInt(prompt('Введіть скільки хвилин', '45'))
+		const currentSeconds = parseInt(prompt('Введіть скільки секунд', '38'))
+		const addSeconds = parseInt(prompt('Введіть кількість секунд, для визначення нового часу', '1383'))
+		const addMinutes = parseInt(prompt('Введіть кількість хвилин для визначення нового часу', '280'))
+		const secondsInOneHour = 3600
+		const secondsInOneMinute = 60
+		//2 Знаходимо результат
+		// 2.1 Переведемо поточний час у секунди
+		const totalCurrentSeconds = currentHours * secondsInOneHour + currentMinutes * secondsInOneMinute + currentSeconds
+		// 2.2 Додаємо введені секунди і хвилини
+		const newTimeWithAddSeconds = totalCurrentSeconds + addSeconds
+		const newTimeWithAddMinutesAndAddSeconds = totalCurrentSeconds + addSeconds + addMinutes * secondsInOneMinute
+		// 2.3 Переводимо новий результат у години, хвилини та секунди
+		const newCurrentHours = Math.floor(newTimeWithAddSeconds / secondsInOneHour)
+		const newCurrentMinutes = Math.floor(newTimeWithAddSeconds % secondsInOneHour / secondsInOneMinute)
+		const newCurrentSeconds = newTimeWithAddSeconds % secondsInOneHour % secondsInOneMinute
+		const newCurrentHoursWithAddMinutes = Math.floor(newTimeWithAddMinutesAndAddSeconds / secondsInOneHour)
+		const newCurrentMinutesWithAddMinutes = Math.floor(newTimeWithAddMinutesAndAddSeconds % secondsInOneHour / secondsInOneMinute)
+		const newCurrentSecondsWithAddMinutes = newTimeWithAddMinutesAndAddSeconds % secondsInOneHour % secondsInOneMinute
+		//3 Виводимо результат
+		document.write(`Ящо поточний час ${currentHours}год${currentMinutes}хв${currentSeconds}с, то через ${addSeconds}с буде ${newCurrentHours}год${newCurrentMinutes}хв${newCurrentSeconds}с, а через ${addMinutes}хв та ${addSeconds}с на годиннику буде ${newCurrentHoursWithAddMinutes}год${newCurrentMinutesWithAddMinutes}хв${newCurrentSecondsWithAddMinutes}с`)
+	</script>
+</body>
+
+</html>

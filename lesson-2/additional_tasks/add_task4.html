@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 2 - Additional Task 4</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 4</h1>
+	<p>З клавіатури вводиться вік дитини. Вивести на екран через скільки років вона буде відвідувати садочок, піде
+		у школу, закінчить школу, вступить і закінчить інститут.</p>
+
+	<script>
+		//1 Вводимо необхіні дані
+		const childAge = parseInt(prompt('Введіть вік дитини', '2'))
+		const kindergartenAge = 3
+		const schoolBeginAge = 7
+		const schoolFinishAge = 17
+		const universityBeginAge = 18
+		const universityFinishAge = 23
+		//2 Знаходимо результат
+		const yearsToKindergarten = kindergartenAge - childAge
+		const yearsToSchool = schoolBeginAge - childAge
+		const yearsToFinishSchool = schoolFinishAge - childAge
+		const yearsToUniversity = universityBeginAge - childAge
+		const yearsToFinishUniversity = universityFinishAge - childAge
+		//3 Виводимо результат
+		document.write(`Якщо дитині ${childAge}p., то до садочка вона піде через ${yearsToKindergarten}р., до школи через ${yearsToSchool}p.,а закінчить школу через ${yearsToFinishSchool}p. До інституту вступить через ${yearsToUniversity}p., a закінчить його через ${yearsToFinishUniversity}p.`)
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 2 - Additional Task 1</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 1</h1>
+	<p>Дано ширину екрана та кількість елементів, які повинні бути відображені у рядку. Визначити ширину елементів,
+		які повинні бути відображені у цьому рядку. </p>
+
+	<script>
+		//1 Вводимо необхіні дані
+		const widthScreen = parseInt(prompt('Введіть ширину екрану'))
+		const totalElements = parseInt(prompt('Введіть кількість елементів'))
+		//2 Знаходимо результат
+		const widthElement = widthScreen / totalElements
+		//3 Виводимо результат
+		document.write(`Якщо ширина екрану ${widthScreen}, а елементів, що потрібно вставити у рядок ${totalElements}, то ширина одного елементу = ${widthElement}`)
+	</script>
+</body>
+
+</html>
