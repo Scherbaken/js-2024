@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 3 - Task 5</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 5</h1>
+	<p>З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий автомобіль, С-вантажний автомобіль).
+		Вивести на екран назву транспортного засобу, яким він може керувати.</p>
+
+	<script>
+		//1 Вводимо необхіні дані
+		const nameOfCategory = prompt('Введіть водійську категорію (Наприклад: A, B, C, D)', 'C')
+		//2 Задаємо алгоритм та виводимо відповідний результат
+		switch (nameOfCategory) {
+			case "A": document.write('Ви можете керувати мотоциклом')
+				break
+			case "B": document.write('Ви можете керувати легковим автомобілем')
+				break
+			case "C": document.write('Ви можете керувати вантажним автомобілем')
+				break
+			case "D": document.write('Ви можете керувати пасажирським автобусом')
+				break
+			default: document.write('Невірно вказана категорія. Спробуйте ще раз. Використовуйте англійську розкладку клавіатури')
+		}
+	</script>
+</body>
+
+</html>

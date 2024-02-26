@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 3 - Task 6</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 6</h1>
+	<p>З клавіатури вводиться номер дня тижня. Вивести на екран назву дня.</p>
+
+	<script>
+		//1 Вводимо необхіні дані
+		const daysNumber = parseInt(prompt('Введіть номер дня тижня', '4'))
+		//2 Задаємо алгоритм та виводимо відповідний результат
+		switch (daysNumber) {
+			case 1: document.write('Перший день тижня це понеділок')
+				break
+			case 2: document.write('Другий день тижня це вівторок')
+				break
+			case 3: document.write('Третій день тижня це середа')
+				break
+			case 4: document.write('Четвертий день тижня це четвер')
+				break
+			case 5: document.write('П`ятий день тижня це п`ятниця')
+				break
+			case 6: document.write('Шостий деь тижня це суббота')
+				break
+			case 7: document.write('Сьомий день тижня це неділя')
+				break
+			default: document.write('Невірно вказаний номер. Спробуйте в діапазоні від 1 до 7')
+		}
+	</script>
+</body>
+
+</html>

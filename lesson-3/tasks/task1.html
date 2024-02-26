@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 3 - Task 1</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 1</h1>
+	<p>З клавіатури вводяться імена двох дітей та кількість у них цукерок. Вивести не екран ім’я тієї дитини, у якої
+		кількість цукерок є більшою, або вивести, що кількість однакова.</p>
+
+	<script>
+		//1 Вводимо необхіні дані
+		const firstChildName = prompt(`Введіть ім'я першої дитини`, 'Катя')
+		const secondChildName = prompt(`Введіть ім'я другої дитини`, 'Женя')
+		const totalCandiesOfFirstChild = parseInt(prompt(`Укажіть кількість цукерок у ${firstChildName}`, '10'))
+		const totalCandiesOfSecondChild = parseInt(prompt(`Укажіть кількість цукерок у ${secondChildName}`, '8'))
+		//2 Задаємо алгоритм та виводимо відповідний результат
+		if (totalCandiesOfFirstChild > totalCandiesOfSecondChild)
+			document.write(`У ${firstChildName}(${totalCandiesOfFirstChild}) цукерок більше ніж у ${secondChildName}(${totalCandiesOfSecondChild})`)
+		else if (totalCandiesOfSecondChild > totalCandiesOfFirstChild)
+			document.write(`У ${secondChildName}(${totalCandiesOfFirstChild}) цукерок більше ніж у ${firstChildName}(${totalCandiesOfSecondChild})`)
+		else
+			document.write(`у ${firstChildName}(${totalCandiesOfFirstChild}) та ${secondChildName}(${totalCandiesOfSecondChild}) цукерок порівну`)
+	</script>
+</body>
+
+</html>

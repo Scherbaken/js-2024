@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 3 - Task 4</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 4</h1>
+	<p>З клавіатури вводиться вік людини. Вивести на екран ким він є (дитиною у садочку, школярем, студентом,
+		працівником, пенсіонером)</p>
+
+	<script>
+		//1 Вводимо необхіні дані
+		const mansAge = parseInt(prompt('Введіть Ваш вік', '36'))
+		const schoolBeginingAge = 7
+		const universityBeginingAge = 17
+		const workBeginingAge = 22
+		const pensionerAge = 65
+		//2 Задаємо алгоритм та виводимо відповідний результат
+		switch (true) {
+			case mansAge < schoolBeginingAge: document.write('Ви ще повинні відвідувати садочок')
+				break
+			case mansAge >= schoolBeginingAge && mansAge < universityBeginingAge: document.write('Ви маєте ходити до школи')
+				break
+			case mansAge >= universityBeginingAge && mansAge < workBeginingAge: document.write('Виходить що Bи ще студент')
+				break
+			case mansAge >= workBeginingAge && mansAge < pensionerAge: document.write('Ви доросла людина і маєте ходити на роботу')
+				break
+			case mansAge >= pensionerAge: document.write('Гарної Вам пенсії')
+				break
+			default: document.write('Невірно вказаний вік')
+		}
+	</script>
+</body>
+
+</html>

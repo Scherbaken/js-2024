@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 3 - Task 7</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 7</h1>
+	<p>З клавіатури вводиться номер місяця. Вивести до якої пори він відноситься</p>
+
+	<script>
+		//1 Вводимо необхіні дані
+		const monthsNumber = parseInt(prompt('Введіть номер місяця', '5'))
+		//2 Задаємо алгоритм та виводимо відповідний результат
+		switch (monthsNumber) {
+			case 1:
+			case 2:
+			case 12: document.write('Цей місяць відноситься до зими')
+				break
+			case 3:
+			case 4:
+			case 5: document.write('Цей місяць відноситься до весни')
+				break
+			case 6:
+			case 7:
+			case 8: document.write('Цей місяць відноситься до літа')
+				break
+			case 9:
+			case 10:
+			case 11: document.write('Цей місяць відноситься до осені')
+				break
+			default: document.write('Невірно вказаний номер. Спробуйте в діапазоні від 1 до 12')
+		}
+	</script>
+</body>
+
+</html>
