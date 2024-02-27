@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 3 - Additional Task 1</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 1</h1>
+	<p>На екран виводиться меню:</p>
+	<ol style="border: 1px solid #000; max-width: 800px;">
+		<li>Веселий</li>
+		<li>Сумний</li>
+		<li>Обурений</li>
+	</ol>
+	<p>Користувач вводить номер пункту меню і на екрані з’являється відповідне зображення смайла.</p>
+	<script>
+		//1 Вводимо необхіні дані
+		const enteringNumberOfSmile = parseInt(prompt('Введіть номер потрібного Вам смайла \n 1. Веселий \n 2. Сумний \n 3. Обурений', '2'))
+		const happySmile = "😀"
+		const sadSmile = "☹️"
+		const angrySmile = "😡"
+		//2 Записуємо алгоритм і виводимо відповідний результат
+		if (isNaN(enteringNumberOfSmile) === true) {
+			document.write('Не правильний ввід даних. Спробуйте цифру від 1 до 3')
+		}
+		else {
+			switch (enteringNumberOfSmile) {
+				case 1: document.write(happySmile)
+					break
+				case 2: document.write(sadSmile)
+					break
+				case 3: document.write(angrySmile)
+					break
+				default: document.write('Нема такого смайла у списку')
+			}
+		}
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 3 - Additional Task 2</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 2</h1>
+	<p>Комп’ютер випадковим чином вибирає початок і кінець проміжку (проміжок повинен знаходитися в межах від 1 до
+		100). Користувач вводить число і виграє, якщо число знаходиться у цьому проміжку, або розташоване від нього
+		(від лівого або правого краю) не більше ніж на 10.
+	</p>
+	<script>
+		//1 Вводимо необхіні дані
+		alert('Зіграємо в гру. Випадковим чином обирається початок і кінець проміжку в діапазоні від 1 до 100. Щоб виграти, треба вказати число, що потрапить у цей проміжок або розташоване не далі ніж на 10 від початку або кінця проміжку.')
+		const minNumber = 10
+		const maxNumber = 90
+		const enteringNumber = parseInt(prompt('Введіть число від 1 до 100'))
+		const startRange = minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1))
+		const endRange = minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1))
+		//2 Записуємо алгоритм і виводимо відповідний результат
+		if (isNaN(enteringNumber) === true)
+			document.write('Ви ввели некоректні дані. Введіть будь ласка число від 1 до 100')
+		else if (enteringNumber > maxNumber + 10)
+			document.write('Ви ввели некоректні дані. Введіть будь ласка число від 1 до 100')
+		else {
+			if (startRange <= endRange) {
+				if (startRange === minNumber && endRange === maxNumber)
+					document.write(`Тут важко було не вгадати, бо діапазон був від ${minNumber} до ${maxNumber}`)
+				else if (startRange === minNumber && endRange < maxNumber) {
+					if (enteringNumber >= minNumber && enteringNumber <= endRange + 10)
+						document.write(`Ви вгадали число у діапазоні від ${startRange - 10} до ${endRange + 10}`)
+					else
+						document.write(`Нажаль Ви не вгадали число у діапазоні від ${startRange - 10} до ${endRange + 10}`)
+				}
+				else if (startRange > minNumber && endRange === maxNumber) {
+					if (enteringNumber >= startRange - 10 && enteringNumber <= maxNumber)
+						document.write(`Ви вгадали число у діапазоні від ${startRange - 10} до ${endRange + 10}`)
+					else
+						document.write(`Нажаль Ви не вгадали число у діапазоні від ${startRange - 10} до ${endRange + 10}`)
+				}
+				else {
+					if (enteringNumber >= startRange - 10 && enteringNumber <= endRange + 10)
+						document.write(`Ви вгадали число у діапазоні від ${startRange - 10} до ${endRange + 10}`)
+					else
+						document.write(`Нажаль Ви не вгадали число у діапазоні від ${startRange - 10} до ${endRange + 10}`)
+				}
+			}
+			else {
+				let newStartRange = endRange
+				let newEndRange = startRange
+				if (newStartRange === minNumber && newEndRange === maxNumber)
+					document.write(`Тут важко було не вгадати, бо діапазон був від ${minNumber} до ${maxNumber}`)
+				else if (newStartRange === minNumber && newEndRange < maxNumber) {
+					if (enteringNumber >= minNumber && enteringNumber <= newEndRange + 10)
+						document.write(`Ви вгадали число у діапазоні від ${newStartRange - 10} до ${newEndRange + 10}`)
+					else
+						document.write(`Нажаль Ви не вгадали число у діапазоні від ${newStartRange - 10} до ${newEndRange + 10}`)
+				}
+				else if (newStartRange > minNumber && newEndRange === maxNumber) {
+					if (enteringNumber >= newStartRange - 10 && enteringNumber <= maxNumber)
+						document.write(`Ви вгадали число у діапазоні від ${newStartRange - 10} до ${newEndRange + 10}`)
+					else
+						document.write(`Нажаль Ви не вгадали число у діапазоні від ${newStartRange - 10} до ${newEndRange + 10}`)
+				}
+				else {
+					if (enteringNumber >= newStartRange - 10 && enteringNumber <= newEndRange + 10)
+						document.write(`Ви вгадали число у діапазоні від ${newStartRange - 10} до ${newEndRange + 10}`)
+					else
+						document.write(`Нажаль Ви не вгадали число у діапазоні від ${newStartRange - 10} до ${newEndRange + 10}`)
+				}
+			}
+		}
+	</script>
+</body>
+
+</html>
