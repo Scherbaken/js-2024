@@ -20,6 +20,7 @@
 		const universityBeginingAge = 17
 		const workBeginingAge = 22
 		const pensionerAge = 65
+		const legendAge = 100
 		//2 Задаємо алгоритм та виводимо відповідний результат
 		switch (true) {
 			case mansAge < schoolBeginingAge: document.write('Ви ще повинні відвідувати садочок')
@@ -30,7 +31,9 @@
 				break
 			case mansAge >= workBeginingAge && mansAge < pensionerAge: document.write('Ви доросла людина і маєте ходити на роботу')
 				break
-			case mansAge >= pensionerAge: document.write('Гарної Вам пенсії')
+			case mansAge >= pensionerAge && mansAge < legendAge: document.write('Гарної Вам пенсії')
+				break
+			case mansAge > legendAge: document.write('Ви з цієї планети взагалі?')
 				break
 			default: document.write('Невірно вказаний вік')
 		}

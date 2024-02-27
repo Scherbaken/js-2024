@@ -20,13 +20,23 @@
 		console.log(randomNumber)
 		let enteringNumber = parseInt(prompt('Спробуйте вгадати випадкове число від 1 до 5', '3'))
 		//2 Задаємо алгоритм та виводимо відповідний результат
-		if (enteringNumber === randomNumber)
-			document.write('Вітаю, це саме те число!')
+		if (isNaN(enteringNumber) === true) {
+			document.write('Ви не ввели число. Здаєтесь одразу?')
+			alert('Ви не ввели число. Здаєтесь одразу?')
+		}
+		else if (enteringNumber > 5) {
+			document.write('Ви ввели число яке не входить у діапазон. Лише від 1 до 5')
+			alert('Ви ввели число яке не входить у діапазон. Лише від 1 до 5')
+		}
 		else {
-			let enteringNumber = parseInt(prompt('Нажаль Ви не вгадали. Спробуйте ще раз', '2'))
 			if (enteringNumber === randomNumber)
-				document.write('Хоч і з другої спроби, але все ж таки Ви вгадали!')
-			else document.write('Щось Вам сьогодні не щастить! До зустрічі!')
+				document.write('Вітаю, це саме те число!')
+			else {
+				let enteringNumber = parseInt(prompt('Нажаль Ви не вгадали. Спробуйте ще раз', '2'))
+				if (enteringNumber === randomNumber)
+					document.write('Хоч і з другої спроби, але все ж таки Ви вгадали!')
+				else document.write('Щось Вам сьогодні не щастить! До зустрічі!')
+			}
 		}
 	</script>
 </body>
