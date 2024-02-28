@@ -23,20 +23,22 @@
 		const happySmile = "😀"
 		const sadSmile = "☹️"
 		const angrySmile = "😡"
+		let smile
 		//2 Записуємо алгоритм і виводимо відповідний результат
 		if (isNaN(enteringNumberOfSmile) === true) {
 			document.write('Не правильний ввід даних. Спробуйте цифру від 1 до 3')
 		}
 		else {
 			switch (enteringNumberOfSmile) {
-				case 1: document.write(happySmile)
+				case 1: smile = happySmile
 					break
-				case 2: document.write(sadSmile)
+				case 2: smile = sadSmile
 					break
-				case 3: document.write(angrySmile)
+				case 3: smile = angrySmile
 					break
-				default: document.write('Нема такого смайла у списку')
+				default: smile = "Нема такого смайла у списку"
 			}
+			document.write(smile)
 		}
 
 	</script>

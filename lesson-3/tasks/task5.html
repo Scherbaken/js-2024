@@ -15,19 +15,21 @@
 
 	<script>
 		//1 Вводимо необхіні дані
-		const nameOfCategory = prompt('Введіть водійську категорію (Наприклад: A, B, C, D)', 'C')
+		const nameOfCategory = prompt('Введіть водійську категорію (Наприклад: A, B, C, D)', 'C').toUpperCase()
+		let transportName
 		//2 Задаємо алгоритм та виводимо відповідний результат
 		switch (nameOfCategory) {
-			case "A": document.write('Ви можете керувати мотоциклом')
+			case "A": transportName = "мотоциклом"
 				break
-			case "B": document.write('Ви можете керувати легковим автомобілем')
+			case "B": transportName = "легковим автомобілем"
 				break
-			case "C": document.write('Ви можете керувати вантажним автомобілем')
+			case "C": transportName = "вантажним автомобілем"
 				break
-			case "D": document.write('Ви можете керувати пасажирським автобусом')
+			case "D": transportName = "автобусом"
 				break
-			default: document.write('Невірно вказана категорія. Спробуйте ще раз. Використовуйте англійську розкладку клавіатури, та символи A, B, C або D.')
+			default: transportName = "візком у супермаркеті, а на дороги загального користування краще не потикатись"
 		}
+		document.write(`Із категорією ${nameOfCategory}, Ви можете керувати ${transportName}`)
 	</script>
 </body>
 

@@ -15,26 +15,28 @@
 	<script>
 		//1 Вводимо необхіні дані
 		const monthsNumber = parseInt(prompt('Введіть номер місяця', '5'))
+		let seasonsName
 		//2 Задаємо алгоритм та виводимо відповідний результат
 		switch (monthsNumber) {
 			case 1:
 			case 2:
-			case 12: document.write('Цей місяць відноситься до зими')
+			case 12: seasonsName = "зими"
 				break
 			case 3:
 			case 4:
-			case 5: document.write('Цей місяць відноситься до весни')
+			case 5: seasonsName = "весни"
 				break
 			case 6:
 			case 7:
-			case 8: document.write('Цей місяць відноситься до літа')
+			case 8: seasonsName = "літа"
 				break
 			case 9:
 			case 10:
-			case 11: document.write('Цей місяць відноситься до осені')
+			case 11: seasonsName = "осені"
 				break
-			default: document.write('Невірно вказаний номер. Спробуйте в діапазоні від 1 до 12')
+			default: seasonsName = "неіснуючої пори року, бо треба було вказати від 1 до 12"
 		}
+		document.write(`${monthsNumber}й місяць відноситься до ${seasonsName}`)
 	</script>
 </body>
 

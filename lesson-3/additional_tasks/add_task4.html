@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 3 - Additional Task 4</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 4</h1>
+	<p>Морський бій. Ворожий корабель, може знаходитись в одному із квадратів (кількість квадратів вводиться з
+		клавіатури), які розташовані лінійно (один за одним) на річці. </p>
+	<div style="display: flex; justify-content: center; gap: 2px;">
+		<div style="border: 14px solid #000; width: 80px; height: 70px; background-color: lightblue;"></div>
+		<div style="border: 14px solid #000; width: 80px; height: 70px; background-color: lightblue;"></div>
+		<div style="border: 14px solid #000; width: 80px; height: 70px; background-color: lightblue;"></div>
+		<div style="border: 14px solid #000; width: 80px; height: 70px; background-color: lightblue;"></div>
+		<div style="border: 14px solid #000; width: 80px; height: 70px; background-color: lightblue;"></div>
+	</div>
+	<p>
+		Позиція корабля визначається комп’ютером випадковим чином.
+		Гра відбувається за правилами:
+	</p>
+	<ol>
+		<li>якщо користувач стріляє у заданий квадрат (тобто вводиться номер квадрата), то корабель потоплено;</li>
+		<li>
+			якщо корабель знаходиться у сусідньому по відношенню до квадрата, де знаходиться корабель, то корабель
+			пошкоджено (про це повідомляємо користувача).
+		</li>
+	</ol>
+	<p>
+		За два постріли спробувати потопити корабель.
+	</p>
+	<script>
+		//1 Вводимо необхіні дані
+		const dificulty = parseInt(prompt('Введіть складність гри від 3 ("легка"), до 10 ("вкрай важка")', '5'))
+		const minValueEnemyShipPosition = 1
+		const maxValueEnemyShipPosition = dificulty
+		const enemyShipPosition = minValueEnemyShipPosition + Math.floor(Math.random() * (maxValueEnemyShipPosition - minValueEnemyShipPosition + 1))
+		let userShot = parseInt(prompt(`Введіть номер клітинки, в яку здійснити постріл, від ${minValueEnemyShipPosition} до ${maxValueEnemyShipPosition}`))
+
+		//2 Записуємо алгоритм і виводимо відповідний результат
+		if (isNaN(dificulty) === true || isNaN(userShot) === true) alert('Помилка при введенні даних складності або пострілу. Спробуйте ще раз.')
+		else if (dificulty > 10 || userShot > dificulty) alert('Перевірте введені дані. Або складність завелика (більше ніж 10), або Ви ввели значення клітинки, що не відповідає діапазону складності гри. Спробуйте ще раз!')
+		else {
+			if (userShot === enemyShipPosition) {
+				document.write('Є влучання! Ви перемогли!')
+				alert('Є влучання! Ви перемогли!')
+			}
+			else if (userShot === enemyShipPosition - 1 || userShot === enemyShipPosition + 1) {
+				alert('Майже! Корабель супротивника підбито! Давайте його доб`ємо')
+				userShot = parseInt(prompt('Зробіть другий постріл! Введіть номер клітинки, в яку здійснили постріл'))
+				if (userShot === enemyShipPosition) {
+					document.write('Є влучання! Ви перемогли!')
+					alert('Є влучання! Ви перемогли!')
+				}
+				else {
+					alert(`Нажаль Вам не вдалось потопити ворожий корабель. Він утік! Ворожий корабель був у клітинці ${enemyShipPosition}`)
+					document.write(`Нажаль Вам не вдалось потопити ворожий корабель. Він утік! Ворожий корабель був у клітинці ${enemyShipPosition}`)
+				}
+			}
+			else {
+				alert('Нажаль Ви не влучили! Спробуйте ще один раз, можливо пощастить!')
+				userShot = parseInt(prompt('Введіть номер клітинки, в яку здійснили постріл'))
+				if (userShot === enemyShipPosition) {
+					document.write('Є влучання! Ви перемогли!')
+					alert('Є влучання! Ви перемогли!')
+				}
+				else {
+					alert(`Нажаль Вам не вдалось потопити ворожий корабель. Можливо Ви змогли його пошкодити, але він утік! Він був у клітинці ${enemyShipPosition}`)
+					document.write(`Нажаль Вам не вдалось потопити ворожий корабель. Можливо Ви змогли його пошкодити, але він утік! Ворожий корабель був у клітинці ${enemyShipPosition}`)
+				}
+			}
+		}
+	</script>
+</body>
+
+</html>

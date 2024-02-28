@@ -20,22 +20,12 @@
 		const totalCandiesOfFirstChild = parseInt(prompt(`Укажіть кількість цукерок у ${firstChildName}`, '10'))
 		const totalCandiesOfSecondChild = parseInt(prompt(`Укажіть кількість цукерок у ${secondChildName}`, '8'))
 		//2 Задаємо алгоритм та виводимо відповідний результат
-		if (firstChildName.length === 0 || secondChildName.length === 0) {
-			alert('Ви не ввели ім`я дитини')
-			document.write('Ви не ввели ім`я дитини')
-		}
-		else if (isNaN(totalCandiesOfFirstChild) === true || isNan(totalCandiesOfSecondChild) === true) {
-			alert('Ви не вказали кількість цукерок')
-			document.write('Ви не вказали кількість цукерок')
-		}
-		else {
-			if (totalCandiesOfFirstChild > totalCandiesOfSecondChild)
-				document.write(`У ${firstChildName}(${totalCandiesOfFirstChild}) цукерок більше ніж у ${secondChildName}(${totalCandiesOfSecondChild})`)
-			else if (totalCandiesOfSecondChild > totalCandiesOfFirstChild)
-				document.write(`У ${secondChildName}(${totalCandiesOfFirstChild}) цукерок більше ніж у ${firstChildName}(${totalCandiesOfSecondChild})`)
-			else
-				document.write(`у ${firstChildName}(${totalCandiesOfFirstChild}) та ${secondChildName}(${totalCandiesOfSecondChild}) цукерок порівну`)
-		}
+		if (totalCandiesOfFirstChild > totalCandiesOfSecondChild)
+			document.write(`У ${firstChildName}(${totalCandiesOfFirstChild}) цукерок більше ніж у ${secondChildName}(${totalCandiesOfSecondChild})`)
+		else if (totalCandiesOfSecondChild > totalCandiesOfFirstChild)
+			document.write(`У ${secondChildName}(${totalCandiesOfFirstChild}) цукерок більше ніж у ${firstChildName}(${totalCandiesOfSecondChild})`)
+		else
+			document.write(`у ${firstChildName}(${totalCandiesOfFirstChild}) та ${secondChildName}(${totalCandiesOfSecondChild}) цукерок порівну`)
 	</script>
 </body>
 

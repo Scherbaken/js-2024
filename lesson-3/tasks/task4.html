@@ -16,27 +16,20 @@
 	<script>
 		//1 Вводимо необхіні дані
 		const mansAge = parseInt(prompt('Введіть Ваш вік', '36'))
+		let mansStatus
 		const schoolBeginingAge = 7
 		const universityBeginingAge = 17
 		const workBeginingAge = 22
 		const pensionerAge = 65
 		const legendAge = 100
 		//2 Задаємо алгоритм та виводимо відповідний результат
-		switch (true) {
-			case mansAge < schoolBeginingAge: document.write('Ви ще повинні відвідувати садочок')
-				break
-			case mansAge >= schoolBeginingAge && mansAge < universityBeginingAge: document.write('Ви маєте ходити до школи')
-				break
-			case mansAge >= universityBeginingAge && mansAge < workBeginingAge: document.write('Виходить що Bи ще студент')
-				break
-			case mansAge >= workBeginingAge && mansAge < pensionerAge: document.write('Ви доросла людина і маєте ходити на роботу')
-				break
-			case mansAge >= pensionerAge && mansAge < legendAge: document.write('Гарної Вам пенсії')
-				break
-			case mansAge > legendAge: document.write('Ви з цієї планети взагалі?')
-				break
-			default: document.write('Невірно вказаний вік')
-		}
+		if (mansAge < schoolBeginingAge) mansStatus = "дитина і маєте ходити у садочок"
+		else if (mansAge < universityBeginingAge) mansStatus = "школяр"
+		else if (mansAge < workBeginingAge) mansStatus = "студент"
+		else if (mansAge < pensionerAge) mansStatus = "вже дорослий, щоб працювати"
+		else if (mansAge < legendAge) mansStatus = "пенсіонер"
+		else mansStatus = "легенда!"
+		document.write(`Якщо Вам ${mansAge}р, то Ви ${mansStatus}`)
 	</script>
 </body>
 

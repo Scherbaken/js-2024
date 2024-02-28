@@ -15,24 +15,26 @@
 	<script>
 		//1 Вводимо необхіні дані
 		const daysNumber = parseInt(prompt('Введіть номер дня тижня', '4'))
+		let daysName
 		//2 Задаємо алгоритм та виводимо відповідний результат
 		switch (daysNumber) {
-			case 1: document.write('Перший день тижня це понеділок')
+			case 1: daysName = "понеділок"
 				break
-			case 2: document.write('Другий день тижня це вівторок')
+			case 2: daysName = "вівторок"
 				break
-			case 3: document.write('Третій день тижня це середа')
+			case 3: daysName = "середа"
 				break
-			case 4: document.write('Четвертий день тижня це четвер')
+			case 4: daysName = "четвер"
 				break
-			case 5: document.write('П`ятий день тижня це п`ятниця')
+			case 5: daysName = "п'ятниця"
 				break
-			case 6: document.write('Шостий деь тижня це суббота')
+			case 6: daysName = "суббота"
 				break
-			case 7: document.write('Сьомий день тижня це неділя')
+			case 7: daysName = "неділя"
 				break
-			default: document.write('Невірно вказаний номер. Спробуйте вказати число в діапазоні від 1 до 7')
+			default: daysName = "Не вірно вказаний номер. Спробуйте від 1 до 7"
 		}
+		document.write(daysName)
 	</script>
 </body>
 
