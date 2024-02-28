@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 3 - Additional Task 3</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 3</h1>
+	<p>Комп’ютер загадує число від 1 до 10. Двоє користувачів надають свої відповіді. Виграє той, у кого число
+		знаходиться ближче до загаданого комп’ютером числа.
+	</p>
+	<script>
+		//1 Вводимо необхіні дані
+		const minNumber = 1
+		const maxNumber = 10
+		const randomNumber = minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1))
+		const firstUserNumber = parseInt(prompt('Перший користувач, введіть число від 1 до 10'))
+		const secondUserNumber = parseInt(prompt('Другий користувач, введіть число від 1 до 10'))
+		//2 Записуємо алгоритм і виводимо відповідний результат
+		if (isNaN(firstUserNumber) === true || isNaN(secondUserNumber) === true)
+			document.write('Ввід данних невірний. Вам треба ввести число від 1 до 10.')
+		else if (firstUserNumber > maxNumber || secondUserNumber > maxNumber)
+			document.write('Ви ввели число що не входить у діапазон від 1 до 10. Повторіть ввід даних.')
+		else {
+			let firstUserResult = Math.abs(randomNumber - firstUserNumber)
+			let secondUserResult = Math.abs(randomNumber - secondUserNumber)
+			if (firstUserResult < secondUserResult)
+				document.write(`Перший користувач був більш точнішим. Його число ${firstUserNumber}, а загадане комп'ютером ${randomNumber}`)
+			else if (secondUserResult < firstUserResult)
+				document.write(`Другий користувач був більш точнішим. Його число ${secondUserNumber}, а загадане комп'ютером ${randomNumber}`)
+			else
+				document.write(`Обидва користувачі однаково близько до загадоного числа ${randomNumber}`)
+		}
+	</script>
+</body>
+
+</html>
