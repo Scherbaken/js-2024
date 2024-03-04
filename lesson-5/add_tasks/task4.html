@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 5 - Additional Task 4</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 9</h1>
+	<p>Користувач загадує число. Комп’ютер задає питання поки не вгадає число користувача (використати confirm).</p>
+
+	<script>
+		//1 Вводимо необхіні дані
+		const userNumber = parseInt(prompt('Загадайте число від 1 до 10', '35'))
+		const minNumber = 1
+		const maxNumber = 100
+		let computerNumber = 0
+
+		//2 Задаємо цикли та алгоритми, виводимо відповідний результат
+
+		while (computerNumber !== userNumber) {
+			computerNumber = minNumber + Math.floor(Math.random() * maxNumber)
+			alert(`Комп'ютер вважає, що Ваше число ${computerNumber}`)
+			if (confirm(`Це дійсно Ваше число?`)) {
+				alert("Комп'ютер вгадав Ваше число!")
+				break
+			}
+		}
+
+	</script>
+
+</body>
+
+</html>

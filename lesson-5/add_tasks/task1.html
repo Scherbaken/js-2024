@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 5 - Additional Task 1</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 6</h1>
+	<p>Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній), з непреривною нумерацією комірок</p>
+
+	<script>
+		//1 Вводимо необхіні дані
+		let cellNumber = 0
+		//2 Задаємо цикли та алгоритми, виводимо відповідний результат
+		document.write(`<div style="display: flex; gap: 40px">`)
+		for (let table = 0; table < 3; table++) {
+			document.write(`<table border="1">`)
+			for (let row = 0; row < 3; row++) {
+				document.write(`<tr>`)
+				for (let cell = 0; cell < 3; cell++) {
+					document.write(`<td>${++cellNumber}</td>`)
+				}
+				document.write(`</tr>`)
+			}
+			document.write(`</table>`)
+		}
+		document.write(`</div>`)
+	</script>
+
+</body>
+
+</html>

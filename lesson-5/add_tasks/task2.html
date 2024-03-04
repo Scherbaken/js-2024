@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 5 - Additional Task 2</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 7</h1>
+	<p>Вивести на екран N абзаців (N вводиться користувачем) за зразком:</p>
+	<img src="./img/task2.png" alt="Image" width="250px" height="400px">
+
+	<script>
+		//1 Вводимо необхіні дані
+		const userNumber = parseInt(prompt('Введіть кількість абзаців', '5'))
+		//2 Задаємо цикли та алгоритми, виводимо відповідний результат
+		for (let title = 1; title <= userNumber; title++) {
+			document.write(`<h3>Заголовок ${title}</h3>`)
+			for (let paragraph = 1; paragraph <= title; paragraph++) {
+				document.write(`<p>Розділ ${title}, параграф ${paragraph}</p>`)
+			}
+			document.write(`<hr>`)
+		}
+
+	</script>
+
+</body>
+
+</html>
