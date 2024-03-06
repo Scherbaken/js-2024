@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 5 - Additional Task 6</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 11</h1>
+	<p>Знайти суму 5 непарних чисел, що знаходяться між заданими користувачем числами.</p>
+
+	<script>
+		//1 Вводимо необхіні дані
+		const firstUserNumber = parseInt(prompt('Введіть перше число', '10'))
+		const secondUserNumber = parseInt(prompt('Введіть друге число', '88'))
+		let checkedNumber
+		let count = 0
+		let totalSumOddNumbers = 0
+		//2 Задаємо цикли та алгоритми, виводимо відповідний результат
+		//2.1 Знаходимо суму перших 5ти непарних чисел у діапазоні
+		// if (firstUserNumber % 2 !== 0) checkedNumber = firstUserNumber
+		// else checkedNumber = firstUserNumber + 1
+
+		// for (let count = 0; count < 5; count++) {
+		// 	totalSumOddNumbers += checkedNumber
+		// 	checkedNumber += 2
+		// }
+		// document.write(`Сума перших 5ти непарних чисел у діапазоні ${totalSumOddNumbers} <br><br>`)
+		//2.2 Знаходимо суму рандомних 5 непарних чисел у діапазоні (можливі повторення чисел)
+
+		while (count < 5) {
+			checkedNumber = firstUserNumber + Math.floor(Math.random() * (secondUserNumber - firstUserNumber + 1))
+			if (checkedNumber % 2 !== 0) {
+				totalSumOddNumbers += checkedNumber
+				count++
+			}
+		}
+		document.write(`Сума рандомних 5 непарних чисел у діапазоні (можливі повторення чисел) ${totalSumOddNumbers}`)
+	</script>
+
+</body>
+
+</html>
