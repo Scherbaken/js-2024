@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 6 - Additional Task 1</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 1</h1>
+	<p>Вивести на екран</p>
+	<div><img src="./img/add_task1.jpg" alt="Image" width="200"></div>
+
+	<script>
+		//1 Вводимо необхіні дані
+		const count = parseInt(prompt('Введіть кількість повторень', '23'))
+		//2 Задаємо цикли та алгоритми, виводимо відповідний результат
+		document.write('<table>')
+		for (let row = 1; row <= count; row++) {
+			document.write(`<tr><td>${row}</td>`)
+			for (let number = 1; number <= row; number++) {
+				document.write(`<td>${number}</td>`)
+			}
+			document.write('</tr>')
+		}
+	</script>
+
+</body>
+
+</html>

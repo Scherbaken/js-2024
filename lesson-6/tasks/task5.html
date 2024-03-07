@@ -22,9 +22,11 @@
 
 		//1 Вводимо необхіні дані
 		let letterCode
+		const aCode = "A".charCodeAt()
+		const zCode = "Z".charCodeAt()
 		//2 Задаємо цикли та алгоритми, виводимо відповідний результат
 		document.write('<table><tr><th>prev|</th><th>symbol|</th><th>next</th></tr>')
-		for (let letterCode = 65; letterCode < 91; letterCode++) {
+		for (let letterCode = aCode; letterCode <= zCode; letterCode++) {
 			document.write(`<tr><td>${String.fromCharCode(letterCode - 1)}</td> <td>${String.fromCharCode(letterCode)}</td> <td>${String.fromCharCode(letterCode + 1)}</td></tr>`)
 		}
 		document.write('</table>')

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 5 - Additional Task 8</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 13</h1>
+	<p>Користувач поступово вводить прибуток магазину за кожен день протягом N тижнів. Знайти загальну величину
+		прибутку та вивести величину прибутку протягом кожного окремого тижня.</p>
+	<style>
+
+	</style>
+	<script>
+		//1 Вводимо необхіні дані
+		const totalWeeks = parseInt(prompt('Введіть кількість розрахункових тижнів', '2'))
+		let totalProfit = 0
+		let weekProfit = 0
+		let dayProfit
+		//2 Задаємо цикли та алгоритми, виводимо відповідний результат
+		for (let week = 1; week <= totalWeeks; week++) {
+			weekProfit = 0
+			for (let day = 1; day <= 7; day++) {
+				dayProfit = parseInt(prompt(`Введіть прибуток: ${week} тиждень, ${day} день`, '10'))
+				weekProfit += dayProfit
+			}
+			document.write(`Прибуток за ${week} тиждень склав ${weekProfit}<br>`)
+			totalProfit += weekProfit
+		}
+		document.write(`Загальний прибуток склав ${totalProfit}грн`)
+	</script>
+
+</body>
+
+</html>
