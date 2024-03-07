@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 6 - Task 4</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 4</h1>
+	<p>Вивести на екран послідовність символів</p>
+	<p>а о а о а о а о а о …</p>
+	<p>Всього символів 82.</p>
+
+	<style>
+		span {
+			letter-spacing: 8px;
+		}
+	</style>
+	<script>
+
+		//1 Вводимо необхіні дані
+		const firstSymbol = 'a'
+		const secondSymbol = 'o'
+
+		//2 Задаємо цикли та алгоритми, виводимо відповідний результат
+		for (let i = 0; i < 41; i++) {
+			document.write(`<span>${firstSymbol + secondSymbol}</span>`)
+		}
+	</script>
+
+</body>
+
+</html>

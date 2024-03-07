@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 6 - Task 5</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 5</h1>
+	<p>Написати програму виведення на екран кожного символу латинського алфавіту та поруч з кожним з них символу,
+		що передує йому та що слідує за ним.</p>
+
+	<style>
+		table {
+			text-align: center;
+		}
+	</style>
+	<script>
+
+		//1 Вводимо необхіні дані
+		let letterCode
+		//2 Задаємо цикли та алгоритми, виводимо відповідний результат
+		document.write('<table><tr><th>prev|</th><th>symbol|</th><th>next</th></tr>')
+		for (let letterCode = 65; letterCode < 91; letterCode++) {
+			document.write(`<tr><td>${String.fromCharCode(letterCode - 1)}</td> <td>${String.fromCharCode(letterCode)}</td> <td>${String.fromCharCode(letterCode + 1)}</td></tr>`)
+		}
+		document.write('</table>')
+
+	</script>
+
+</body>
+
+</html>
