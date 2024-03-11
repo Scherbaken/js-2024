@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 7 - Task 7</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 7</h1>
+	<p>Створити функцію, яка випадковим чином виводить на екран одне із 4 зображень (шляхи до зображень передаються
+		у функцію)</p>
+
+	<style>
+
+	</style>
+	<script>
+
+		//1 Створюємо функції
+		function getRandomImg() {
+			let src
+			let randomNum = 1 + Math.floor(Math.random() * arguments.length)
+			switch (randomNum) {
+				case 1: src = arguments[0]
+					break
+				case 2: src = arguments[1]
+					break
+				case 3: src = arguments[2]
+					break
+				case 4: src = arguments[3]
+			}
+			document.write(`<img ${src} width="200" alt="Image">`)
+		}
+		//2 Виводимо відповідний результат
+		const firstImgSrc = 'src="./img/task7_1.svg"'
+		const secondImgSrc = 'src="./img/task7_2.svg"'
+		const thirdImgSrc = 'src="./img/task7_3.svg"'
+		const fourthImgSrc = 'src="./img/task7_4.svg"'
+
+		getRandomImg(firstImgSrc, secondImgSrc, thirdImgSrc, fourthImgSrc)
+
+
+	</script>
+
+</body>
+
+</html>

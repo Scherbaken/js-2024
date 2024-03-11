@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 7 - Task 8</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 8</h1>
+	<p>Створити функцію, яка виводить банер (у функцію передаються: зображення, заголовок та посилання, куди
+		переходимо при кліку на зображення)</p>
+	<style>
+		div {
+			max-width: 250px;
+			border: 1px solid #000;
+			text-align: center;
+		}
+
+		h2 {
+			margin: 0;
+		}
+
+		h2:not(:last-child) {
+			margin-bottom: 20px;
+		}
+	</style>
+	<script>
+
+		//1 Створюємо функції
+		function getBaner(img, title, link) {
+			document.write(`<div><h2>${title}</h2><a href="${link}" target="_blank"><img ${img} width="200" alt="Image"></a></div>`)
+		}
+		//2 Виводимо відповідний результат
+		const userImgSrc = 'src="./img/task7_1.svg"'
+		const userTitle = 'Тицни на картинку'
+		const userLink = 'https://google.com/'
+		getBaner(userImgSrc, userTitle, userLink)
+	</script>
+
+</body>
+
+</html>

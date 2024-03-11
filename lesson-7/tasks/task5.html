@@ -5,32 +5,38 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE-edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Lesson 6 - Task 5</title>
+	<title>Lesson 7 - Task 5</title>
 </head>
 
 <body style="font-size: 30px">
 	<h1>Задача 5</h1>
-	<p>Написати програму виведення на екран кожного символу латинського алфавіту та поруч з кожним з них символу,
-		що передує йому та що слідує за ним.</p>
+	<p>Створити окремі функції, які переводять:</p>
+	<ul>
+		<li>Сантиметри у дюйми;</li>
+		<li>Кілограми у фунти;</li>
+		<li>Кілометри у милі.</li>
+	</ul>
 
 	<style>
-		table {
-			text-align: center;
-		}
+
 	</style>
 	<script>
 
-		//1 Вводимо необхіні дані
-		let letterCode
-		const aCode = "A".charCodeAt()
-		const zCode = "Z".charCodeAt()
-		//2 Задаємо цикли та алгоритми, виводимо відповідний результат
-		document.write('<table><tr><th>prev|</th><th>symbol|</th><th>next</th></tr>')
-		for (let letterCode = aCode; letterCode <= zCode; letterCode++) {
-			document.write(`<tr><td>${String.fromCharCode(letterCode - 1)}</td> <td>${String.fromCharCode(letterCode)}</td> <td>${String.fromCharCode(letterCode + 1)}</td></tr>`)
+		//1 Створюємо функції
+		function getInchFromCm(cm) {
+			return cm / 2.54
 		}
-		document.write('</table>')
-
+		function getPoundFromKg(kg) {
+			return kg * 2.205
+		}
+		function getMilesFromKm(km) {
+			return km / 1.609
+		}
+		//2 Виводимо відповідний результат
+		const centimeter = parseFloat(prompt('Введіть довжину у сантиметрах', '25.5'))
+		const kilograms = parseFloat(prompt('Введіть вагу у кілограмах', '25.5'))
+		const kilometers = parseFloat(prompt('Введіть довжину у кілометрах', '25.5'))
+		document.write(`${centimeter}см = ${getInchFromCm(centimeter).toFixed(2)}in <br> ${kilograms}кг = ${getPoundFromKg(kilograms).toFixed(2)}lb <br> ${kilometers}км = ${getMilesFromKm(kilometers).toFixed(2)}mi`)
 	</script>
 
 </body>

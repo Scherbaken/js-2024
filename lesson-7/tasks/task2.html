@@ -5,88 +5,38 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE-edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Lesson 6 - Task 2</title>
+	<title>Lesson 7 - Task 2</title>
 </head>
 
 <body style="font-size: 30px">
 	<h1>Задача 2</h1>
-	<p>Використовуючи цикли вивести на екран 20 символів «о».</p>
-	<ul>
-		<li>Відобразити прямокутний трикутник за допомогою символів «о»</li>
-		<li>Відобразити рівнобедренний трикутник за допомогою символів «о»</li>
-		<li>Відобразити перевернутий прямокутний трикутник за допомогою символів «о»</li>
-		<li>Відобразити перевернутий рівнобедренний трикутник за допомогою символів «о»</li>
-		<li>Побудувати ялинку за допопмогою прямокутних трикутніків та символів «о»</li>
-	</ul>
+	<p>Створити функцію, яка за номером дня дозволяє з’ясувати чи є цей день робочим.</p>
+
 	<style>
-		.tac {
-			display: inline-block;
-			text-align: center;
-		}
+
 	</style>
 	<script>
 
-		//1 Вводимо необхіні дані
-
-		const symbol = "o"
-		let result = ''
-		const triangleHight = parseInt(prompt('Введіть висоту трикутника (кількість рядків)', '7'))
-
-		//2 Задаємо цикли та алгоритми, виводимо відповідний результат
-
-		//- Виводимо на екран 20 символів "о"
-
-		for (let i = 0; i < 20; i++) document.write(symbol)
-		document.write('<br><hr>')
-
-		//- Виводимо на екран прямокутний трикутник за допомогою символів «о»
-
-		for (let row = 0; row < triangleHight; row++) {
-			result += symbol
-			document.write(`${result}<br>`)
-		}
-		document.write('<hr>')
-
-		//- Виводимо на екран рівнобедренний трикутник за допомогою символів «о»
-
-		result = ''
-		document.write('<div class="tac">')
-		for (let row = 0; row < triangleHight; row++) {
-			result += symbol
-			document.write(`${result}<br>`)
-		}
-		document.write('</div><hr>')
-
-		//- Виводимо на екран перевернутий прямокутний трикутник за допомогою символів «о»
-
-		result = ''
-		for (let row = triangleHight; row > 0; row--) {
-			for (let o = 0; o < row; o++) document.write(symbol)
-			document.write('<br>')
-		}
-		document.write('<hr>')
-
-		//- Виводимо на екран перевернутий рівнобедренний трикутник за допомогою символів «о»
-
-		result = ''
-		document.write('<div class="tac">')
-		for (let row = triangleHight; row > 0; row--) {
-			for (let o = 0; o < row; o++) document.write(symbol)
-			document.write('<br>')
-		}
-		document.write('</div><hr>')
-
-		//- Виводимо ялинку за допопмогою прямокутних трикутніків та символів «о»
-		let hightOfTree = 3
-		for (let j = 0; j < 3; j++) {
-			result = ''
-			for (row = 0; row < hightOfTree; row++) {
-				result += symbol
-				document.write(`${result}<br>`)
+		//1 Створюємо функцію
+		function getDayType(num) {
+			let dayType
+			switch (num) {
+				case 1:
+				case 2:
+				case 3:
+				case 4:
+				case 5: dayType = 'Це робочий день'
+					break
+				case 6:
+				case 7: dayType = 'Це вихідний день'
+					break
+				default: dayType = 'Не правильний ввід данних'
 			}
-			hightOfTree++
+			return dayType
 		}
-		document.write('<hr>')
+		//2 Виводимо відповідний результат
+		let dayNum = parseInt(prompt('Введіть номер дня тижня (від 1 до 7)', '5'))
+		document.write(getDayType(dayNum))
 	</script>
 
 </body>

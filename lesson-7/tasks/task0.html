@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 7 - Task 0</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 0</h1>
+	<p>Створити функцію, яка за номером місяця повертає пору року, до якої відноситься цей місяць.</p>
+
+	<style>
+
+	</style>
+	<script>
+
+		//1 Створюємо функцію
+		function getSeasByMonthNum(monthNum) {
+			let season = ''
+			if (monthNum >= 1 && monthNum < 3 || monthNum === 12) season = 'зима'
+			else if (monthNum >= 3 && monthNum < 6) season = 'весна'
+			else if (monthNum >= 6 && monthNum < 9) season = 'літо'
+			else if (monthNum >= 9 && monthNum < 12) season = 'осінь'
+			else season = 'Введіть правильно номер місяця (від 1 до 12)'
+			return season
+		}
+		//2 Виводимо відповідний результат
+		let monthNum = parseInt(prompt('Введіть число місяця', '5'))
+		document.write(getSeasByMonthNum(monthNum))
+	</script>
+
+</body>
+
+</html>

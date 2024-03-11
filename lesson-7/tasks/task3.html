@@ -5,70 +5,51 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE-edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Lesson 6 - Task 3</title>
+	<title>Lesson 7 - Task 3</title>
 </head>
 
 <body style="font-size: 30px">
 	<h1>Задача 3</h1>
+	<p>Створити окремі функції, які для 4 чисел знаходять:</p>
 	<ul>
-		<li>
-			<p>Інвестор вклав S тис. грн на 20 років під 20% річних. Визначити за допомогою циклів суму, яку він
-				одержить (без оподаткування).</p>
-		</li>
-
-		<li>
-			<p>Інвестор вклав S тис. грн на 20 років під 20% річних, податок складає 5% від суми прибутку. Визначити за
-				допомогою циклів суму, яку він одержить.</p>
-		</li>
-		<li>
-			<p>Інвестор вклав S тис. грн на 20 років під 20% річних, а потім на 17 років під 27% річних. Визначити за
-				допомогою циклів суму, яку він одержить.</p>
-		</li>
+		<li>суму;</li>
+		<li>добуток;</li>
+		<li>середнє арифметичне;</li>
+		<li>мінімальне значення.</li>
 	</ul>
-
 	<style>
 
 	</style>
 	<script>
 
-		//1 Вводимо необхіні дані
-		const sumOfUserInvest = parseInt(prompt('Введіть суму інвестування', '10000'))
-		const percentPerYear = 20
-		const nwePercentPerYear = 27
-		const percentOfTax = 5
-		const totalTermOfInvest = 20
-		const newTotalTermOfInvest = 17
-		const addSumPerYear = sumOfUserInvest * percentPerYear / 100
-		const newAddSumPerYear = sumOfUserInvest * nwePercentPerYear / 100
-		let totalAddSum = 0
-
-		//2 Задаємо цикли та алгоритми, виводимо відповідний результат
-
-		// - Вираховуємо суму за 20р. під 20% без оподаткування
-
-		for (let year = 0; year < 20; year++) {
-			totalAddSum += addSumPerYear
+		//1 Створюємо функції
+		function getUserNum() {
+			return parseInt(prompt('Введіть число'))
 		}
-		document.write(`Якщо інвестувати ${sumOfUserInvest}грн на ${totalTermOfInvest}р під ${percentPerYear}% річних, то в результаті отримаємо ${sumOfUserInvest + totalAddSum}грн <hr>`)
-
-		// - Вираховуємо суму за 20р. під 20% з податком 5%
-
-		totalAddSum = 0
-		for (let year = 0; year < 20; year++) {
-			totalAddSum += addSumPerYear - (addSumPerYear * percentOfTax / 100)
+		function getSum(num1, num2, num3, num4) {
+			return num1 + num2 + num3 + num4
 		}
-		document.write(`Якщо інвестувати ${sumOfUserInvest}грн на ${totalTermOfInvest}р під ${percentPerYear}% річних з податком від суми прибутку ${percentOfTax}%, то в результаті отримаємо ${sumOfUserInvest + totalAddSum}грн <hr>`)
-
-		// - Вираховуємо суму за 20р. під 20% та за 17р. під 27%
-
-		totalAddSum = 0
-		for (let year = 0; year < 20; year++) {
-			totalAddSum += addSumPerYear
+		function getProd(num1, num2, num3, num4) {
+			return num1 * num2 * num3 * num4
 		}
-		for (let anotherYear = 0; anotherYear < 17; anotherYear++) {
-			totalAddSum += newAddSumPerYear
+		function getArithmeticMean(num1, num2, num3, num4) {
+			return (num1 + num2 + num3 + num4) / 4
 		}
-		document.write(`Якщо інвестувати ${sumOfUserInvest}грн на ${totalTermOfInvest}р під ${percentPerYear}% річних, а потім ще раз на ${newTotalTermOfInvest}р під ${nwePercentPerYear}%, то в результаті отримаємо ${sumOfUserInvest + totalAddSum}грн`)
+		function getMinNum(num1, num2, num3, num4) {
+			return Math.min(num1, num2, num3, num4)
+		}
+
+		//2 Виводимо відповідний результат
+		let userNum1 = getUserNum()
+		let userNum2 = getUserNum()
+		let userNum3 = getUserNum()
+		let userNum4 = getUserNum()
+		document.write(`Введені числа: <br>Перше число: ${userNum1}<br>Друге число: ${userNum2}<br>Третє число: ${userNum3}<br> Четверте число: ${userNum4}<br>`)
+		let sum = getSum(userNum1, userNum2, userNum3, userNum4)
+		let prod = getProd(userNum1, userNum2, userNum3, userNum4)
+		let arithmetic = getArithmeticMean(userNum1, userNum2, userNum3, userNum4)
+		let min = getMinNum(userNum1, userNum2, userNum3, userNum4)
+		document.write(`<br>Сума цих чисел: ${sum}<br><br>Добуток цих чисел: ${prod}<br><br>Середнє арифметичне цих чисел: ${arithmetic}<br><br>Мінімальне значення серед цих чисел: ${min}<br>`)
 	</script>
 
 </body>

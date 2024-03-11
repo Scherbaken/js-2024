@@ -5,30 +5,54 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE-edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Lesson 6 - Task 4</title>
+	<title>Lesson 7 - Task 4</title>
 </head>
 
 <body style="font-size: 30px">
 	<h1>Задача 4</h1>
-	<p>Вивести на екран послідовність символів</p>
-	<p>а о а о а о а о а о …</p>
-	<p>Всього символів 82.</p>
+	<p>Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних, кількість
+		додатних, кількість більших за 100.</p>
 
 	<style>
-		span {
-			letter-spacing: 8px;
-		}
+
 	</style>
 	<script>
 
-		//1 Вводимо необхіні дані
-		const firstSymbol = 'a'
-		const secondSymbol = 'o'
-
-		//2 Задаємо цикли та алгоритми, виводимо відповідний результат
-		for (let i = 0; i < 41; i++) {
-			document.write(`<span>${firstSymbol + secondSymbol}</span>`)
+		//1 Створюємо функції
+		function getUserNum() {
+			return parseFloat(prompt('Введіть число'))
 		}
+		function getTotalEven(num1, num2, num3) {
+			let count = 0
+			for (let i = 0; i < 3; i++) {
+				if (arguments[i] % 2 === 0) count++
+			}
+			return count
+		}
+		function getTotalPositive(num1, num2, num3) {
+			let count = 0
+			for (let i = 0; i < 3; i++) {
+				if (arguments[i] > 0) count++
+			}
+			return count
+		}
+		function getMoreThan100(num1, num2, num3) {
+			let count = 0
+			for (let i = 0; i < 3; i++) {
+				if (arguments[i] > 100) count++
+			}
+			return count
+		}
+		function get3in1(num1, num2, num3) {
+			document.write(`Кількість парних: ${getTotalEven(num1, num2, num3)}<br> Кількість додатніх: ${getTotalPositive(num1, num2, num3)}<br> Кількість більших за 100: ${getMoreThan100(num1, num2, num3)}`)
+		}
+		//2 Виводимо відповідний результат
+		let userNum1 = getUserNum()
+		let userNum2 = getUserNum()
+		let userNum3 = getUserNum()
+
+		document.write(`Введені числа:<br> Перше число: ${userNum1}<br> Друге число: ${userNum2}<br> Третє число: ${userNum3}<br><br>`)
+		get3in1(userNum1, userNum2, userNum3)
 	</script>
 
 </body>
