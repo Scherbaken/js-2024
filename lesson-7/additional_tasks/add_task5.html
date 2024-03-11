@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 6 - Additional Task 5</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 5</h1>
+	<p>Дано ціле число N (N > 0). Використовуючи операції ділення націло та остачі від ділення, знайти кількість та
+		суму його цифр.</p>
+	<script>
+		//1 Вводимо необхіні дані
+		let userNum = parseInt(prompt('Введіть ціле число більше за 0', '138'))
+		let count = 0
+		let sum = 0
+		let firstNum = userNum % 10
+		console.log(firstNum)
+		let nextNum = ((userNum - firstNum) / 10) % 10
+		console.log(nextNum)
+		let nextNextNum = (userNum - nextNum * 10 - firstNum)
+		//2 Задаємо цикли та алгоритми, виводимо відповідний результат
+	</script>
+
+</body>
+
+</html>

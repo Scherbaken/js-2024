@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 6 - Task 1</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 1</h1>
+	<p>Вивести на екран</p>
+	<p>A B C D E</p>
+	<p>B C D E F</p>
+	<p>C D E F G</p>
+	<p>D E F G H</p>
+	<p>E F G H I</p>
+	<style>
+		td {
+			text-align: center;
+		}
+	</style>
+	<script>
+
+		//1 Вводимо необхіні дані
+		let startLetter = "A".charCodeAt()
+		//2 Задаємо цикли та алгоритми, виводимо відповідний результат
+		document.write('<table>')
+		for (let row = 0; row < 5; row++) {
+			document.write(`<tr>`)
+			for (let letter = 0; letter < 5; letter++) {
+				document.write(`<td>${String.fromCharCode(startLetter + letter)}</td>`)
+			}
+			startLetter++
+			document.write(`</tr>`)
+		}
+		document.write('</table>')
+
+	</script>
+
+</body>
+
+</html>
