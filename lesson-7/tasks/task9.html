@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 7 - Task 9</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 9</h1>
+	<p>Дано покази температур (довільна кількість). Розробити функцію, яка дозволить підрахувати кількість
+		від’ємних показів температури.</p>
+	<style>
+
+	</style>
+	<script>
+
+		//1 Створюємо функції
+		function getTotalNegTemp() {
+			let count = 0
+			for (let i = 0; i < arguments.length; i++) {
+				if (arguments[i] < 0) count++
+			}
+			return count
+		}
+		//2 Виводимо відповідний результат
+		const userTemp1 = parseFloat(prompt('Введіть покази температури'))
+		const userTemp2 = parseFloat(prompt('Введіть покази температури'))
+		const userTemp3 = parseFloat(prompt('Введіть покази температури'))
+		const userTemp4 = parseFloat(prompt('Введіть покази температури'))
+		const userTemp5 = parseFloat(prompt('Введіть покази температури'))
+		document.write(`Кількість від'ємних показів: ${getTotalNegTemp(userTemp1, userTemp2, userTemp3, userTemp4, userTemp5)}`)
+
+	</script>
+
+</body>
+
+</html>
