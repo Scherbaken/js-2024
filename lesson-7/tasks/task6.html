@@ -19,12 +19,12 @@
 	<script>
 
 		//1 Створюємо функції
-		function getTable(row, column) {
+		function getTable(row, column, message) {
 			document.write('<table border="1px">')
 			for (let i = 0; i < row; i++) {
 				document.write('<tr>')
 				for (let j = 0; j < column; j++) {
-					document.write('<td>Hello!</td>')
+					document.write(`<td>${message}</td>`)
 				}
 				document.write('</tr>')
 			}
@@ -33,6 +33,7 @@
 		//2 Виводимо відповідний результат
 		let rows = parseInt(prompt('Введіть кількість рядків', '5'))
 		let columns = parseInt(prompt('Введіть кількість стовпців', '7'))
+		let message = prompt('Введіть повідомлення', 'Hello!')
 		getTable(rows, columns)
 	</script>
 
