@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 8 - Task 9</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 9</h1>
+	<p>Морський бій. Користувач вводить кількість клітинок одновимірного масиву та кількість одиночних кораблів.
+		Комп’ютер довільно розміщує ці одиночні кораблі у масиві по один у клітинці (якщо у клітинці 0, то клітинка
+		пуста, якщо 1 – то це означає, що там є корабель). Користувач вводить номер клітинки, куди стріляє. Гра
+		продовжується до тих пір, поки не будуть потоплені усі кораблі.</p>
+
+	<style>
+
+	</style>
+	<script>
+		// Вводимо початкові дані
+
+		const playGroundSize = parseInt(prompt('Введіть кількість клітинок ігрового поля', '20'))
+		const countOfShips = parseInt(prompt(`Введіть кількість кораблів (від 1 до ${playGroundSize})`, '5'))
+
+		//Ф-ція, що створює та повертає ігрове поле з розставленими комп'ютером кораблями
+
+		function addShipsOnPlayGround(countOfShips, playGroundSize) {
+			let playGround = new Array(playGroundSize).fill(0)
+			main: while (countOfShips) {
+				let randomIndex = Math.floor(Math.random() * playGroundSize)
+				playGround.splice(randomIndex, 1, 1)
+				let sum = 0
+				for (let element of playGround) {
+					sum += element
+					if (sum === countOfShips) break main
+				}
+			}
+			return playGround
+		}
+		// Ф-ція, яка відповідає за ігровий процесс
+
+		function letGame() {
+			playGround = addShipsOnPlayGround(countOfShips, playGroundSize)
+			document.write(`Розташування кораблів: ${playGround}`)
+			while (playGround) {
+				let userShot = parseInt(prompt(`Введіть номер комірки, для пострілу (від 1 до ${playGroundSize})`, '3'))
+				if (!userShot) break
+				let index = userShot - 1
+				if (playGround[index] === 1) {
+					playGround.splice(index, 1, 0)
+					alert('Є влучання!')
+				}
+				else {
+					alert('Промах')
+				}
+				let sum = 0
+				for (let element of playGround) {
+					sum += element
+				}
+				if (sum === 0) {
+					alert('Всі кораблі потоплені!')
+					break
+				}
+
+			}
+		}
+
+
+		//Виводимо відповідний результат
+
+		letGame()
+
+	</script>
+
+</body>
+
+</html>

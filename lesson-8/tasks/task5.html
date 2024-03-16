@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 8 - Task 5</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 5</h1>
+	<p>Дано послідовність оцінок учня. Підрахувати кількість:</p>
+	<ol>
+		<li>двійок</li>
+		<li>кількість хороших оцінок (добре, відмінно);</li>
+		<li>кількість оцінок, які нижче середнього.</li>
+	</ol>
+	<style>
+
+	</style>
+	<script>
+		// Дано масив
+
+		const pupilGrades = [6, 8, 10, 9, 11, 12, 7, 8, 5, 6]
+
+		// Ф-ція, що повертає статистику учня
+
+		function getPupilsStatistic(gradesList) {
+			let countOfDeuce = 0
+			let countOfGoodGrades = 0
+			let countOfBelowAverage = 0
+			for (let element of gradesList) {
+				if (element < 4) countOfDeuce++
+				else if (element < 7) countOfBelowAverage++
+				else countOfGoodGrades++
+			}
+			let result = [countOfDeuce, countOfBelowAverage, countOfGoodGrades]
+			return result
+		}
+
+		//Виводимо відповідний результат
+
+		let userStatistic = getPupilsStatistic(pupilGrades)
+		document.write(`Оцінки учня: ${pupilGrades}<br><ul><li>Кількість двійок: ${userStatistic[0]}</li><li>Кількість оцінок, які нижче середнього: ${userStatistic[1]}</li><li>Кількість хороших оцінок: ${userStatistic[2]}</li></ul>`)
+
+
+
+	</script>
+
+</body>
+
+</html>

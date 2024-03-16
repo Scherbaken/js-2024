@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 8 - Task 7</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 7</h1>
+	<p>Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей за:</p>
+	<ol>
+		<li>за весь рік;</li>
+		<li>у першій половині року;</li>
+		<li>у другій половині року;</li>
+		<li>за літо;</li>
+		<li>за ІІ квартал;</li>
+		<li>за парні місяці (з парними номерами);</li>
+		<li>за місяці, які є початковими у сезоні (весна, літо, осінь, зима).</li>
+	</ol>
+	<style>
+
+	</style>
+	<script>
+		// Вводимо початкові дані
+
+		const paymentsPerYear = [1453, 1928, 1087, 2241, 1630, 2079, 1312, 1755, 2404, 1167, 1500, 2343]
+
+		//Ф-ція, що повертає суму за вказаний період
+
+		function getSumOfPaymentsPeriod(paymentsList, start, end, step = 1) {
+			let sum = 0
+			for (let i = start - 1; i < end; i += step) {
+				sum += paymentsList[i]
+			}
+			return sum
+		}
+
+		//Виводимо відповідний результат
+
+		document.write(`
+	<p>Платіжки за рік: ${paymentsPerYear}</p>
+	<ul>
+		<li>Сумарна кількість грошей за весь рік: ${getSumOfPaymentsPeriod(paymentsPerYear, 1, 12)}</li>
+		<li>Сумарна кількість грошей за першу половині року: ${getSumOfPaymentsPeriod(paymentsPerYear, 1, 6)}</li>
+		<li>Сумарна кількість грошей за другу половині року: ${getSumOfPaymentsPeriod(paymentsPerYear, 7, 12)}</li>
+		<li>Сумарна кількість грошей за літо: ${getSumOfPaymentsPeriod(paymentsPerYear, 6, 8)}</li>
+		<li>Сумарна кількість грошей за ІІ квартал: ${getSumOfPaymentsPeriod(paymentsPerYear, 4, 6)}</li>
+		<li>Сумарна кількість грошей за парні місяці (з парними номерами): ${getSumOfPaymentsPeriod(paymentsPerYear, 2, 12, 2)}</li>
+		<li>Сумарна кількість грошей за місяці, які є початковими у сезоні (весна, літо, осінь, зима): ${getSumOfPaymentsPeriod(paymentsPerYear, 3, 12, 3)}
+			</li>
+	</ul>
+`)
+
+	</script>
+
+</body>
+
+</html>

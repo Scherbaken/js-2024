@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 8 - Task 3</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 3</h1>
+	<p>Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».</p>
+
+	<style>
+
+	</style>
+	<script>
+		// Дано масив
+
+		const pupilsNames = ['Ivan', 'Maria', 'Petro', 'Ivan', 'Ilya', 'Anna', 'Evhen', 'Ivan']
+
+		//Ф-ція, що повертає кількість повторень заданого імені
+
+		function isName(checkedName, namesList) {
+			let count = 0
+			for (let element of namesList) {
+				if (element === checkedName)
+					count++
+			}
+			return count
+		}
+
+		// Виводимо відповідний результат
+
+		document.write(`Список імен учнів: ${pupilsNames}<br><br> Ім'я Ivan зyстрічається ${isName('Ivan', pupilsNames)} рази(ів) `)
+	</script>
+
+</body>
+
+</html>

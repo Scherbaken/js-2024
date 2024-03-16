@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 8 - Task 4</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 4</h1>
+	<p>Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :</p>
+	<ul>
+		<li>починаються на букву «А»;</li>
+		<li>перша і остання літери співпадають;</li>
+		<li>складаються з більше ніш 5 символів;</li>
+	</ul>
+	<style>
+
+	</style>
+	<script>
+		// Дано масив
+
+		const listOfCarNumbers = ['AM9000AO', 'BE4254AB', 'AK9265AK', 'BC6048MM', 'CA7890BT', 'BM5397EE', 'CB8136AC', 'AH4035HX']
+
+		// Ф-ція, що повертає кількість номерів, які починаються на однакову літеру
+
+		function isFirstLetter(checkedLetter, numbersList) {
+			let count = 0
+			for (let element of numbersList) {
+				if (element[0] === checkedLetter) count++
+			}
+			return count
+		}
+
+		// Ф-ція, що повертає кількість номерів з однаковою першою і останньою літерою
+
+		function isFirstLetterEqualLastLetter(numbersList) {
+			let count = 0
+			for (let element of numbersList) {
+				if (element[0] === element.at(-1)) count++
+			}
+			return count
+		}
+
+		// Ф-ція, що повертає кількість номерів, які складаються більш ніж з 5ти символів
+
+		function isMoreThan5Symbol(numbersList) {
+			let count = 0
+			for (let element of numbersList) {
+				if (element.length > 5) count++
+			}
+			return count
+		}
+
+		//Виводимо відповідний результат
+
+		document.write(`Список автомобільних номерів: ${listOfCarNumbers}<br><br> Кількість номерів, що починаються на букву "А": ${isFirstLetter('A', listOfCarNumbers)}<br> Кількість номерів з однаковою першою і останньою літерою: ${isFirstLetterEqualLastLetter(listOfCarNumbers)}<br> Кількість номерів, які складаються більш ніж з 5ти символів: ${isMoreThan5Symbol(listOfCarNumbers)}`)
+
+	</script>
+
+</body>
+
+</html>

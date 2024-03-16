@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 8 - Task 1</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 1</h1>
+	<p>Дано масив, який містить оцінки з К предметів. Знайти середній бал і з’ясувати до якої категорії він
+		відноситься (відмінник, двійочник (має хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є
+		хоча би одна трійка)).</p>
+
+	<style>
+
+	</style>
+	<script>
+		// Заданий масив
+
+		const pupilGrades = [3, 4, 5, 4, 5, 5, 4, 4, 3, 3]
+
+		// Ф-ція, що знаходе середню оцінку
+
+		function getAverageGrade(gradesList) {
+			let sum = 0
+			for (let i = 0; i < gradesList.length; i++) {
+				sum += gradesList[i]
+			}
+			return sum / gradesList.length
+		}
+		// Ф-ція, що передивляється масив і знаходить мінімальну оцінку
+
+		function getMinGrade(gradesList) {
+			let min = gradesList[0]
+			gradesList.forEach(element => {
+				if (element < min) min = element
+			});
+			return min
+		}
+		// Ф-ція, що повертає категорію, виходячи з мінімальної оцінки
+
+		function getCategory(minGrade) {
+			let result
+			switch (minGrade) {
+				case 5: result = 'Відмінник!'
+					break;
+				case 4: result = 'Хорошист!'
+					break;
+				case 3: result = 'Трійочник!'
+					break;
+				default: result = 'Двійочник!'
+					break;
+			}
+			return result
+		}
+
+
+		//Виводимо результат
+		let averageGrade = getAverageGrade(pupilGrades).toFixed(2)
+		document.write(`Оцінки учня: ${pupilGrades}<br> Середній бал = ${averageGrade}<br>`)
+		let minPupilGrade = getMinGrade(pupilGrades)
+		let category = getCategory(minPupilGrade)
+		document.write(category)
+	</script>
+
+</body>
+
+</html>

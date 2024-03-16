@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 8 - Task 2</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 2</h1>
+	<p>Дано масив, який зберігає кількість відвідувачів магазину протягом тижня. Вивести на екран:</p>
+	<ul>
+		<li>номери днів, протягом яких кількість відвідувачів була меншою за 20;</li>
+		<li>номери днів, коли кількість відвідувачів була мінімальною;</li>
+		<li>номери днів, коли кількість відвідувачів була максимальною;</li>
+		<li>загальну кількість клієнтів у робочі дні та окремо загальну кількість клієнтів на вихідних.</li>
+	</ul>
+	<style>
+
+	</style>
+	<script>
+		// Дано масив
+
+		const visitersListPerWeek = [27, 15, 19, 22, 15, 54, 78]
+
+		//Ф-ція, що повертає номери днів, протягом яких кількість відвідувачів була меншою за 20
+
+		function getDaysNumbersLess20(visitersList) {
+			let newArray = []
+			for (let i = 0; i < visitersList.length; i++) {
+				if (visitersList[i] < 20) newArray.push(i + 1)
+			}
+			return newArray
+		}
+		// Ф-ція, що повертає мінімальну кількість відвідувачів за тиждень
+		function getMinVisitors(visitersList) {
+			let minValue = visitersList[0]
+			for (let i = 0; i < visitersList.length; i++) {
+				if (visitersList[i] < minValue) minValue = visitersList[i]
+			}
+			return minValue
+		}
+		// Ф-ція, що повертає номери днів, коли кількість відвідувачів була мінімальна
+		function getMinDaysNumbers(visitersList) {
+			let newArray = []
+			let minValue = getMinVisitors(visitersList)
+			for (let i = 0; i < visitersList.length; i++) {
+				if (minValue === visitersList[i]) newArray.push(i + 1)
+			}
+			return newArray
+		}
+		// Ф-ція, що повертає максимальну кількість відвідувачів за тиждень
+		function getMaxVisitors(visitersList) {
+			let maxValue = visitersList[0]
+			for (let i = 0; i < visitersList.length; i++) {
+				if (visitersList[i] > maxValue) maxValue = visitersList[i]
+			}
+			return maxValue
+		}
+		// Ф-ція, що повертає номери днів, коли кількість відвідувачів була максимальною
+		function getMaxDaysNumbers(visitersList) {
+			let newArray = []
+			let maxValue = getMaxVisitors(visitersList)
+			for (let i = 0; i < visitersList.length; i++) {
+				if (maxValue === visitersList[i]) newArray.push(i + 1)
+			}
+			return newArray
+		}
+		// Ф-ція, що повертає загальну кількість відвідувачів за певну кількість днів
+		function getTotalVisiters(firstDay, secondDay, visitersList) {
+			let sum = 0
+			for (let i = firstDay - 1; i < secondDay; i++) {
+				sum += visitersList[i]
+			}
+			return sum
+		}
+
+		//Виводимо відповідний результат
+
+		document.write(`Кількість відвідувачів протягом тижня: ${visitersListPerWeek}
+		<ul>
+			<li>Номери днів, протягом яких кількість відвідувачів була меншою за 20: ${getDaysNumbersLess20(visitersListPerWeek)}</li>
+			<li>Номери днів, коли кількість відвідувачів була мінімальною: ${getMinDaysNumbers(visitersListPerWeek)}</li>
+			<li>Номери днів, коли кількість відвідувачів була максимальною: ${getMaxDaysNumbers(visitersListPerWeek)}</li>
+			<li>Загальна кількість клієнтів у робочі дні: ${getTotalVisiters(1, 5, visitersListPerWeek)}</li>
+			<li>Загальна кількість клієнтів у вихідні дні: ${getTotalVisiters(6, 7, visitersListPerWeek)}</li>
+		</ul>`)
+
+	</script>
+
+</body>
+
+</html>

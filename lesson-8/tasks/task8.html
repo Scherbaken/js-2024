@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 8 - Task 8</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 8</h1>
+	<p>Дано одновимірний масив, у якому зберігається певна виграшна сума (елементи заповнюються випадковим чином
+		значеннями від -500 до 500). Надаючи користувачу можливість вибирати номери елементів (поки він не відмовиться).
+		Знаходити сумарний виграш.</p>
+
+	<style>
+
+	</style>
+	<script>
+		// Вводимо початкові дані
+
+		const totalIndex = parseInt(prompt('Введіть кількість комірок', '10'))
+
+		//Ф-ція, що створює та повертає масив рандомних значень від -500 до 500
+
+		function getRandomArray(totalIndex) {
+			let newArray = []
+			for (let i = 0; i < totalIndex; i++) {
+				let randomNum = Math.floor(Math.random() * 1000) - 500
+				newArray.push(randomNum)
+			}
+			return newArray
+		}
+
+		//Ф-ція, що повертає суму виграшу користувача, згідно з обраними комірками масива
+
+		function getProfit(totalIndex) {
+			let sum = 0
+			let userAnswer
+			do {
+				let newArray = getRandomArray(totalIndex)
+				userAnswer = parseInt(prompt(`Введіть номер комірки, від 1 до ${totalIndex}`, '5'))
+				if (!userAnswer) break
+				alert(`Ваш виграш: ${newArray[userAnswer]}`)
+				sum += newArray[userAnswer]
+			} while (userAnswer);
+			return sum
+		}
+		//Виводимо відповідний результат
+		let result = getProfit(totalIndex)
+		document.write(`Ваш сумарний виграш склав: ${result}`)
+
+
+	</script>
+
+</body>
+
+</html>

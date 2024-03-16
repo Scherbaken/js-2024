@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 8 - Task 6</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 6</h1>
+	<p>Дано послідовність цін товарів та назв (у окремих масивах). Вивести на екран ті, які може собі дозволити
+		користувач (кількість грошей задається).</p>
+
+	<style>
+
+	</style>
+	<script>
+		// Вводимо початкові дані
+		let productPrices = [1000, 20, 31, 300, 580]
+		let productTitles = ['cheese', 'juice', 'bread', 'sausages', 'meat']
+		let userMoney = parseInt(prompt('Введіть, скільки у Вас грошей', '500'))
+
+		//Ф-ція, що повертає масив з продуктами, які може купити користувач
+		function getAvailableProducts(productList, priceList, userMoney) {
+			let newArray = []
+			for (let i = 0; i < priceList.length; i++) {
+				if (priceList[i] <= userMoney) newArray.push(productList[i])
+			}
+			return newArray
+			console.log(newArray)
+		}
+
+		//Виводимо відповідний результат
+		let availableProducts = getAvailableProducts(productTitles, productPrices, userMoney)
+		document.write(`Список продуктів: ${productTitles}<br> Відповідні ціни на продукти: ${productPrices}<br> Гроші які є у покупця: ${userMoney} <br> Продукти, які покупець, може собі дозволити: ${availableProducts}`)
+
+
+	</script>
+
+</body>
+
+</html>
