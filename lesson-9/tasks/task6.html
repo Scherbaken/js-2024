@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 9 - Task 6</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 6</h1>
+	<p>Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2</p>
+
+	<style>
+
+	</style>
+	<script>
+
+		// Вводимо дані
+
+		const userArray = [125, 190, 2, 130, 82, 230, 15, 20, 345, 101]
+
+		document.write(`Дано масив чисел: ${userArray}<br><br>`)
+
+		// Ф-ція, що повертає масив, в якому елементи більші за перший, множаться на 2
+
+		function getArrayMoreThanFirstMult2(someArray) {
+			let firstElement = someArray[0]
+			someArray.forEach((element, index, baseArr) => {
+				if (element > firstElement) baseArr[index] *= 2
+			});
+			return someArray
+		}
+
+		// Виводимо відповідний результат
+
+		let newUserArray = getArrayMoreThanFirstMult2(userArray)
+		document.write(`Масив, в якому усі елементи більші за перший елемент, помножені на 2:<br> ${newUserArray}`)
+
+	</script>
+
+</body>
+
+</html>

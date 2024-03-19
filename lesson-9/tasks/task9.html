@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 9 - Task 9</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 9</h1>
+	<p>Дано масив імен. Сформувати масив з перших літер цих імен.</p>
+
+	<style>
+
+	</style>
+	<script>
+
+		// Вводимо дані
+
+		const namesList = ['Ivan', 'Maria', 'Petro', 'Bogdan', 'Iryna', 'Anna', 'Evhen', 'Alexiy']
+		document.write(`Дано масив імен: ${namesList}<br>`)
+
+		// Ф-ція, що створює новий масив на основі перших літер заданого масиву
+
+		function getListFromFirstLetters(someArray) {
+			let newArray = someArray.map(element => element[0])
+			return newArray
+		}
+
+		// Виводимо відповідний результат
+
+		let listOfFirstLetters = getListFromFirstLetters(namesList)
+		document.write(`Новий масив, створений із перших літер імен заданого масиву: ${listOfFirstLetters}`)
+
+	</script>
+
+</body>
+
+</html>

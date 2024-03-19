@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 9 - Task 7</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 7</h1>
+	<p>Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати 30% знижки.</p>
+
+	<style>
+
+	</style>
+	<script>
+
+		// Вводимо дані
+
+		const userPriceList = [1250, 1900, 200, 1302, 820, 2300, 150, 240, 345, 1010]
+		const discountStart = 1000
+		const amountOfdiscount = 30
+
+		document.write(`Дано масив цін: ${userPriceList}<br><br>`)
+
+		// Ф-ція, що повертає масив, в якому елементи більші за 1000, множаться на 0.7
+
+		function getPriceListWithDiscount(someArray, discountStart, discountValue) {
+			someArray.forEach((element, index, baseArr) => {
+				if (element > discountStart) baseArr[index] *= (1 - discountValue / 100)
+			});
+			return someArray
+		}
+
+		// Виводимо відповідний результат
+
+		let newArrayWithDiscount = getPriceListWithDiscount(userPriceList, discountStart, amountOfdiscount)
+		document.write(`Масив цін, в якому дано знижку на ціни вищі за 1000 грн, у розмірі 30%:<br> ${newArrayWithDiscount}`)
+
+	</script>
+
+</body>
+
+</html>

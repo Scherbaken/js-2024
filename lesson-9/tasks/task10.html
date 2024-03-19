@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 9 - Task 10</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 10</h1>
+	<p>Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде містити величину сплаченого податку у
+		грн.</p>
+
+	<style>
+
+	</style>
+	<script>
+
+		// Вводимо дані
+
+		const userPriceList = [1250, 1900, 200, 1302, 820, 2300, 150, 240, 345, 1010]
+		document.write(`Дано масив цін: ${userPriceList}<br>`)
+		const taxValue = 20
+
+		// Ф-ція, що створює новий масив із сплаченими податками від кожної ціни
+
+		function getTaxList(somePriceList, taxValue) {
+			let newArray = somePriceList.map(element => element * taxValue / 100)
+			return newArray
+		}
+
+		// Виводимо відповідний результат
+
+		let taxList = getTaxList(userPriceList, taxValue)
+		document.write(`Новий масив з величинами сплачених податків з кожної ціни: ${taxList}`)
+
+	</script>
+
+</body>
+
+</html>

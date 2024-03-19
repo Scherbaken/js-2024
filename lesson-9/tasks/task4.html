@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 9 - Task 4</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 4</h1>
+	<p>Дано масив елементів. Вивести на екран елементи, що більші за 100.</p>
+
+	<style>
+
+	</style>
+	<script>
+
+		// Вводимо дані
+
+		const userArray = [125, 90, 2, 130, 82, 230, 15, 20, 345, 101]
+		document.write(`Дано масив чисел: ${userArray}<br><br>`)
+
+		// Ф-ція, що повертає список елементів, більших за 100
+
+		function getListMoreThan100(someArray) {
+			document.write('Більші за 100:<br>')
+			for (let element of userArray) {
+				if (element > 100) document.write(`${element}<br>`)
+			}
+		}
+
+		// Виводимо відповідний результат
+
+		let result = getListMoreThan100(userArray)
+
+
+	</script>
+
+</body>
+
+</html>

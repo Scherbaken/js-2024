@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 9 - Task 8</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 8</h1>
+	<p>Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А»</p>
+
+	<style>
+
+	</style>
+	<script>
+
+		// Вводимо дані
+
+		const listOfCarNumbers = ['AM9000AO', 'BE4254AB', 'AK9265AK', 'BC6048MM', 'CA7890BT', 'BM5397EE', 'CB8136AC', 'AH4035HX']
+		const checkedLetter = prompt('Введіть першу літеру номера', 'A')
+		document.write(`Дано масив номерів: ${listOfCarNumbers}<br> Літера що перевіряється: ${checkedLetter}<br>`)
+
+		// Ф-ція, що повертає масив з номерами, які починаються на задану літеру
+
+		function isFirstLetterList(numbersList, checkedLetter) {
+			let newArray = []
+			for (let element of numbersList) {
+				if (element[0] === checkedLetter) {
+					newArray.push(element)
+				}
+			}
+			return newArray
+		}
+
+		// Виводимо відповідний результат
+
+		let listOfCarNumbersFiltred = isFirstLetterList(listOfCarNumbers, checkedLetter)
+		document.write(`Масив номерів, які починаються на ${checkedLetter}: ${listOfCarNumbersFiltred}`)
+
+	</script>
+
+</body>
+
+</html>

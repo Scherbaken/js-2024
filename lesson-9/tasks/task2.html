@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson 9 - Task 2</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 2</h1>
+	<p>Користувач вводить кількість елементів. Створити масив, у якому перша половина заповнена 1-цями, а друга
+		заповнена 7-ками.</p>
+
+	<style>
+
+	</style>
+	<script>
+
+		// Вводимо дані
+
+		const countOfElements = parseInt(prompt('Введіть кількість елементів', '10'))
+		let halfOfElements = Math.floor(countOfElements / 2)
+
+		// Створюємо новий масив, згідно умови задачі
+
+		let newArray = new Array(countOfElements).fill(1, 0, halfOfElements)
+		newArray.fill(7, halfOfElements)
+
+
+		//Виводимо результат
+
+		document.write(`Створений новий масив: ${newArray}`)
+
+	</script>
+
+</body>
+
+</html>
