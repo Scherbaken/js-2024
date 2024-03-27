@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		// Вводимо з клавіатури числа, поки послідовність є зростаючою або спадаючою
+		// function getSequence() {
+		// 	let firstNum = parseFloat(prompt('Введіть перше число', '10'))
+		// 	let secondNum = parseFloat(prompt('Введіть друге число', '15'))
+		// 	let initialDiff = secondNum - firstNum
+		// 	let arr = [firstNum, secondNum]
+		// 	do {
+		// 		let num = parseFloat(prompt('Введіть число', '22'))
+		// 		let newDif = num - arr.at(-1)
+		// 		if (newDif * initialDiff > 0) {
+		// 			arr.push(num)
+		// 		}
+		// 		else break
+		// 	} while (true);
+		// 	return arr
+		// }
+
+		// let result = getSequence()
+		// console.log(result);
+		//========================================================================================================================================================
+		// Знайти суму цифр числа, що знаходяться між першою цифрою 7 і останньою цифрою наприклад 2679328712
+
+		// function getSumBetween7(num) {
+		// 	//Знаходимо першу сімку з кінця
+		// 	let digit
+		// 	do {
+		// 		digit = num % 10
+		// 		num = Math.floor(num / 10)
+		// 	} while (digit !== 7);
+		// 	let sum = 0
+		// 	do {
+		// 		digit = num % 10
+		// 		num = Math.floor(num / 10)
+		// 		if (digit !== 7) sum += digit
+		// 	} while (digit !== 7);
+		// 	return sum
+		// }
+		// let result = getSumBetween7(2679328712)
+		// console.log(result);
+		//========================================================================================================================================================
+		// Комп'ютер загадує випадково два числа від 1 до 10. Вгадати обидва числа шляхом введення можливих варіантів. В кінці вивести кількість спроб користувача
+
+		// let firstCompNum = Math.floor(Math.random() * 10) + 1
+		// let secondCompNum = Math.floor(Math.random() * 10) + 1
+		// let firstFoundNum = false
+		// let secondFoundNum = false
+		// let count = 0
+		// do {
+		// 	let userNum = parseInt(prompt('Enter number'))
+		// 	if (userNum === firstCompNum) firstFoundNum = true
+		// 	else if (userNum === secondCompNum) secondFoundNum = true
+		// 	count++
+		// } while (!firstFoundNum || !secondFoundNum);
+		// console.log(count);
+		//========================================================================================================================================================
+		// Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних, кількість додатних, кількість більштх за 100 (повернення декількох варіантів, деструктурізація)
+		// function getEvenNumbersSum() {
+		// 	let count = 0
+		// 	for (let i = 0; i < arguments.length; i++) {
+		// 		if (arguments[i] % 2 === 0) count++
+		// 	}
+		// 	return count
+		// }
+		// function getPositiveNumbersSum() {
+		// 	let count = 0
+		// 	for (let i = 0; i < arguments.length; i++) {
+		// 		if (arguments[i] > 0) count++
+		// 	}
+		// 	return count
+		// }
+		// function getMoreThan100(...arr) {
+		// 	return arr.reduce((prevCount, el) => (el > 100 ? prevCount + 1 : prevCount), 0)
+		// }
+		// function getResult(num1, num2, num3) {
+		// 	let evenNumbers = getEvenNumbersSum(num1, num2, num3)
+		// 	let positiveNumbers = getPositiveNumbersSum(num1, num2, num3)
+		// 	let moreThan100 = getMoreThan100(num1, num2, num3)
+		// 	return [evenNumbers, positiveNumbers, moreThan100]
+		// }
+		// // let result = getResult(2, 4, 101)
+		// // let evenNums = result[0]
+		// // let positiveNums = result[1]
+		// // let moreThan100Nums = result[2]
+		// const [evenNums, positiveNums, moreThan100Nums] = getResult(2, 4, 101)
+		// console.log(evenNums, positiveNums, moreThan100Nums);
+		//========================================================================================================================================================
+
+	</script>
+</body>
+
+</html>

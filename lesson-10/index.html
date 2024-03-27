@@ -50,15 +50,15 @@
 
 		// Новий масив на основі старого з номерами елементів, що > 1000
 
-		let numbersListMore1000 = userPriceList.reduce((prevRes, el, ind, baseArr) => {
-			if (baseArr[ind] > 1000) prevRes.push(ind + 1)
+		let numbersListMore1000 = userPriceList.reduce((prevRes, el, ind) => {
+			if (el > 1000) prevRes.push(ind + 1)
 			return prevRes
 		}, [])
 		document.write(`Масив з номерами цін, які більші за 1000: ${numbersListMore1000}<hr>`)
 
 		// Список цін, які більші за попереднє значення
 
-		let priceListMorePrev = userPriceList.filter((el, ind, baseArr) => el > baseArr[ind - 1] && ind !== 0)
+		let priceListMorePrev = userPriceList.filter((el, ind, baseArr) => el > baseArr[ind - 1] && ind > 0)
 		document.write(`Список цін, які більші за попередні: ${priceListMorePrev}<hr>`)
 
 		// Новий масив, що складається із значень у відсотках, стосовно максимального
