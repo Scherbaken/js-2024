@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #11 Task - 2</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 2</h1>
+	<h2>Дано інформацію про прибуток К магазинів протягом тижня. Знайти :</h2>
+	<ul>
+		<li>загальний прибуток кожного масиву за тиждень</li>
+		<li>загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і
+			т.д.)</li>
+		<li>загальний прибуток за робочі дні</li>
+		<li>загальний прибуток за вихідні дні</li>
+		<li>максимальний прибуток за середу</li>
+		<li>сформувати загальний список (одновимірний масив) зі значенням, які більші за 20</li>
+		<li>відсортувати кожен тиждень за зростанням</li>
+		<li>відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні
+			рядків потрібно порівнювати максимальні елементи у кожному з цих рядків</li>
+		<li>упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти
+			суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти
+			раніше).</li>
+	</ul>
+	<hr>
+
+	<style>
+	</style>
+	<script>
+
+		// Нехай у нас 7 магазинів, а їх прибуток представлено як тис. грн
+		document.write('Нехай у нас 7 магазинів, а їх прибуток представлено як двовимірний масив із показниками у тис. грн. Тоді:<br><br>')
+
+		let shopsProfits = [
+			[18, 25, 22, 14, 27, 16, 29],
+			[23, 15, 20, 28, 11, 24, 10],
+			[26, 17, 12, 30, 21, 13, 19],
+			[10, 22, 27, 18, 24, 15, 29],
+			[25, 16, 21, 12, 28, 19, 23],
+			[20, 11, 26, 17, 22, 13, 27],
+			[14, 28, 19, 23, 26, 20, 11]
+		]
+
+		// загальний прибуток кожного магазину за тиждень
+
+		for (let shopNumber = 0; shopNumber < shopsProfits.length; shopNumber++) {
+			let sumShopWeekProfit = 0
+			for (let dayNumber = 0; dayNumber < shopsProfits[shopNumber].length; dayNumber++) {
+				sumShopWeekProfit += shopsProfits[shopNumber][dayNumber]
+			}
+			document.write(`Сума прибутку ${shopNumber + 1} магазину за тиждень: ${sumShopWeekProfit} тис. грн<br>`)
+		}
+		document.write('<hr>')
+
+		// загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, іт.д.)
+
+		for (let dayNumber = 0; dayNumber < 7; dayNumber++) {
+			let sumShopsDayProfit = 0
+			for (let shopNumber = 0; shopNumber < shopsProfits.length; shopNumber++) {
+				sumShopsDayProfit += shopsProfits[shopNumber][dayNumber]
+			}
+			document.write(`Сума прибутку усіх магазинів за ${dayNumber + 1} день тижня: ${sumShopsDayProfit}<br>`)
+		}
+		document.write('<hr>')
+
+		// загальний прибуток кожного магазину за робочі дні
+
+		for (let shopNumber = 0; shopNumber < shopsProfits.length; shopNumber++) {
+			let sumShopWorkDaysProfit = 0
+			for (let dayNumber = 0; dayNumber < 5; dayNumber++) {
+				sumShopWorkDaysProfit += shopsProfits[shopNumber][dayNumber]
+			}
+			document.write(`Сума прибутку ${shopNumber + 1} магазину за робочі дні: ${sumShopWorkDaysProfit} тис. грн<br>`)
+		}
+		document.write('<hr>')
+
+		// загальний прибуток кожного магазину за вихідні дні
+
+		for (let shopNumber = 0; shopNumber < shopsProfits.length; shopNumber++) {
+			let sumShopWeekendDaysProfit = 0
+			for (let dayNumber = 5; dayNumber < shopsProfits[shopNumber].length; dayNumber++) {
+				sumShopWeekendDaysProfit += shopsProfits[shopNumber][dayNumber]
+			}
+			document.write(`Сума прибутку ${shopNumber + 1} магазину за вихідні дні: ${sumShopWeekendDaysProfit} тис. грн<br>`)
+		}
+		document.write('<hr>')
+
+		// максимальний прибуток за середу
+
+		let maxWedProfit = 0
+		for (let shopNumber = 0; shopNumber < shopsProfits.length; shopNumber++) {
+			if (shopsProfits[shopNumber][2] > maxWedProfit) maxWedProfit = shopsProfits[shopNumber][2]
+		}
+		document.write(`Найбільший прибуток за середу серед усіх магазинів складає ${maxWedProfit} тис. грн<br>`)
+		document.write('<hr>')
+
+		// Новий масив із елементів, що більші за 20
+
+		let profitsMore20 = []
+		for (let shopNumber = 0; shopNumber < shopsProfits.length; shopNumber++) {
+			for (let dayNumber = 0; dayNumber < shopsProfits[shopNumber].length; dayNumber++) {
+				if (shopsProfits[shopNumber][dayNumber] > 20) profitsMore20.push(shopsProfits[shopNumber][dayNumber])
+			}
+		}
+		document.write(`Список прибутків, що більші за 20 тис. грн: ${profitsMore20}`)
+		document.write('<hr>')
+		document.write('Результати сортування дивитись у консолі')
+		// Сортуємо прибутки кожного магазину за зростанням 
+
+		let sortShopProfitByGrowth = JSON.parse(JSON.stringify(shopsProfits))
+		for (let shopNumber = 0; shopNumber < sortShopProfitByGrowth.length; shopNumber++) {
+			sortShopProfitByGrowth[shopNumber].sort((profit1, profit2) => profit1 - profit2)
+		}
+		console.log(sortShopProfitByGrowth);
+
+		// Сортуємо магазини за спаданням максимального значення прибутку за день
+
+		let sortShopsByDeclineMaxDayProfit = JSON.parse(JSON.stringify(shopsProfits))
+		sortShopsByDeclineMaxDayProfit.sort((shop1, shop2) => shop2.reduce((prevRes, el) => el > prevRes ? prevRes = el : prevRes) - shop1.reduce((prevRes, el) => el > prevRes ? prevRes = el : prevRes))
+		console.log(sortShopsByDeclineMaxDayProfit);
+
+		// Сортуємо магазини за спаданням суми прибутків за тиждень
+
+		let sorByDeclineShopsWeekProfit = JSON.parse(JSON.stringify(shopsProfits))
+		sorByDeclineShopsWeekProfit.sort((shop1, shop2) => shop2.reduce((prevRes, el) => prevRes + el) - shop1.reduce((prevRes, el) => prevRes + el))
+		console.log(sorByDeclineShopsWeekProfit);
+
+	</script>
+
+</body>
+
+</html>

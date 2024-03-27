@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #11 Task - 1</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 1</h1>
+	<h2>Знайти суми елементів у вказаній області:</h2>
+	<ul>
+		<li>Номери рядків від 0 до половини, стовпці від 0 до половини</li>
+		<li>Номери рядків від 0 до половини, стовпці від половини до кінця</li>
+		<li>Номери рядків від половини до кінця, стовпці від 0 до половини</li>
+		<li>Номери рядків від половини до кінця , стовпці від половини до кінця</li>
+		<li>Суму парних рядків</li>
+		<li>Суму непарних стовпців</li>
+		<li>У парних рядках – непарні стовпці, у непарних – парні.</li>
+	</ul>
+	<hr>
+	<style>
+
+	</style>
+	<script>
+
+		let arr = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
+		document.write(`Нехай заданий масив має вигляд: ${arr}<br>Якщо представити його як таблицю 4х4, то:`)
+		document.write('<table>')
+		for (let i = 0; i < arr.length; i++) {
+			document.write('<tr>')
+			for (let j = 0; j < arr[i].length; j++) {
+				document.write(`<td>${arr[i][j]}</td>`)
+			}
+			document.write('</tr>')
+		}
+		document.write('</table><hr>')
+
+		// Сума елементів у області: номери рядків від 0 до половини, стовпці від 0 до половини
+
+		let sumFirstQuater = 0
+		for (let row = 0; row < arr.length / 2; row++) {
+			for (let column = 0; column < arr[row].length / 2; column++) {
+				sumFirstQuater += arr[row][column]
+			}
+		}
+		document.write(`Сума елементів, які знаходяться у рядках від 0 до половини, та стовпцях від 0 до половини: ${sumFirstQuater}<br>`)
+
+		// Сума елементів у області: номери рядків від 0 до половини, стовпці від половини до кінця
+
+		let sumSecondQuater = 0
+		for (let row = 0; row < arr.length / 2; row++) {
+			for (let column = arr[row].length / 2; column < arr[row].length; column++) {
+				sumSecondQuater += arr[row][column]
+			}
+		}
+		document.write(`Сума елементів, які знаходяться у рядках від 0 до половини, та стовпцях від половини до кінця: ${sumSecondQuater}<br>`)
+
+		// Сума елементів у області: номери рядків від половини до кінця, стовпці від 0 до половини
+
+		let sumThirdQuater = 0
+		for (let row = arr.length / 2; row < arr.length; row++) {
+			for (let column = 0; column < arr[row].length / 2; column++) {
+				sumThirdQuater += arr[row][column]
+			}
+		}
+		document.write(`Сума елементів, які знаходяться у рядках від половини до кінця, та стовпцях від 0 до половини: ${sumThirdQuater}<br>`)
+
+		// Сума елементів у області: номери рядків від 0 до половини, стовпці від половини до кінця
+
+		let sumFourthQuater = 0
+		for (let row = arr.length / 2; row < arr.length; row++) {
+			for (let column = arr[row].length / 2; column < arr[row].length; column++) {
+				sumFourthQuater += arr[row][column]
+			}
+		}
+		document.write(`Сума елементів, які знаходяться у рядках від половини до кінця, та стовпцях від половини до кінця: ${sumFourthQuater}<br>`)
+
+		// Сума елементів у парних рядках
+
+		let sumEvenRows = 0
+		for (let row = 1; row < arr.length; row += 2) {
+			for (let column = 0; column < arr[row].length; column++) {
+				sumEvenRows += arr[row][column]
+			}
+		}
+		document.write(`Сума елементів, які знаходяться у парних рядках: ${sumEvenRows}<br>`)
+
+		// Сума елементів у непарних стовпцях
+
+		let sumOddColumns = 0
+		for (let row = 0; row < arr.length; row++) {
+			for (let column = 0; column < arr[row].length; column += 2) {
+				sumOddColumns += arr[row][column]
+			}
+		}
+		document.write(`Сума елементів, які знаходяться у непарних стовпцях: ${sumOddColumns}<br>`)
+
+		// Сума елементів: У парних рядках – непарні стовпці, у непарних – парні.
+
+		let sumMixRowsColumns = 0
+		for (let row = 0; row < arr.length; row++) {
+			if (row % 2 === 0) {
+				for (let column = 0; column < arr[row].length; column += 2) {
+					sumMixRowsColumns += arr[row][column]
+				}
+			} else {
+				for (let column = 1; column < arr[row].length; column += 2) {
+					sumMixRowsColumns += arr[row][column]
+				}
+			}
+		}
+		document.write(`Сума елементів у області: у парних рядках – непарні стовпці, у непарних – парні: ${sumMixRowsColumns}<br>`)
+
+	</script>
+
+</body>
+
+</html>

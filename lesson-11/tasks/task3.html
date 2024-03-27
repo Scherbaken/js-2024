@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #11 Task - 3</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 3</h1>
+	<h2>Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. Користувач стріляє
+		вказуючи координати. Гра продовжується поки не потоплено усі кораблі або у користувача не закінчаться снаряди.
+	</h2>
+
+	<hr>
+
+	<style>
+	</style>
+	<script>
+
+		// Створюємо ігрове поле 6х6. Заповнюємо його нулями
+		let playGround = []
+		for (let row = 0; row < 6; row++) {
+			playGround.push(new Array(6).fill(0))
+		}
+		console.log(playGround);
+		// Розтавляємо кораблі
+		let totalShips = parseInt(prompt('Введіть кількість кораблів', '5'))
+
+		//Кількість встановленних кораблів
+		let count = 0
+		do {
+			//Координати корабля беремо рандомні
+			let horCoord = Math.floor(Math.random() * 6)
+			let vertCoord = Math.floor(Math.random() * 6)
+			//Якщо за заданими координатами ще нема корабля, ставимо в ту клітинку 1
+			if (playGround[horCoord][vertCoord] === 0) {
+				playGround[horCoord][vertCoord] = 1
+				count++
+			}
+			//Коли всі кораблі розставлені, припиняємо
+		} while (count < totalShips);
+
+		//Вводимо складність гри (кількість пострілів)
+		let totalShots = parseInt(prompt('Введіть кількість пострілів', '10'))
+
+		//Стріляємо
+		do {
+			//Отримуємо координати пострілу
+			let userHorCoord = parseInt(prompt('Введіть номер рядка від 1 до 6'))
+			let userVertCoord = parseInt(prompt('Введіть номер стовпчика від 1 до 6'))
+			if (userHorCoord > 6 || userVertCoord > 6) continue
+			//Перевіряємо результат пострілу
+			//Якщо влучили:
+			if (playGround[userHorCoord - 1][userVertCoord - 1] === 1) {
+				playGround[userHorCoord - 1][userVertCoord - 1] = 0
+				alert('Ви влучили! Корабель потоплено!')
+				totalShips--
+				//Умова закінчення гри, коли всі кораблі затоплені
+				if (totalShips === 0) {
+					alert('Вітаю, усі кораблі було потоплено!')
+					console.log(playGround);
+					break
+				}
+			}
+			//Якщо не влучили:
+			else {
+				alert('Ви не влучили!')
+			}
+			totalShots--
+		} while (totalShots)
+		alert('Нажаль закінчились набої')
+		console.log(playGround);
+
+
+	</script>
+
+</body>
+
+</html>
