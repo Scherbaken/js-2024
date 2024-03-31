@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #12 Task - 6</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 6</h1>
+	<h3>Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я довжиною 5
+		символів і під яким індексом.</h3>
+
+	<hr>
+	<style>
+
+	</style>
+	<script>
+
+		// Вводимо дані
+
+		const namesList = ['Peter', 'Sebastian', 'Leonard', 'Valeriy', 'Ulrich', 'Valentina', 'John', 'Olga', 'Antuan', 'Stephan']
+		document.write(`Масив імен:<br> ${namesList}<br><br>`)
+		const findLength = 5
+
+		// ф-ція для упорядкування масиву по зростанню довжини імені
+
+		function getSortedArray(someArr) {
+			for (let i = 1; i < someArr.length; i++) {
+				let currentElement = someArr[i]
+				let j = i - 1
+				while (j >= 0 && someArr[j].length > currentElement.length) {
+					someArr[j + 1] = someArr[j]
+					j--
+				}
+				someArr[j + 1] = currentElement
+			}
+			return someArr
+		}
+		document.write(`Упорядкований маcив:<br>${getSortedArray(namesList)}<br><br>`)
+
+		// Ф-ція бінарного пошуку у масиві
+
+		function isElementInArray(someArr, element) {
+			let start = 0
+			let end = someArr.length - 1
+			let middle
+			while (start <= end) {
+				middle = Math.floor((start + end) / 2)
+				if (element === someArr[middle].length) return middle
+				if (element > someArr[middle].length) start = middle + 1
+				if (element < someArr[middle].length) end = middle - 1
+			}
+			return -1
+		}
+
+		if (isElementInArray(namesList, findLength) === -1) document.write(`Ім'я із ${findLength} літер немає в заданому масиві`)
+		else document.write(`Ім'я з ${findLength} літер є в заданому масиві і знаходиться під індексом ${isElementInArray(namesList, findLength)} в упорядкованому масиві`)
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #12 Task - 4</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 4</h1>
+	<h3>Для розглянутих методів сортування спробувати вивести етапи сортування шляхом виведення відповідних таблиць за
+		зразком.</h>
+		<img src="img/task4.png" alt="Image">
+		<h3>Тобто кожного разу після обміну елементів вивести поточний стан масиву на екран (стрілки не потрібні).</h3>
+		<hr>
+		<style>
+			img {
+				display: block;
+				width: 200px;
+				height: 200px;
+			}
+		</style>
+		<script>
+
+			// Вводимо дані
+
+			const userArray = [3, 5, 1, 4, 2]
+			document.write(`Початковий масив:<br> [${userArray}]`)
+
+			// Ф-ція зміни місць
+
+			let swap = (arr, i, j) => {
+				let tmp = arr[i]
+				arr[i] = arr[j]
+				arr[j] = tmp
+			}
+
+			// Робимо функцію для сортування масиву за допомогою бульбашкового методу
+
+			let bubbleSortedArray = [...userArray]
+			document.write(`<hr>Бульбашковий метод<br>`)
+			function getBubbleSortedArray(someArr) {
+				document.write(`[${someArr}]<br>`)
+				let isChange
+				do {
+					isChange = false
+					for (let i = 1; i < someArr.length; i++) {
+						if (someArr[i - 1] > someArr[i]) {
+							swap(someArr, i - 1, i)
+							isChange = true
+							document.write(`[${someArr}]<br>`)
+						}
+					}
+				} while (isChange)
+				return someArr
+			}
+			getBubbleSortedArray(bubbleSortedArray)
+
+			// Робимо функцію для сортування масиву за допомогою методу змішування
+
+			let mixSortedArray = [...userArray]
+			document.write(`<hr>Метод змішування<br>`)
+			function getMixSortedArray(someArr) {
+				let leftIndex = 0
+				let rightIndex = someArr.length - 1
+				document.write(`[${someArr}]<br>`)
+				while (leftIndex < rightIndex) {
+					let isChange = false
+					for (let i = leftIndex + 1; i <= rightIndex; i++) {
+						if (someArr[i - 1] > someArr[i]) {
+							swap(someArr, i - 1, i)
+							isChange = true
+							document.write(`[${someArr}]<br>`)
+						}
+					}
+					rightIndex--
+					if (!isChange) break
+					for (let i = rightIndex; i > leftIndex; i--) {
+						if (someArr[i - 1] > someArr[i]) {
+							swap(someArr, i - 1, i)
+							isChange = true
+							document.write(`[${someArr}]<br>`)
+						}
+					}
+					if (!isChange) break
+				}
+				return someArr
+			}
+			getMixSortedArray(mixSortedArray)
+
+			// Робимо функцію для сортування масиву за допомогою методу включеннями
+
+			let insertSortedArray = [...userArray]
+			document.write(`<hr>Метод включеннями<br>`)
+			function getInsertSortedArray(someArr) {
+				for (let i = 1; i < someArr.length; i++) {
+					let currentElement = someArr[i]
+					let j = i - 1
+					while (someArr[j] > currentElement && j >= 0) {
+						someArr[j + 1] = someArr[j]
+						j--
+					}
+					someArr[j + 1] = currentElement
+					document.write(`[${someArr}]<br>`)
+				}
+				return someArr
+			}
+			getInsertSortedArray(insertSortedArray)
+
+		</script>
+
+</body>
+
+</html>

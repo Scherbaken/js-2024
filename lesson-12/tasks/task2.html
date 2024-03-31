@@ -5,13 +5,13 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE-edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Lesson #12 Task - 1</title>
+	<title>Lesson #12 Task - 2</title>
 </head>
 
 <body style="font-size: 30px">
-	<h1>Задача 1</h1>
+	<h1>Задача 2</h1>
 	<h3>Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів та порівнянь чисел під час сортування
-		бульбашкою</h3>
+		змішуванням.</h3>
 
 	<hr>
 	<style>
@@ -26,23 +26,42 @@
 		let changes = 0
 		let compares = 0
 
-		// Робимо функцію для сортування масиву за допомогою бульбашкового методу
+		// Ф-ція зміни місць
+
+		let swap = (arr, i, j) => {
+			let tmp = arr[i]
+			arr[i] = arr[j]
+			arr[j] = tmp
+		}
+
+		// Робимо функцію для сортування масиву за допомогою методу змішування
 
 		function getSortedArray(someArr) {
-			let isChange
-			do {
-				isChange = false
-				for (let i = 1; i < someArr.length; i++) {
+			let leftIndex = 0
+			let rightIndex = someArr.length - 1
+			while (leftIndex < rightIndex) {
+				let isChange = false
+				for (let i = leftIndex + 1; i <= rightIndex; i++) {
 					compares++
 					if (someArr[i - 1] > someArr[i]) {
 						changes++
-						let tmp = someArr[i]
-						someArr[i] = someArr[i - 1]
-						someArr[i - 1] = tmp
+						swap(someArr, i - 1, i)
 						isChange = true
 					}
 				}
-			} while (isChange)
+				rightIndex--
+				if (!isChange) break
+				for (let i = rightIndex; i > leftIndex; i--) {
+					compares++
+					if (someArr[i - 1] > someArr[i]) {
+						changes++
+						swap(someArr, i - 1, i)
+						isChange = true
+					}
+				}
+				if (!isChange) break
+				leftIndex++
+			}
 			return someArr
 		}
 

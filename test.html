@@ -201,15 +201,80 @@
 
 		const userArray = [-87, 124, -61, 198, -35, 272, -109, 146, -83, 220, -57, 194, -31, 267, -105, 142, -79, 216, -53, 189, -27, 264, -101, 138, -38, 211, -12, 184, -59, 157]
 		const testArray = [3, 2, 4, 1, 7, 9, 6, 8, 5]
-
+		const namesList = ['Peter', 'Sebastian', 'Leonard', 'Valeriy', 'Julia', 'Valentina', 'John', 'Olga', 'Antuan', 'Stephan']
+		console.log(namesList);
 		function swap(baseArr, i, j) {
 			let tmp = baseArr[i]
 			baseArr[i] = baseArr[j]
 			baseArr[j] = tmp
 		}
 
+		// function getSortedNamesList(namesList) {
+		// 	for (let k = 1; k < namesList.length; k++) {
+		// 		let currentElement = namesList[k]
+		// 		let i = k - 1
+		// 		while (namesList[i] > currentElement && i >= 0) {
+		// 			namesList[i + 1] = namesList[i]
+		// 			i--
+		// 		}
+		// 		namesList[i + 1] = currentElement
+		// 	}
+		// 	return namesList
+		// }
+
+		// console.log(getSortedNamesList(namesList));
+
+		function getSortedNamesListByLength(namesList) {
+			let prevLastIndex = namesList.length - 2
+			for (let i = 0; i <= prevLastIndex; i++) {
+				let minIndex = i
+				for (let j = i + 1; j < namesList.length; j++) {
+					if (namesList[j].length < namesList[minIndex].length) {
+						minIndex = j
+					}
+				}
+				if (minIndex !== i) {
+					swap(namesList, i, minIndex)
+				}
+			}
+			return namesList
+		}
+		console.log(getSortedNamesListByLength(namesList));
+
+
+		// function isNameInListIndex(namesList, checkedName) {
+		// 	let start = 0
+		// 	let end = namesList.length - 1
+		// 	while (start <= end) {
+		// 		let middle = Math.floor((start + end) / 2)
+		// 		if (checkedName === namesList[middle]) return middle
+		// 		if (checkedName > namesList[middle]) start = middle + 1
+		// 		if (checkedName < namesList[middle]) end = middle - 1
+		// 	}
+		// 	return -1
+		// }
+
+		function isNameLengthInListIndex(namesList, nameLength) {
+			let start = 0
+			let end = namesList.length - 1
+			while (start <= end) {
+				let middle = Math.floor((start + end) / 2)
+				if (nameLength === namesList[middle].length) return middle
+				if (nameLength > namesList[middle].length) start = middle + 1
+				if (nameLength < namesList[middle].length) end = middle - 1
+			}
+			return -1
+		}
+
+		// if (isNameInListIndex(namesList, 'Olga') === -1) console.log("Ім'я Olga не має у списку");
+		// else console.log(`Ім'я Olga у масиві під індеском ${isNameInListIndex(namesList, 'Olga')}<br>`);
+
+		if (isNameLengthInListIndex(namesList, 7) === -1) console.log("Ім'я із 7 літер не має у списку");
+		else console.log(`Ім'я із 7 літер у масиві під індеском ${isNameLengthInListIndex(namesList, 7)}<br>`);
+
+
 		// let change
-		// let counter = 0
+		// let changes = 0
 		// let compares = 0
 		// do {
 		// 	change = false
@@ -217,7 +282,7 @@
 		// 	for (let i = 1; i < testArray.length; i++) {
 		// 		compares++
 		// 		if (testArray[i - 1] > testArray[i]) {
-		// 			counter++
+		// 			changes++
 		// 			swap(testArray, i, i - 1)
 		// 			change = true
 		// 		}
@@ -225,14 +290,14 @@
 		// } while (change);
 
 		// let change
-		// let counter = 0
+		// let changes = 0
 		// let compares = 0
 		// do {
 		// 	change = false
 		// 	for (let i = 1; i < userArray.length; i++) {
 		// 		compares++
 		// 		if (userArray[i - 1] > userArray[i]) {
-		// 			counter++
+		// 			changes++
 		// 			swap(userArray, i, i - 1)
 		// 			change = true
 		// 		}
@@ -242,14 +307,14 @@
 		// let leftIndex = 0
 		// let rightIndex = testArray.length - 1
 		// let change
-		// let counter = 0
+		// let changes = 0
 		// let compares = 0
 		// while (leftIndex < rightIndex) {
 		// 	change = false
 		// 	for (let i = leftIndex; i < rightIndex; i++) {
 		// 		compares++
 		// 		if (testArray[i] > testArray[i + 1]) {
-		// 			counter++
+		// 			changes++
 		// 			swap(testArray, i, i + 1)
 		// 			document.write(`${testArray}<br>`)
 		// 			change = true
@@ -260,7 +325,7 @@
 		// 	for (let i = rightIndex; i > leftIndex; i--) {
 		// 		compares++
 		// 		if (testArray[i] < testArray[i - 1]) {
-		// 			counter++
+		// 			changes++
 		// 			swap(testArray, i, i - 1)
 		// 			document.write(`${testArray}<br>`)
 		// 			change = true
@@ -273,14 +338,14 @@
 		// let leftIndex = 0
 		// let rightIndex = userArray.length - 1
 		// let change
-		// let counter = 0
+		// let changes = 0
 		// let compares = 0
 		// while (leftIndex < rightIndex) {
 		// 	change = false
 		// 	for (let i = leftIndex; i < rightIndex; i++) {
 		// 		compares++
 		// 		if (userArray[i] > userArray[i + 1]) {
-		// 			counter++
+		// 			changes++
 		// 			swap(userArray, i, i + 1)
 		// 			change = true
 		// 		}
@@ -290,7 +355,7 @@
 		// 	for (let i = rightIndex; i > leftIndex; i--) {
 		// 		compares++
 		// 		if (userArray[i] < userArray[i - 1]) {
-		// 			counter++
+		// 			changes++
 		// 			swap(userArray, i, i - 1)
 		// 			change = true
 		// 		}
@@ -299,14 +364,14 @@
 		// 	leftIndex++
 		// }
 
-		// let counter = 0
+		// let changes = 0
 		// let compares = 0
 		// document.write(`${testArray}<br>`)
 		// for (let k = 1; k < testArray.length; k++) {
 		// 	let currentElement = testArray[k]
 		// 	let i = k - 1
 		// 	while (i >= 0 && testArray[i] > currentElement) {
-		// 		counter++
+		// 		changes++
 		// 		compares++
 		// 		testArray[i + 1] = testArray[i]
 		// 		i--
@@ -315,24 +380,24 @@
 		// 	document.write(`${testArray}<br>`)
 		// }
 
-		let counter = 0
-		let compares = 0
-		for (let k = 1; k < userArray.length; k++) {
-			let currentElement = userArray[k]
-			let i = k - 1
-			while (i >= 0 && userArray[i] > currentElement) {
-				counter++
-				compares++
-				userArray[i + 1] = userArray[i]
-				i--
-			}
-			userArray[i + 1] = currentElement
-		}
+		// let changes = 0
+		// let compares = 0
+		// for (let k = 1; k < userArray.length; k++) {
+		// 	let currentElement = userArray[k]
+		// 	let i = k - 1
+		// 	while (i >= 0 && userArray[i] > currentElement) {
+		// 		changes++
+		// 		compares++
+		// 		userArray[i + 1] = userArray[i]
+		// 		i--
+		// 	}
+		// 	userArray[i + 1] = currentElement
+		// }
 
-		// console.log(testArray);
-		console.log(userArray);
-		console.log(counter);
-		console.log(compares)
+		// // console.log(testArray);
+		// console.log(userArray);
+		// console.log(changes);
+		// console.log(compares)
 
 
 	</script>

@@ -5,13 +5,13 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE-edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Lesson #12 Task - 1</title>
+	<title>Lesson #12 Task - 3</title>
 </head>
 
 <body style="font-size: 30px">
-	<h1>Задача 1</h1>
+	<h1>Задача 3</h1>
 	<h3>Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів та порівнянь чисел під час сортування
-		бульбашкою</h3>
+		включеннями.</h3>
 
 	<hr>
 	<style>
@@ -26,23 +26,21 @@
 		let changes = 0
 		let compares = 0
 
-		// Робимо функцію для сортування масиву за допомогою бульбашкового методу
+		// Робимо функцію для сортування масиву за допомогою методу включеннями
 
 		function getSortedArray(someArr) {
-			let isChange
-			do {
-				isChange = false
-				for (let i = 1; i < someArr.length; i++) {
+			for (let i = 1; i < someArr.length; i++) {
+				let currentElement = someArr[i]
+				let j = i - 1
+				while (someArr[j] > currentElement && j >= 0) {
+					someArr[j + 1] = someArr[j]
+					j--
 					compares++
-					if (someArr[i - 1] > someArr[i]) {
-						changes++
-						let tmp = someArr[i]
-						someArr[i] = someArr[i - 1]
-						someArr[i - 1] = tmp
-						isChange = true
-					}
+					changes++
 				}
-			} while (isChange)
+				someArr[j + 1] = currentElement
+				compares++
+			}
 			return someArr
 		}
 
