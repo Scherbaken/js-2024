@@ -24,10 +24,10 @@
 
 		//Ф-ція, що створює та повертає масив рандомних значень від -500 до 500
 
-		function getRandomArray(totalIndex) {
+		function getRandomArray(totalIndex, minValue = -500, maxValue = 500) {
 			let newArray = []
 			for (let i = 0; i < totalIndex; i++) {
-				let randomNum = Math.floor(Math.random() * 1000) - 500
+				let randomNum = minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
 				newArray.push(randomNum)
 			}
 			return newArray

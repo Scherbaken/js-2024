@@ -21,56 +21,55 @@
 	<script>
 		// Вводимо початкові дані
 
-		const playGroundSize = parseInt(prompt('Введіть кількість клітинок ігрового поля', '20'))
+		const playGroundSize = parseInt(prompt('Введіть кількість клітинок ігрового поля', '10'))
 		const countOfShips = parseInt(prompt(`Введіть кількість кораблів (від 1 до ${playGroundSize})`, '5'))
 
-		//Ф-ція, що створює та повертає ігрове поле з розставленими комп'ютером кораблями
+		//Ф-ція, що створює ігрове поле з вказаною кількість клітинок, та розташовує там вказану кількість кораблів
 
-		function addShipsOnPlayGround(countOfShips, playGroundSize) {
-			let playGround = new Array(playGroundSize).fill(0)
-			main: while (countOfShips) {
+		function getPlayGround(playGroundSize, countOfShips) {
+			let newArray = new Array(playGroundSize).fill(0)
+			let totalShipsLeft = countOfShips
+			while (totalShipsLeft > 0) {
 				let randomIndex = Math.floor(Math.random() * playGroundSize)
-				playGround.splice(randomIndex, 1, 1)
-				let sum = 0
-				for (let element of playGround) {
-					sum += element
-					if (sum === countOfShips) break main
+				if (newArray[randomIndex] === 0) {
+					newArray[randomIndex] = 1
+					totalShipsLeft--
 				}
 			}
-			return playGround
+			return newArray
 		}
-		// Ф-ція, яка відповідає за ігровий процесс
+		//Створюємо ігрове поле
 
-		function letGame() {
-			playGround = addShipsOnPlayGround(countOfShips, playGroundSize)
-			document.write(`Розташування кораблів: ${playGround}`)
-			while (playGround) {
-				let userShot = parseInt(prompt(`Введіть номер комірки, для пострілу (від 1 до ${playGroundSize})`, '3'))
-				if (!userShot) break
-				let index = userShot - 1
-				if (playGround[index] === 1) {
-					playGround.splice(index, 1, 0)
-					alert('Є влучання!')
-				}
-				else {
-					alert('Промах')
-				}
-				let sum = 0
-				for (let element of playGround) {
-					sum += element
-				}
-				if (sum === 0) {
-					alert('Всі кораблі потоплені!')
-					break
-				}
+		let playGround = getPlayGround(playGroundSize, countOfShips)
 
+		//Ф-ція, що виконує ігровий процес, перевіряючи вказану користувачем клітинку на наявність у ній корабля, або його відсутність
+
+		function game(playGround) {
+			document.write(`Створене ігрове поле: ${playGround}<br>`)
+			let totalShips = countOfShips
+			let totalShots = 0
+			while (totalShips > 0) {
+				let userShot = parseInt(prompt(`Введіть клітинку для пострілу, від 1 до ${playGroundSize}`))
+				if (!userShot || userShot > playGroundSize) {
+					alert('Помилка при вводі')
+					continue
+				}
+				else if (userShot && playGround[userShot - 1] === 1) {
+					alert('Ви влучили!')
+					playGround[userShot - 1] = 0
+					totalShips--
+				}
+				else alert('Ви не влучили!')
+				totalShots++
 			}
+			if (totalShips === 0) alert(`Вітаю, усі кораблі потоплені! Ви зробили ${totalShots} пострілів`)
+			document.write(`Кількість кораблів: ${countOfShips}<br>Кількість зроблених пострілів: ${totalShots}`)
 		}
 
+		//Запускаємо гру
 
-		//Виводимо відповідний результат
+		game(playGround)
 
-		letGame()
 
 	</script>
 

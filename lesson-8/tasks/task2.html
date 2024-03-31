@@ -42,15 +42,6 @@
 			}
 			return minValue
 		}
-		// Ф-ція, що повертає номери днів, коли кількість відвідувачів була мінімальна
-		function getMinDaysNumbers(visitersList) {
-			let newArray = []
-			let minValue = getMinVisitors(visitersList)
-			for (let i = 0; i < visitersList.length; i++) {
-				if (minValue === visitersList[i]) newArray.push(i + 1)
-			}
-			return newArray
-		}
 		// Ф-ція, що повертає максимальну кількість відвідувачів за тиждень
 		function getMaxVisitors(visitersList) {
 			let maxValue = visitersList[0]
@@ -59,15 +50,16 @@
 			}
 			return maxValue
 		}
-		// Ф-ція, що повертає номери днів, коли кількість відвідувачів була максимальною
-		function getMaxDaysNumbers(visitersList) {
+
+		// Ф-ція, що повертає номери днів, коли кількість відвідувачів відповідала заданому
+		function getDaysNumbers(visitersList, value) {
 			let newArray = []
-			let maxValue = getMaxVisitors(visitersList)
 			for (let i = 0; i < visitersList.length; i++) {
-				if (maxValue === visitersList[i]) newArray.push(i + 1)
+				if (value === visitersList[i]) newArray.push(i + 1)
 			}
 			return newArray
 		}
+
 		// Ф-ція, що повертає загальну кількість відвідувачів за певну кількість днів
 		function getTotalVisiters(firstDay, secondDay, visitersList) {
 			let sum = 0
@@ -82,8 +74,8 @@
 		document.write(`Кількість відвідувачів протягом тижня: ${visitersListPerWeek}
 		<ul>
 			<li>Номери днів, протягом яких кількість відвідувачів була меншою за 20: ${getDaysNumbersLess20(visitersListPerWeek)}</li>
-			<li>Номери днів, коли кількість відвідувачів була мінімальною: ${getMinDaysNumbers(visitersListPerWeek)}</li>
-			<li>Номери днів, коли кількість відвідувачів була максимальною: ${getMaxDaysNumbers(visitersListPerWeek)}</li>
+			<li>Номери днів, коли кількість відвідувачів була мінімальною: ${getDaysNumbers(visitersListPerWeek, getMinVisitors(visitersListPerWeek))}</li>
+			<li>Номери днів, коли кількість відвідувачів була максимальною: ${getDaysNumbers(visitersListPerWeek, getMaxVisitors(visitersListPerWeek))}</li>
 			<li>Загальна кількість клієнтів у робочі дні: ${getTotalVisiters(1, 5, visitersListPerWeek)}</li>
 			<li>Загальна кількість клієнтів у вихідні дні: ${getTotalVisiters(6, 7, visitersListPerWeek)}</li>
 		</ul>`)

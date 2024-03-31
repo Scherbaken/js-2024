@@ -125,9 +125,9 @@
 
 		// Сортуємо магазини за спаданням суми прибутків за тиждень
 
-		let sorByDeclineShopsWeekProfit = JSON.parse(JSON.stringify(shopsProfits))
-		sorByDeclineShopsWeekProfit.sort((shop1, shop2) => shop2.reduce((prevRes, el) => prevRes + el) - shop1.reduce((prevRes, el) => prevRes + el))
-		console.log(sorByDeclineShopsWeekProfit);
+		let sortByDeclineShopsWeekProfit = JSON.parse(JSON.stringify(shopsProfits))
+		sortByDeclineShopsWeekProfit.sort((shop1, shop2) => shop2.reduce((prevRes, el) => prevRes + el) - shop1.reduce((prevRes, el) => prevRes + el))
+		console.log(sortByDeclineShopsWeekProfit);
 
 	</script>
 

@@ -94,7 +94,246 @@
 		// // let moreThan100Nums = result[2]
 		// const [evenNums, positiveNums, moreThan100Nums] = getResult(2, 4, 101)
 		// console.log(evenNums, positiveNums, moreThan100Nums);
+		// //========================================================================================================================================================
+		// let arr = []
+		// let countUno = 0
+		// let countDuo = 0
+		// let countTres = 0
+		// do {
+		// 	let num = Math.floor(Math.random() * 10)
+		// 	arr.push(num)
+		// 	if (countUno === 5 && num === 1) continue
+		// 	switch (num) {
+		// 		case 1: countUno++
+		// 			break
+		// 		case 2: countDuo++
+		// 			break
+		// 		case 3: countTres++
+		// 			break
+		// 	}
+		// } while (countUno <= 4)
+		// console.log(`двійок ${countDuo}`);
+		// console.log(`трійок ${countTres}`);
+		// console.log(arr)
+		// if (countTres >= countDuo) {
+		// 	while (countTres >= countDuo) {
+		// 		arr[arr.indexOf(3)] = 2
+		// 		countDuo++
+		// 		countTres--
+		// 	}
+		// }
+		// console.log(`двійок ${countDuo}`);
+		// console.log(`трійок ${countTres}`);
 		//========================================================================================================================================================
+		// const arr = [199, 2, 133, -12, 55, 97, 348, 15, 20, 45]
+		// function swap(baseArr, ind) {
+		// 	if (baseArr[ind - 1] > baseArr[ind]) {
+		// 		let tmp = baseArr[ind]
+		// 		baseArr[ind] = baseArr[ind - 1]
+		// 		baseArr[ind - 1] = tmp
+		// 	}
+		// }
+
+		//Бульбашка
+
+		// let change
+		// do {
+		// 	change = false
+		// 	for (let i = 1; i < arr.length; i++) {
+		// 			swap(arr, i)
+		// 			change = true
+		// 	}
+		// } while (change);
+
+		//Змішування
+
+		// let leftIndex = 1
+		// let rightIndex = arr.length - 1
+		// while (leftIndex < rightIndex) {
+		// 	let change = false
+		// 	for (let i = leftIndex; i <= rightIndex; i++) {
+		// 		swap(arr, i)
+		// 		change = true
+		// 	}
+		// 	if (change === false) break
+		// 	change = false
+		// 	rightIndex--
+		// 	for (let i = rightIndex; i >= leftIndex; i--) {
+		// 		swap(arr, i)
+		// 		change = true
+		// 	}
+		// 	leftIndex++
+		// }
+
+		//Вибором
+
+		// let prevLastIndex = arr.length - 2
+		// for (let i = 0; i <= prevLastIndex; i++) {
+		// 	let minIndex = i
+		// 	for (let j = i + 1; j < arr.length; j++) {
+		// 		if (arr[j] < arr[minIndex]) {
+		// 			minIndex = j
+		// 		}
+		// 	}
+		// 	if (i !== minIndex) {
+		// 		let tmp = arr[i]
+		// 		arr[i] = arr[minIndex]
+		// 		arr[minIndex] = tmp
+		// 	}
+		// }
+
+		//Включення
+
+		// function insertSort(arr) {
+		// 	for (let k = 1; k < arr.length; k++) {
+		// 		let currentElement = arr[k]
+		// 		let i = k - 1
+		// 		while (i >= 0 && arr[i] > currentElement) {
+		// 			arr[i + 1] = arr[i]
+		// 			i--
+		// 		}
+		// 		arr[i + 1] = currentElement
+		// 	}
+		// }
+
+		// insertSort(arr)
+
+
+		const userArray = [-87, 124, -61, 198, -35, 272, -109, 146, -83, 220, -57, 194, -31, 267, -105, 142, -79, 216, -53, 189, -27, 264, -101, 138, -38, 211, -12, 184, -59, 157]
+		const testArray = [3, 2, 4, 1, 7, 9, 6, 8, 5]
+
+		function swap(baseArr, i, j) {
+			let tmp = baseArr[i]
+			baseArr[i] = baseArr[j]
+			baseArr[j] = tmp
+		}
+
+		// let change
+		// let counter = 0
+		// let compares = 0
+		// do {
+		// 	change = false
+		// 	document.write(`${testArray}<br>`)
+		// 	for (let i = 1; i < testArray.length; i++) {
+		// 		compares++
+		// 		if (testArray[i - 1] > testArray[i]) {
+		// 			counter++
+		// 			swap(testArray, i, i - 1)
+		// 			change = true
+		// 		}
+		// 	}
+		// } while (change);
+
+		// let change
+		// let counter = 0
+		// let compares = 0
+		// do {
+		// 	change = false
+		// 	for (let i = 1; i < userArray.length; i++) {
+		// 		compares++
+		// 		if (userArray[i - 1] > userArray[i]) {
+		// 			counter++
+		// 			swap(userArray, i, i - 1)
+		// 			change = true
+		// 		}
+		// 	}
+		// } while (change);
+
+		// let leftIndex = 0
+		// let rightIndex = testArray.length - 1
+		// let change
+		// let counter = 0
+		// let compares = 0
+		// while (leftIndex < rightIndex) {
+		// 	change = false
+		// 	for (let i = leftIndex; i < rightIndex; i++) {
+		// 		compares++
+		// 		if (testArray[i] > testArray[i + 1]) {
+		// 			counter++
+		// 			swap(testArray, i, i + 1)
+		// 			document.write(`${testArray}<br>`)
+		// 			change = true
+		// 		}
+		// 	}
+		// 	if (change === false) break
+		// 	rightIndex--
+		// 	for (let i = rightIndex; i > leftIndex; i--) {
+		// 		compares++
+		// 		if (testArray[i] < testArray[i - 1]) {
+		// 			counter++
+		// 			swap(testArray, i, i - 1)
+		// 			document.write(`${testArray}<br>`)
+		// 			change = true
+		// 		}
+		// 	}
+		// 	if (change === false) break
+		// 	leftIndex++
+		// }
+
+		// let leftIndex = 0
+		// let rightIndex = userArray.length - 1
+		// let change
+		// let counter = 0
+		// let compares = 0
+		// while (leftIndex < rightIndex) {
+		// 	change = false
+		// 	for (let i = leftIndex; i < rightIndex; i++) {
+		// 		compares++
+		// 		if (userArray[i] > userArray[i + 1]) {
+		// 			counter++
+		// 			swap(userArray, i, i + 1)
+		// 			change = true
+		// 		}
+		// 	}
+		// 	if (change === false) break
+		// 	rightIndex--
+		// 	for (let i = rightIndex; i > leftIndex; i--) {
+		// 		compares++
+		// 		if (userArray[i] < userArray[i - 1]) {
+		// 			counter++
+		// 			swap(userArray, i, i - 1)
+		// 			change = true
+		// 		}
+		// 	}
+		// 	if (change === false) break
+		// 	leftIndex++
+		// }
+
+		// let counter = 0
+		// let compares = 0
+		// document.write(`${testArray}<br>`)
+		// for (let k = 1; k < testArray.length; k++) {
+		// 	let currentElement = testArray[k]
+		// 	let i = k - 1
+		// 	while (i >= 0 && testArray[i] > currentElement) {
+		// 		counter++
+		// 		compares++
+		// 		testArray[i + 1] = testArray[i]
+		// 		i--
+		// 	}
+		// 	testArray[i + 1] = currentElement
+		// 	document.write(`${testArray}<br>`)
+		// }
+
+		let counter = 0
+		let compares = 0
+		for (let k = 1; k < userArray.length; k++) {
+			let currentElement = userArray[k]
+			let i = k - 1
+			while (i >= 0 && userArray[i] > currentElement) {
+				counter++
+				compares++
+				userArray[i + 1] = userArray[i]
+				i--
+			}
+			userArray[i + 1] = currentElement
+		}
+
+		// console.log(testArray);
+		console.log(userArray);
+		console.log(counter);
+		console.log(compares)
+
 
 	</script>
 </body>
