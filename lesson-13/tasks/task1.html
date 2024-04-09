@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #13 Task - </title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 1</h1>
+	<h3>Генерація всіх підмножин: Реалізуйте рекурсивну функцію, яка генерує всі можливі підмножини заданого масиву.
+		Наприклад, для масиву [1, 2, 3] можливі підмножини: [], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3].</h3>
+
+	<hr>
+	<style>
+
+	</style>
+	<script>
+
+
+		function generationAllSubsets(array, step, arraySubset) {
+			if (step === array.length) document.write(`[${arraySubset}] <br>`);
+
+			else {
+				generationAllSubsets(array, step + 1, [...arraySubset, array[step]]);
+				generationAllSubsets(array, step + 1, [...arraySubset]);
+			}
+		}
+		generationAllSubsets([1, 2, 3], 0, []);
+
+
+
+	</script>
+
+</body>
+
+</html>

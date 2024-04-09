@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #13 Task - 6</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 6</h1>
+	<h3>З використанням замикань розробити ітератор, тобто функцію, що буде поступово за окремими викликами видавати по
+		одну букву наперед заданого слова. З використанням нього розробити гру «Прекладач». Виводимо для користувача опис
+		цього слова і по одну букву користувач вводить переклад цього слова. Підрахувати кількість вгаданих букв.</h3>
+
+	<hr>
+	<style>
+
+	</style>
+	<script>
+
+
+		const askedWord = 'terminator'
+		const discription = "I'll be back... (T-800)"
+
+		function getLetterFromWord(someWord, step = 0) {
+			function getLetter() {
+				if (step > someWord.length) alert('Шось пішло не так')
+				else {
+					return someWord[step]
+				}
+			}
+			return getLetter
+		}
+
+		// for (let i = 0; i < askedWord.length; i++) {
+		// 	let res = iterator(askedWord, i)
+		// 	document.write(`${res()}<br>`)
+		// }
+
+		function translater(askedWord, discription) {
+			alert(discription)
+			let countGuessedLetters = 0
+			for (let i = 0; i < askedWord.length; i++) {
+				let res = getLetterFromWord(askedWord, i)
+				let userLetter = prompt(`Введіть ${i + 1} букву слова`)
+				if (userLetter === res()) countGuessedLetters++
+			}
+			return countGuessedLetters
+		}
+
+		document.write(`Загадане слово: ${askedWord}<br>Кількість вгаданих букв: ${translater(askedWord, discription)}`)
+
+
+
+	</script>
+
+</body>
+
+</html>

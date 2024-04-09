@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #13 Task - 4</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 4</h1>
+	<h3>Дано масив хлопців і дівчат вивести всі можливі комбінації для танців з хлопців і дівчат.</h3>
+
+	<hr>
+	<style>
+
+	</style>
+	<script>
+
+		let boysNames = ['Ivan', 'Mykola', 'Stepan']
+		let girlsNames = ['Margo', 'Izabella', 'Amanda']
+
+		function getPairs(baseArr1, baseArr2, resArr) {
+			if (baseArr1.length === 0) {
+				for (let i = 0; i < resArr.length; i++) {
+					document.write(`${resArr[i]} + ${baseArr2[i]} <br>`)
+				}
+				document.write('<hr>')
+			}
+			else {
+				for (let i = 0; i < baseArr1.length; i++) {
+					getPairs(
+						baseArr1.filter((el, ind) => ind !== i), baseArr2, [...resArr, baseArr1[i]]
+					)
+				}
+			}
+		}
+		getPairs(boysNames, girlsNames, [])
+
+	</script>
+
+</body>
+
+</html>

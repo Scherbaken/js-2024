@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #13 Task - 2</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 2</h1>
+	<h3>Дано масив імен спортсменів. Розробити програму для виведення усіх можливих результатів змагань (списки імен у
+		відповідності до місць, які вони займуть).</h3>
+
+	<hr>
+	<style>
+
+	</style>
+	<script>
+
+		//Вводимо дані
+		let sportsmenList = ['Oleg', 'Dmytro', 'Sergiy']
+
+		//Створюємо ф-цію
+		function getPlaces(baseArr, resArr) {
+			if (baseArr.length === 0) document.write(`${resArr} <br>`)
+			else {
+				for (let i = 0; i < baseArr.length; i++) {
+					getPlaces(
+						baseArr.filter((el, ind) => ind !== i),
+						[...resArr, baseArr[i]]
+					)
+				}
+			}
+		}
+
+		//Викликаємо нашу ф-цію
+		getPlaces(sportsmenList, [])
+
+
+	</script>
+
+</body>
+
+</html>

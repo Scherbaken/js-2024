@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #13 Task - 3</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 3</h1>
+	<h3>Виведіть всі можливі наступні комбінації ходів користувачів у грі“Хрестики-нулики”, починаючи з деякої заданої
+		ситуації (тобто маємо двовимірний масив з елементами : 0 - нулик, Х - хрестик, пробіл - ще не зайнято, і вам треба
+		самостійно вивести всі можливі шляхи заповнення ще незаповнених клітинок (де пробіли). Поки можна не підраховувати
+		чи вже є 3 хрестики чи 3 нулики у рядок.)</h3>
+
+	<hr>
+	<style>
+
+	</style>
+	<script>
+
+		// Використав підхід із першої задачі, та методом підбору та філтрації результатів виводив відповідні масиви
+		// Не дуже елегантно, але начебто працює ))
+
+		function getRow(arr, minInd = 0, maxInd = arr.length) {
+			let newArr = arr.filter((el, ind) => ind >= minInd && ind < maxInd)
+			return newArr
+		}
+
+		function generationAllSubsets(array, step, arraySubset) {
+			if (step === array.length) {
+				if (arraySubset.length === 9 && arraySubset[0] === 'X' && arraySubset[1] === 0) {
+					let countZero = 0
+					let countX = 0
+					for (let el of arraySubset) {
+						if (el === 'X') countX++
+						else countZero++
+					}
+					if (countX - countZero === 1) document.write(`${getRow(arraySubset, 0, 3)} <br>${getRow(arraySubset, 3, 6)}<br>${getRow(arraySubset, 6)}<hr>`);
+				}
+			}
+			else {
+				generationAllSubsets(array, step + 1, [...arraySubset, 0]);
+				generationAllSubsets(array, step + 1, [...arraySubset, 'X']);
+			}
+		}
+		generationAllSubsets(['X', 'X', 'X', 'X', 'X', 0, 0, 0, 0], 0, []);
+
+
+	</script>
+
+</body>
+
+</html>

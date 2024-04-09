@@ -118,9 +118,12 @@
 		console.log(sortShopProfitByGrowth);
 
 		// Сортуємо магазини за спаданням максимального значення прибутку за день
-
+		function getMaxValue(arr) {
+			let maxValue = Math.max(...arr)
+			return maxValue
+		}
 		let sortShopsByDeclineMaxDayProfit = JSON.parse(JSON.stringify(shopsProfits))
-		sortShopsByDeclineMaxDayProfit.sort((shop1, shop2) => shop2.reduce((prevRes, el) => el > prevRes ? prevRes = el : prevRes) - shop1.reduce((prevRes, el) => el > prevRes ? prevRes = el : prevRes))
+		sortShopsByDeclineMaxDayProfit.sort((shop1, shop2) => getMaxValue(shop2) - getMaxValue(shop1))
 		console.log(sortShopsByDeclineMaxDayProfit);
 
 		// Сортуємо магазини за спаданням суми прибутків за тиждень

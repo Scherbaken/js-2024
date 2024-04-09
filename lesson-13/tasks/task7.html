@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #13 Task - 7</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 7</h1>
+	<h3>Тренажер додавання. Кожні 10 секунд користувачу задають випадковий приклад з додавання двох цифр і робиться
+		перевірка.</h3>
+
+	<hr>
+	<style>
+
+	</style>
+	<script>
+
+		// Ф-ція отримання випадкового числа
+		function getNum(min = 0, max = 100) {
+			let randNum = min + Math.floor(Math.random() * (max - min + 1))
+			return randNum
+		}
+
+		// Ф-ція - тренажер
+		function getResult(firstNum, secondNum) {
+			firstNum = getNum()
+			secondNum = getNum()
+			alert(`Знайти суму: ${firstNum}+${secondNum}`)
+			let userAnswer = parseFloat(prompt('Введіть відповідь'))
+			let res = firstNum + secondNum
+			if (userAnswer === res) alert('Вірно!')
+			else if (isNaN(userAnswer)) clearInterval(timeoutId) // зупнка інтервалу, якщо користувачу набридло вводити відповідь
+			else alert('Не вірно!')
+		}
+
+		// Виводимо ф-цію один раз при завантаженні сторінки
+		getResult()
+
+		//Вмикаємо таймер
+		let timeoutId = setInterval(getResult, 10000)
+
+
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #12 Task - 1</title>
+</head>
+
+<body style="font-size: 30px">
+	<h1>Задача 1</h1>
+	<h3>Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів та порівнянь чисел під час сортування
+		бульбашкою</h3>
+
+	<hr>
+	<style>
+
+	</style>
+	<script>
+
+		// Вводимо дані
+
+		const userArray = [-87, 124, -61, 198, 35, 272, -109, 146, -83, 220, 57, 194, -31, 267, 105, 142, 79, 216, -53, 189, -27, 264, -101, 138, -38, 211, 12, 184, -59, 157]
+		document.write(`Дано масив із 30 цілих чисел: ${userArray}<br><br>`)
+		let changes = 0
+		let compares = 0
+
+		// Робимо функцію для сортування масиву за допомогою бульбашкового методу
+
+		function getSortedArray(someArr) {
+			let isChange
+			do {
+				isChange = false
+				for (let i = 1; i < someArr.length; i++) {
+					compares++
+					if (someArr[i - 1] > someArr[i]) {
+						changes++
+						let tmp = someArr[i]
+						someArr[i] = someArr[i - 1]
+						someArr[i - 1] = tmp
+						isChange = true
+					}
+				}
+			} while (isChange)
+			return someArr
+		}
+
+		// Виводимо відповідний результат
+
+		document.write(`Відсортований масив має вигляд: ${getSortedArray(userArray)}<br><br> Порівнянь було: ${compares}<br><br>Обмінів було: ${changes}`)
+	</script>
+
+</body>
+
+</html>
