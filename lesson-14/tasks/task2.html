@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #14 Task - 2</title>
+</head>
+
+<body style="font-size: 26px">
+	<h1>Задача 2</h1>
+	<h3>Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N місяців.</h3>
+
+	<hr>
+	<style>
+
+	</style>
+	<script>
+
+		// Вводимо дані
+		let dateObj = {
+			day: 26,
+			month: 5,
+			year: 1988
+		}
+		let totalMonths = parseInt(prompt('Введіть кількість місяців', '33'))
+
+		// Ф-ція, що повертає нову дату з урахуванням вказаної кількості пройдених місяців
+		function getYear(dateObj, totalMonths) {
+			let newDateObj = { ...dateObj }
+			newDateObj.year += Math.floor((newDateObj.month + totalMonths) / 12)
+			newDateObj.month = (newDateObj.month + totalMonths) % 12
+			if (newDateObj.month === 0) {
+				newDateObj.month = 12
+				newDateObj.year--
+			}
+			return newDateObj
+		}
+
+		// Виводимо результат
+		let result = getYear(dateObj, totalMonths)
+		document.write(`Задана дата: ${dateObj.day}.${dateObj.month}.${dateObj.year}р. Через ${totalMonths} місяці(в) буде ${result.day}.${result.month}.${result.year}р.`)
+	</script>
+
+</body>
+
+</html>
