@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #15 Task - 6</title>
+</head>
+
+<body style="font-size: 26px">
+	<h1>Задача 6</h1>
+	<h3>Розробити клас «Керівник танців»</h3>
+	<img src="img/task6.jpg" alt="Image">
+	<hr>
+	<style>
+		h3+img {
+			width: 1000px;
+		}
+	</style>
+	<script>
+
+		// Описуємо клас
+		let boysNamesList = ['John', 'Michael', 'Peter', 'Rodger', 'Eduardo', 'Philip']
+		let girlsNamesList = ['Sara', 'Michel', 'Chloe', 'Bernadet', 'Angelina']
+		class Choreographer {
+			constructor(boysNamesList, girlsNamesList) {
+				this.boysNamesList = JSON.parse(JSON.stringify(boysNamesList))
+				this.girlsNamesList = JSON.parse(JSON.stringify(girlsNamesList))
+			}
+			getRandomBoyName() {
+				let randInd = Math.floor(Math.random() * this.boysNamesList.length)
+				return this.boysNamesList[randInd]
+			}
+			getRandomGirlName() {
+				let randInd = Math.floor(Math.random() * this.girlsNamesList.length)
+				return this.girlsNamesList[randInd]
+			}
+			getPair() {
+				let boyName = this.getRandomBoyName()
+				let girlName = this.getRandomGirlName()
+				document.write(`${boyName} + ${girlName}<br>`)
+			}
+			run() {
+				setInterval(() => this.getPair(), 5000)
+			}
+		}
+
+		// Виводимо результат
+		let printPairList = new Choreographer(boysNamesList, girlsNamesList)
+		printPairList.run()
+
+	</script>
+
+</body>
+
+</html>

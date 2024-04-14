@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #15 Task - 1</title>
+</head>
+
+<body style="font-size: 26px">
+	<h1>Задача 1</h1>
+	<h3>Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція знаходження суми, а у
+		іншому – функція для знаходження добутку тих, які знаходяться між заданими мінімальним і максимальних значенням.
+		Використати обидва методи стосовно обидвох об’єктів (використати call, apply)</h3>
+
+	<hr>
+	<style>
+
+	</style>
+	<script>
+
+		// Описуємо об'єкти
+		let obj1 = {
+			numList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+			getSum: function (minInd, maxInd) {
+				return this.numList.reduce((prevSum, el, ind) => ind >= minInd && ind <= maxInd ? prevSum + el : prevSum, 0)
+			}
+		}
+		document.write(`Масив чисел першого об'єкта: [${obj1.numList}]<br>`)
+
+		let obj2 = {
+			numList: [2, 4, 6, 8, 5, 9, 13, 15],
+			getProd: function (minInd, maxInd) {
+				return this.numList.reduce((prevProd, el, ind) => ind >= minInd && ind <= maxInd ? prevProd * el : prevProd, 1)
+			}
+		}
+		document.write(`Масив чисел другого об'єкта: [${obj2.numList}]<br>`)
+
+
+		// Виводимо результат суми
+		let sum1 = obj1.getSum(1, 6)
+		document.write(`Сума елементів першого об'єкта (з 1 по 6): ${sum1}<br>`)
+		let sum2_1 = obj1.getSum.call(obj2, 2, 5)
+		document.write(`Сума елементів другого об'єкта за допомогою call (з 2 по 5): ${sum2_1}<br>`)
+		let sum2_2 = obj1.getSum.apply(obj1, [2, 5])
+		document.write(`Сума елементів другого об'єкта за допомогою apply (з 2 по 5): ${sum2_1}<br>`)
+
+		// Виведемо результат добутка
+		let prod2 = obj2.getProd(1, 4)
+		document.write(`Добуток елементів другого об'єкта (з 1 по 4): ${prod2}<br>`)
+		let prod1_1 = obj2.getProd.call(obj1, 3, 8)
+		document.write(`Добуток елементів першого об'єкта за допомогою call (з 3 по 8): ${prod1_1}<br>`)
+		let prod1_2 = obj2.getProd.apply(obj1, [3, 8])
+		document.write(`Добуток елементів першого об'єкта за допомогою apply (з 3 по 8): ${prod1_1}<br>`)
+
+	</script>
+
+</body>
+
+</html>

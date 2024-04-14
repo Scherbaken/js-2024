@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #15 Task - 3</title>
+</head>
+
+<body style="font-size: 26px">
+	<h1>Задача 3</h1>
+	<h3>Створити об’єкт «Авто».</h3>
+	<img src="./img/task3.jpg" alt="Image">
+
+	<hr>
+	<style>
+		img {
+			width: 1000px;
+		}
+	</style>
+	<script>
+
+		// Описуємо об'єкт
+		let auto = {
+			title: "Volkswagen",
+			fuelTankSize: 60,
+			currentFuel: 20,
+			totalSeats: 4,
+			currentPassengers: 1,
+			getRefueling: function (liters) {
+				if (this.currentFuel + liters > this.fuelTankSize) {
+					alert('Усе пальне не влізе у бак')
+					return this.currentFuel
+				}
+				else return this.currentFuel += liters
+			},
+			getPassengers: function () {
+				document.write(`Зараз у авто ${this.currentPassengers} пасажир(ів)`)
+			},
+			getAddPassengers: function (passengers) {
+				if (this.currentPassengers + passengers > this.totalSeats) alert('Усі пасажири не влізуть у авто')
+				else return this.currentPassengers += passengers
+			},
+			getSubtractPassengers: function (passengers) {
+				if (passengers > this.currentPassengers) alert('У авто немає стільки пасажирів')
+				else return this.currentPassengers -= passengers
+			}
+		}
+
+		// Питаємось у користувача про змінні та виводимо відповідні результати
+
+		let refueling = parseInt(prompt(`Введіть кількість літрів для заправки авто. На даний момент у баку ${auto.currentFuel}л, розмір баку - ${auto.fuelTankSize}л`))
+		document.write(`Наразі у баку авто ${auto.getRefueling(refueling)} л.<br>`)
+		let addPassengers = parseInt(prompt(`В авто знаходиться ${auto.currentPassengers} пасажир(ів). Введіть кількість пасажирів, що сідають у авто.`, '2'))
+		auto.getAddPassengers(addPassengers)
+		let subtractPassengers = parseInt(prompt(`В авто знаходиться ${auto.currentPassengers} пасажир(ів). Введіть кількість пасажирів, що виходять з авто`, '1'))
+		auto.getSubtractPassengers(subtractPassengers)
+		let totalPassengers = auto.getPassengers()
+
+
+
+
+
+	</script>
+
+</body>
+
+</html>

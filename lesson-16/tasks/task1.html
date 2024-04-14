@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #14 Task - 1</title>
+</head>
+
+<body style="font-size: 26px">
+	<h1>Задача 1</h1>
+	<h3>Описати масив об’єктів – сайтів розроблених компанією з такими властивостями</h3>
+	<ul>
+		<li>назва компанії на час розробки (назву періодично змінюють)</li>
+		<li>власник компанії</li>
+		<li>cпоснсори (масив спонсорів)
+			<ul>
+				<li>прізвище спонсора
+				</li>
+				<li>ім’я спонсора
+				</li>
+				<li>сума вкладень спонсора
+				</li>
+			</ul>
+		</li>
+		<li>рік випуску</li>
+		<li>вартість сайту</li>
+	</ul>
+	<h3>Знайти:</h3>
+	<ol>
+		<li>загальну вартість усіх сайтів</li>
+		<li>кількість сайтів, що було зроблено між 2000 та 2009 рр.</li>
+		<li>кількість сайтів, де сума спонсорських вкладень була більшою за 100000</li>
+		<li>створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)</li>
+		<li>знайти рік, коли прибуток був найбільшим</li>
+		<li>упорядкувати список за спаданням прибутку</li>
+		<li>Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000</li>
+	</ol>
+	<hr>
+	<style>
+
+	</style>
+	<script>
+
+		// Заданий масив об'єктів
+
+		let siteList = [
+			{
+				currentCompanyName: 'Mircosoft',
+				companyOwner: 'Bill Gates',
+				sponsors: [{
+					surName: 'Harewood',
+					name: 'Phil',
+					totalInvest: 18000
+				}, {
+					surName: 'Cane',
+					name: 'Candice',
+					totalInvest: 50000
+				}, {
+					surName: 'Massanelli',
+					name: 'Joe',
+					totalInvest: 19500
+				}],
+				prodYear: 2003,
+				price: 7000
+			},
+			{
+				currentCompanyName: 'Apple',
+				companyOwner: 'Steve Jobs',
+				sponsors: [{
+					surName: 'Sweet',
+					name: 'Julie',
+					totalInvest: 25000
+				}, {
+					surName: 'Oaten',
+					name: 'Simon',
+					totalInvest: 35000
+				}, {
+					surName: 'Krishna',
+					name: 'Arvind',
+					totalInvest: 50000
+				}],
+				prodYear: 2005,
+				price: 15000
+			},
+			{
+				currentCompanyName: 'Amazon',
+				companyOwner: 'Jeff Bezos',
+				sponsors: [{
+					surName: 'Rangan',
+					name: 'Yamini',
+					totalInvest: 20000
+				}, {
+					surName: 'Shantanu',
+					name: 'Narayen',
+					totalInvest: 15000
+				}, {
+					surName: 'Hicks',
+					name: 'Matt',
+					totalInvest: 20000
+				}],
+				prodYear: 2008,
+				price: 5000
+			},
+			{
+				currentCompanyName: 'Disney',
+				companyOwner: 'Robert Iger',
+				sponsors: [{
+					surName: 'Riolfi',
+					name: 'Matheus',
+					totalInvest: 40000
+				}, {
+					surName: 'Howe',
+					name: 'Scott',
+					totalInvest: 45000
+				}, {
+					surName: 'Miebach',
+					name: 'Michael',
+					totalInvest: 55000
+				}],
+				prodYear: 2015,
+				price: 11000
+			}
+		]
+
+		// Ф-ція, що повертає суму елементів з вказаною властивістю
+		function getTotalSum(someArr, property) {
+			let sum = 0
+			for (const element of someArr) {
+				sum += element[property]
+			}
+			return sum
+		}
+		let totalPrice = getTotalSum(siteList, 'price')
+		document.write(`Загальна вартість усіх сайтів складає - ${totalPrice}$<br>`)
+
+		// Ф-ція, що повертає кількість сайтів, створених у вказаний проміжок часу
+		function getCountProd(someSiteList, minYear, maxYear) {
+			let count = 0
+			for (const site of someSiteList) {
+				if (site.prodYear > minYear && site.prodYear < maxYear) count++
+			}
+			return count
+		}
+		let totalCountProd2000To2009 = getCountProd(siteList, 2000, 2009)
+		document.write(`Кількість сайтів, які було зроблено між 2000р та 2009р складає - ${totalCountProd2000To2009} сайти(ів)<br>`)
+
+		// Ф-ція, що повертає кількість сайтів, де сума спонсорських вкладень була більшою за вказану
+		function getCountInvest(someSiteList, maxInvest) {
+			let count = 0
+			for (const site of someSiteList) {
+				if (getTotalSum(site.sponsors, 'totalInvest') > maxInvest) count++
+			}
+			return count
+		}
+		let totalCountInvestMore100K = getCountInvest(siteList, 100000)
+		document.write(`Кількість сайтів, де сума спонсорських вкладень була більшою за 100000$ складає - ${totalCountInvestMore100K}<br>`)
+
+		// Ф-ція, що повертає масив із імен та прізвищ усіх спонсорів
+		function getSponsorsList(someSiteList) {
+			let sponsorsList = []
+			for (const site of someSiteList) {
+				for (const sponsor of site.sponsors) {
+					sponsorsList.push(`${sponsor.surName} ${sponsor.name}`)
+				}
+			}
+			return sponsorsList
+		}
+		let totalSponsorsList = getSponsorsList(siteList)
+		document.write(`Загальний список спонсорів має вигляд: ${totalSponsorsList}<br>`)
+
+		// Ф-ція, що повертає рік у якому був найбільший прибуток (більша ціна за сайт)
+		function getMaxProfitYear(someSiteList) {
+			let maxProfit = -Infinity
+			let maxYear
+			for (const site of someSiteList) {
+				if (site.price > maxProfit) {
+					maxProfit = site.price
+					maxYear = site.prodYear
+				}
+			}
+			return maxYear
+		}
+		let maxProfitYear = getMaxProfitYear(siteList)
+		document.write(`Найбільший прибуток був у - ${maxProfitYear}р.`)
+
+		// Сортуємо масив за спаданням прибутку (ціни за сайт). Результат у консолі
+		siteList.sort((profit1, profit2) => profit2.price - profit1.price)
+		console.log(siteList);
+
+		// Створюємо окремі списки із сайтів ціна яких більша та менша за 10000. Результат у консолі
+		let siteListMore10K = JSON.parse(JSON.stringify(siteList.filter(site => site.price > 10000)))
+		console.log(siteListMore10K);
+		let siteListLess10K = JSON.parse(JSON.stringify(siteList.filter(site => site.price < 10000)))
+		console.log(siteListLess10K);
+
+	</script>
+
+</body>
+
+</html>

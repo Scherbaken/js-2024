@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #15 Task - 5</title>
+</head>
+
+<body style="font-size: 26px">
+	<h1>Задача 5</h1>
+	<h3>Розробити клас Baner</h3>
+	<img src="./img/task5.jpg" alt="Image">
+	<hr>
+	<style>
+		h3+img {
+			width: 1000px;
+		}
+	</style>
+	<script>
+
+		// Описуємо клас
+
+		let bannersList = [{
+			img: '<img src="img/task5/domigr.png" alt="Dom Igr" width="500px">',
+			link: '<a target="_blank" href="https://domigr.com.ua">Дом ігр</a>'
+		}, {
+			img: '<img src="img/task5/geekach.webp" alt="Geekach" width="500px">',
+			link: '<a target="_blank" href="https://geekach.com.ua">Гікач</a>'
+		}, {
+			img: '<img src="img/task5/igromag.svg" alt="IgroMag" width="500px">',
+			link: '<a target="_blank" href="https://desktopgames.com.ua/ua">Ігромаг</a>'
+		}]
+		class Banner {
+			constructor(bannersList) {
+				this.banners = JSON.parse(JSON.stringify(bannersList))
+			}
+			getRandomBanner() {
+				let res = Math.floor(Math.random() * (this.banners.length))
+				return this.banners[res]
+			}
+			printBanner(banner) {
+				document.write(`${banner.img}<br>${banner.link}`)
+			}
+		}
+
+		// Виводимо результат
+		let randomBanner = new Banner(bannersList)
+		randomBanner.printBanner(randomBanner.getRandomBanner())
+	</script>
+
+</body>
+
+</html>
