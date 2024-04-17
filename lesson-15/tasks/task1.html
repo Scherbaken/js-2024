@@ -23,8 +23,8 @@
 		// Описуємо об'єкти
 		let obj1 = {
 			numList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-			getSum: function () {
-				return this.numList.reduce((prevSum, el) => prevSum + el, 0)
+			getSum: function (min, max) {
+				return this.numList.reduce((prevSum, el) => el >= min && el <= max ? prevSum + el : prevSum, 0)
 			}
 		}
 		document.write(`Масив чисел першого об'єкта: [${obj1.numList}]<br>`)
@@ -39,12 +39,12 @@
 
 
 		// Виводимо результат суми
-		let sum1 = obj1.getSum()
-		document.write(`Сума елементів першого об'єкта: ${sum1}<br>`)
-		let sum2_1 = obj1.getSum.call(obj2)
-		document.write(`Сума елементів другого об'єкта за допомогою call: ${sum2_1}<br>`)
-		let sum2_2 = obj1.getSum.apply(obj1)
-		document.write(`Сума елементів другого об'єкта за допомогою apply: ${sum2_1}<br>`)
+		let sum1 = obj1.getSum(4, 10)
+		document.write(`Сума елементів першого об'єкта (у діапазоні від 4 до 10): ${sum1}<br>`)
+		let sum2_1 = obj1.getSum.call(obj2, 3, 12)
+		document.write(`Сума елементів другого об'єкта за допомогою call (у діапазоні від 3 до 12): ${sum2_1}<br>`)
+		let sum2_2 = obj1.getSum.apply(obj2, [3, 12])
+		document.write(`Сума елементів другого об'єкта за допомогою apply (у діапазоні від 3 до 12): ${sum2_1}<br>`)
 
 		// Виведемо результат добутка
 		let prod2 = obj2.getProd(5, 10)
