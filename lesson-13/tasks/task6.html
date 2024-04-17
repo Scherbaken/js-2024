@@ -21,39 +21,28 @@
 	<script>
 
 
-		const askedWord = 'terminator'
-		const discription = "I'll be back... (T-800)"
+		const askedWord = 'pencil'
+		const discription = 'Перекладіть на англійську слово "олівець"'
+		let correctLettersCount = 0
 
-		function getLetterFromWord(someWord, step = 0) {
-			function getLetter() {
-				if (step > someWord.length) alert('Шось пішло не так')
-				else {
-					return someWord[step]
-				}
+		function getLetterFromWord(someWord) {
+			let letterCount = -1
+			return function getLetter() {
+				letterCount++
+				return someWord[letterCount]
 			}
-			return getLetter
 		}
-
-		// for (let i = 0; i < askedWord.length; i++) {
-		// 	let res = iterator(askedWord, i)
-		// 	document.write(`${res()}<br>`)
+		console.log(getLetterFromWord(askedWord));
+		// function gameTranslate(askedWord, discription) {
+		// 	alert(discription)
+		// 	for (let i = 0; i < askedWord.length; i++) {
+		// 		let userLetter = prompt(`${discription}. Введіть ${i + 1} букву слова:`).toLowerCase()
+		let wrightLetter = getLetterFromWord(askedWord)
+		// 		if (userLetter === getLetterFromWord(askedWord)) correctLettersCount++
+		// 	}
+		// 	document.write(`Правильна відповідь - ${askedWord}. Ви вгадали ${correctLettersCount} букв.`)
 		// }
-
-		function translater(askedWord, discription) {
-			alert(discription)
-			let countGuessedLetters = 0
-			for (let i = 0; i < askedWord.length; i++) {
-				let res = getLetterFromWord(askedWord, i)
-				let userLetter = prompt(`Введіть ${i + 1} букву слова`)
-				if (userLetter === res()) countGuessedLetters++
-			}
-			return countGuessedLetters
-		}
-
-		document.write(`Загадане слово: ${askedWord}<br>Кількість вгаданих букв: ${translater(askedWord, discription)}`)
-
-
-
+		// gameTranslate(askedWord, discription)
 	</script>
 
 </body>

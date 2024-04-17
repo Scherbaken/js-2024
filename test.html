@@ -9,8 +9,160 @@
 
 <body>
 	<script>
+		// 'use strict'
+		// class TTime {
+		// 	constructor(initHours, initMinutes) {
+		// 		this.hours = initHours
+		// 		this.minutes = initMinutes
+		// 	}
+		// 	correctTime() {
+		// 		if (this.minutes >= 0) {
+		// 			let addHours = Math.floor(this.minutes / 60)
+		// 			this.minutes = this.minutes % 60
+		// 			this.hours += addHours
+		// 		}
+		// 		else {
+		// 			this.minutes = 59
+		// 			this.hours--
+		// 		}
+		// 		if (this.hours < 0) this.hours = 23
+		// 		else this.hours = this.hours % 24
 
-		let namesNumberObject = userNames.reduce((prevObj, pupil) => name in prevObj === false ? prevObj[pupil] = 1 : prevObj[pupil] += 1, {})
+		// 	}
+		// 	increaseHours() {
+		// 		this.hours++
+		// 		this.correctTime()
+		// 	}
+		// 	decreaseHours() {
+		// 		this.hours--
+		// 		this.correctTime()
+
+		// 	}
+		// 	increaseMinutes() {
+		// 		this.minutes++
+		// 		this.correctTime()
+		// 	}
+		// 	decreaseMinutes() {
+		// 		this.minutes--
+		// 		this.correctTime()
+		// 	}
+		// 	toString() {
+		// 		return `${this.hours}:${this.minutes}`
+		// 	}
+		// }
+		// let time1 = new TTime(2, 0)
+		// time1.decreaseHours()
+		// time1.decreaseMinutes()
+		// document.write(time1)
+
+		// class Pupil {
+		// 	#age
+		// 	#averageScore
+		// 	constructor(initName, initAge, initAverageScore) {
+		// 		this.name = initName
+		// 		this.Age = initAge
+		// 		this.AverageScore = initAverageScore
+		// 	}
+		// 	get AverageScore() {
+		// 		return this.#averageScore
+		// 	}
+		// 	get Age() {
+		// 		return this.#age
+		// 	}
+		// 	set AverageScore(newValue) {
+		// 		if (newValue < 0 || newValue > 12) throw new Error('Incorrect')
+		// 		this.#averageScore = newValue
+		// 	}
+		// 	set Age(newAge) {
+		// 		if (newAge < 7 || newAge > 30) throw new Error('Вік не є корректним')
+		// 		this.#age = newAge
+		// 	}
+		// 	toString() {
+		// 		return `${this.name} : ${this.#age}, average: ${this.#averageScore}`
+		// 	}
+		// }
+		// let newPupil = new Pupil('Ivan', 12, 8)
+		// newPupil.AverageScore = 9
+
+		// document.write(newPupil)
+
+		// class Client {
+		// 	#money
+		// 	#account
+		// 	constructor(name, money) {
+		// 		this.name = name
+		// 		this.#account = Math.floor(Math.random() * 10000)
+		// 		this.Money = money
+		// 	}
+		// 	get Money() {
+		// 		return this.#money
+		// 	}
+		// 	get Account() {
+		// 		return this.#account
+		// 	}
+		// 	set Money(val) {
+		// 		if (val < 0) throw new Error('Incorrect')
+		// 		this.#money = val
+		// 	}
+		// 	toString() {
+		// 		return `${this.#account} - ${this.name}: ${this.Money}`
+		// 	}
+		// }
+		// let client1 = new Client('Ivan', 10000)
+		// client1.Money = 300000
+		// let acc = client1.Account
+		// document.write(acc)
+
+		// let obj1 = {
+		// 	myVar: 77,
+		// 	metohd1: function () {
+		// 		let func = () => {
+		// 			console.log(this);
+		// 			document.write(this.myVar)
+		// 		}
+		// 		return func
+		// 	}
+		// }
+		// let f = obj1.metohd1()
+		// f()
+
+		// class Converter {
+		// 	static rate = 32
+		// 	static grnToUsd(grn) {
+		// 		return grn / Converter.rate
+		// 	}
+		// 	static usdToGrn(usd) {
+		// 		return usd * Converter.rate
+		// 	}
+		// }
+
+		// Converter.rate = 37
+		// document.write(Converter.grnToUsd(3200))
+
+		// let studentList = ['Olga', 'Piter', 'Jack', 'Sam', 'Sidor']
+		// class Duty {
+		// 	static dutyPersonRef
+		// 	constructor(studentList) {
+		// 		if (Duty.dutyPersonRef) return Duty.dutyPersonRef
+		// 		this.name = this.getDutyPersonRef(studentList)
+		// 		Duty.dutyPersonRef = this
+		// 	}
+		// 	getDutyPersonRef(studentList) {
+		// 		let randInd = Math.floor(Math.random() * studentList.length)
+		// 		return studentList[randInd]
+		// 	}
+		// 	toString() {
+		// 		return this.name
+		// 	}
+		// }
+		// let d1 = new Duty(studentList)
+		// document.write(`${d1}<br>`)
+		// let d2 = new Duty(studentList)
+		// document.write(`${d2}<br>`)
+		// document.write(d1 === d2)
+
+
+
 
 	</script>
 </body>
