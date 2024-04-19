@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #16 Task - 3</title>
+</head>
+
+<body style="font-size: 26px">
+	<h1>Задача 3</h1>
+	<img src="img/task3.jpg" alt="Image">
+
+	<hr>
+	<style>
+		img {
+			width: 900px;
+		}
+	</style>
+	<script>
+
+		// ============= Дата заснування ======================
+		class FoundingDate {
+			// ------------------ тісяць ----------------------
+			#month
+			get Month() {
+				return this.#month
+			}
+			set Month(value) {
+				if (value < 1 || value > 12 || isNaN(value)) throw new Error('Некоректні дані')
+				this.#month = value
+			}
+			// ------------------- рік ------------------------
+			#year
+			get Year() {
+				return this.#year
+			}
+			set Year(value) {
+				if (value < 0 || isNaN(value)) throw new Error('Некоректні дані')
+				this.#year = value
+			}
+			// ------------------ конструктор --------------------
+			constructor(month, year) {
+				this.Month = month
+				this.Year = year
+			}
+			// ----------------- методи ----------------------
+			toString() {
+				return `${this.Month}.${this.Year}`
+			}
+		}
+		// ============== створюємо дату заснування нашої фірми =====================
+		let foundingDate = new FoundingDate(5, 1990)
+
+		// ================== Доступні сервіси ==============================
+		class Services {
+			// ---------------- Назва послуги ----------------------
+			#title
+			get Title() {
+				return this.#title
+			}
+			set Title(value) {
+				if (value.length <= 0 || typeof value !== "string") throw new Error('Некоректне ім"я послуги')
+				this.#title = value
+			}
+			// ------------------ Ціна послуги -----------------------
+			#price
+			get Price() {
+				return this.#price
+			}
+			set Price(value) {
+				if (value < 0 || isNaN(value)) throw new Error('Некоректні дані')
+				this.#price = value
+			}
+			// -------------------- Термін виконання --------------------
+			#deadline
+			get Deadline() {
+				return this.#deadline
+			}
+			set Deadline(value) {
+				if (value <= 0 || isNaN(value)) throw new Error('Некоректні дані')
+				this.#deadline = value
+			}
+			// ------------------ конструктор --------------------------
+			constructor(title, price, deadline) {
+				this.Title = title
+				this.Price = price
+				this.Deadline = deadline
+			}
+			// -------------------- методи ----------------------------
+			toString() {
+				return `${this.Title}: вартість - ${this.Price}грн, термін виконання - ${this.Deadline}дні(ів)<br>`
+			}
+		}
+
+		// ============= Створюємо наші послуги ============================
+		let service1 = new Services('Хімчистка', 1500, 2)
+		let service2 = new Services('Полірування', 3000, 3)
+		let service3 = new Services('Мийка', 500, 1)
+		let service4 = new Services('Повний комплекс процедур', 4500, 4)
+
+		// ======================= Адреси філіалів =========================
+		class Addresses {
+			// ----------------- Країна ----------------------------
+			#country
+			get Country() {
+				return this.#country
+			}
+			set Country(value) {
+				if (value.length <= 0 || typeof value !== "string") throw new Error('Некоректне ім"я послуги')
+				this.#country = value
+			}
+			// ------------------- Місто -------------------------
+			#city
+			get City() {
+				return this.#city
+			}
+			set City(value) {
+				if (value.length <= 0 || typeof value !== "string") throw new Error('Некоректне ім"я послуги')
+				this.#city = value
+			}
+			// ----------------- Вулиця -----------------------
+			#street
+			get Street() {
+				return this.#street
+			}
+			set Street(value) {
+				if (value.length <= 0 || typeof value !== "string") throw new Error('Некоректне ім"я послуги')
+				this.#street = value
+			}
+			// ---------------- Номер будинку -------------------
+			#houseNum
+			get HouseNum() {
+				return this.#houseNum
+			}
+			set HouseNum(value) {
+				if (value <= 0 || isNaN(value)) throw new Error('Некоректне ім"я послуги')
+				this.#houseNum = value
+			}
+			// ----------------- конструктор ------------------
+			constructor(country, city, street, houseNum) {
+				this.#country = country
+				this.#city = city
+				this.#street = street
+				this.#houseNum = houseNum
+			}
+			// ---------------- методи -----------------------
+			toString() {
+				return `${this.Country}, ${this.City}, вул. ${this.Street} ${this.HouseNum}<br>`
+			}
+		}
+
+		// =============== Створюємо адреси наших філіалів =====================
+		let address1 = new Addresses('Україна', 'Київ', 'Либідська', 8)
+		let address2 = new Addresses('Україна', 'Харків', 'Харитоненка', 145)
+		let address3 = new Addresses('Україна', 'Суми', 'Героїв Крут', 19)
+		let address4 = new Addresses('Україна', 'Суми', 'Харківська', 187)
+
+		// ====================== Об'єкт фірми ===========================
+		class Firm {
+			// -------------------- конструктор -----------------------
+			constructor(title, foundingDate, services, addresses) {
+				this.title = title
+				this.foundingDate = foundingDate
+				this.services = services
+				this.addresses = addresses
+			}
+			// --------------------- методи ----------------------------
+			toString() {
+				return `${this.title}(дата заснування ${this.foundingDate})<br><br>Наші послуги:<br>${this.services}<br>Де нас знайти:<br> ${this.addresses}`
+			}
+			getExistenceYears(currentMonth, currentYear) {
+				if (currentMonth >= this.foundingDate.Month) return currentYear - this.foundingDate.Year
+				return currentYear - this.foundingDate.Year - 1
+			}
+			getBranch(city) {
+				if (typeof city !== "string") throw new Error('Некоректні дані')
+				let res = this.addresses.filter(el => el.City === city)
+				if (res.length === 0) throw new Error('Філії у такому місті поки що немає')
+				return res
+			}
+			getPossibleServices(price, deadline) {
+				if (price <= 0 || deadline <= 0 || isNaN(price) || isNaN(deadline)) throw new Error('Некоректні дані')
+				let res = this.services.filter(el => el.Price <= price && el.Deadline <= deadline)
+				if (res.length === 0) throw new Error('Нажаль за даними критеріями ми не можемо нічого Вам запропонувати')
+				return res
+			}
+		}
+
+		// ================== Створюємо нащу фірму ===========================
+		let newFirm = new Firm('CleanService', foundingDate, [service1, service2, service3, service4], [address1, address2, address3, address4])
+
+		// ===================== Виводимо результати =========================
+		document.write(newFirm)
+		document.write(`<br>Фірма працює вже понад ${newFirm.getExistenceYears(4, 2024)} роки(ів)<br><br>`)
+		document.write(`Філії у місті Суми: ${newFirm.getBranch('Суми')}<br>`)
+		document.write(`Послуги що можуть бути виконані на суму до 3000 грн та не довше ніж 2 дні: ${newFirm.getPossibleServices(3000, 2)}`)
+	</script>
+
+
+</body>
+
+</html>

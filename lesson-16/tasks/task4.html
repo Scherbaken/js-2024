@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #16 Task - 4</title>
+</head>
+
+<body style="font-size: 26px">
+	<h1>Задача 4</h1>
+	<h3>Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для зберігання кількості купюр
+		кожного із номіналів від 5 до 200 гривень. Реалізувати методи знаходження максимальної та мінімальної сум, які
+		може видати банкомат, та метод зняття деякої суми.</h3>
+	<hr>
+	<style>
+
+	</style>
+	<script>
+		// ==================== Створюємо клас купюри =================
+		class Banknote {
+			// ------------------ Номінал -----------------------
+			#denomination
+			get Denomination() {
+				return this.#denomination
+			}
+			set Denomination(value) {
+				if (value < 0 || value > 1000 || isNaN(value)) throw new Error('Некоректні дані')
+				this.#denomination = value
+			}
+			// ----------------- Кількість ----------------------
+			#value
+			get Value() {
+				return this.#value
+			}
+			set Value(value) {
+				if (value < 0 || isNaN(value)) throw new Error('Некоректні дані')
+				this.#value = value
+			}
+			// ----------------- конструктор ----------------------
+			constructor(denomination, value) {
+				this.Denomination = denomination
+				this.Value = value
+			}
+			// ------------------ Методи --------------------------
+			getTotalValue() {
+				return this.Denomination * this.Value
+			}
+			toString() {
+				return `${this.Denomination}: ${this.Value}`
+			}
+		}
+		// ============== Створюємо список купюр у банкоматі =====================
+		let banknoteList = [
+			new Banknote(200, 10),
+			new Banknote(100, 70),
+			new Banknote(50, 0),
+			new Banknote(20, 30),
+			new Banknote(10, 3),
+			new Banknote(5, 0),
+		]
+		document.write(`Доступні купюри банкомату: <br> ${banknoteList}<hr>`)
+
+		// ================= Створюємо клас банкомату ==========================
+		class TBankomat {
+			// ------------------- конструктор -----------------------
+			constructor(banknoteList) {
+				this.banknoteList = banknoteList
+			}
+			// --------------------- методи ---------------------------
+			getMinWithdraw() {
+				let res = this.banknoteList.reduce((prevNote, note) => note.Denomination < prevNote.Denomination && note.Value !== 0 ? prevNote = note : prevNote)
+				return res.Denomination
+			}
+			getMaxWithdraw() {
+				let sum = this.banknoteList.reduce((prevSum, note) => prevSum + note.getTotalValue(), 0)
+				return sum
+			}
+			getPossibleBanknoteList(withdrawSum) {
+				let possibleBanknoteList = []
+				for (let i = 0; i < this.banknoteList.length && withdrawSum > 0; i++) {
+					let banknote = this.banknoteList[i]
+					if (withdrawSum > banknote.Denomination && banknote.Value > 0) {
+						let banknoteCount = Math.floor(withdrawSum / banknote.Denomination)
+						let possibleBanknoteCount = Math.min(banknoteCount, banknote.Value)
+						possibleBanknoteList.push({ banknote, possibleBanknoteCount })
+						withdrawSum -= possibleBanknoteCount * banknote.Denomination
+					}
+				}
+				if (withdrawSum > 0) return false
+				return possibleBanknoteList
+			}
+			getWithdraw(withdrawSum) {
+				if (withdrawSum > this.getMaxWithdraw) throw new Error(`Неможливо видати таку суму. Максимальна доступна для зняття сума: ${this.getMaxWithdraw()}`)
+				let possibleBanknoteList = this.getPossibleBanknoteList(withdrawSum)
+				if (possibleBanknoteList) {
+					for (const { banknote, possibleBanknoteCount } of possibleBanknoteList) {
+						document.write(`${banknote.Denomination}: ${possibleBanknoteCount}<br>`)
+						banknote.Value -= possibleBanknoteCount
+					}
+					document.write('Заберіть Ваші гроші')
+				}
+				else throw new Error('Неможливо видати таку суму (не вистачає купюр)')
+			}
+			toString() {
+				return `${this.banknoteList}`
+			}
+		}
+
+		// ================== Виводимо результат ========================
+		let bankomat = new TBankomat(banknoteList)
+		document.write(`Найменша доступна для зняття сума: ${bankomat.getMinWithdraw()} грн<br>`)
+		document.write(`Найбільша доступна для зняття сума: ${bankomat.getMaxWithdraw()} грн<br><hr>`)
+		document.write('Хочу зняти 1320 грн<br>')
+		bankomat.getWithdraw(1320)
+		document.write('<hr>')
+		document.write(`Доступні купюри банкомату:<br> ${bankomat}`)
+	</script>
+
+
+</body>
+
+</html>

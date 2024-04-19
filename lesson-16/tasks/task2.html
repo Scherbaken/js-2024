@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #16 Task - 2</title>
+</head>
+
+<body style="font-size: 26px">
+	<h1>Задача 2</h1>
+	<h3>Створити клас TMoney для роботи з грошовими сумами. Сума повинна зберігатися у вигляді доларового еквіваленту.
+		Реалізувати методи додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та визначення курсу
+		долара, при якому сума у гривнях збільшиться на 100. Курс долара зберігати в окремому полі. </h3>
+
+	<hr>
+	<style>
+
+	</style>
+	<script>
+
+		class TMoney {
+			// -------------------- User Money ---------------------------
+			#userMoney
+			get UserMoney() {
+				return this.#userMoney
+			}
+			set UserMoney(value) {
+				if (value < 0 || isNaN(value)) throw new Error('Некоректні дані')
+				this.#userMoney = value
+			}
+			// --------------------- USD Rate -----------------------------
+			#usdRate
+			get USDRate() {
+				return this.#usdRate
+			}
+			set USDRate(value) {
+				if (value < 0 || isNaN(value)) throw new Error('Некоректні дані')
+				this.#usdRate = value
+			}
+			// =============== Constructor ======================
+			constructor(money, rate) {
+				this.USDRate = rate
+				this.UserMoney = this.getUsdFromUA(money)
+			}
+			//==================== Methods ==========================
+
+			// ------------------- get User money in USD -------------------
+			getUsdFromUA(value) {
+				return value / this.USDRate
+			}
+			// ------------------ increase or decrease User money ----------------
+			changeUserMoney(value) {
+				if (isNaN(value)) throw new Error('Некоректні дані')
+				if (value < 0 && this.getUsdFromUA(Math.abs(value)) > this.UserMoney) throw new Error('Не вистачає коштів для зняття')
+				this.UserMoney += this.getUsdFromUA(value)
+			}
+			// -------------------- get rate when User money would be increased by 100ua -----------------
+			getRateToInc100UA(value) {
+				if (isNaN(value) || value <= 0) throw new Error('Некоректні дані')
+				let userMoneyInUA = this.UserMoney * this.USDRate
+				return (userMoneyInUA + value) / this.UserMoney
+			}
+			// --------------------- to string ----------------------------
+			toString() {
+				return `На вашому рахунку ${this.UserMoney.toFixed(2)}$. Поточний курс ${this.USDRate}грн/дол.<br>`
+			}
+		}
+
+		document.write('Створимо рахунок, та покладемо на нього 45000 грн у долларовому еквіваленті.<br>')
+		let newUserAcc = new TMoney(45000, 38)
+		document.write(newUserAcc)
+		document.write('Знімемо 300 грн<br>')
+		newUserAcc.changeUserMoney(-300)
+		document.write(newUserAcc)
+		document.write('Покладемо на рахунок 3500 грн<br>')
+		newUserAcc.changeUserMoney(3500)
+		document.write(newUserAcc)
+		document.write(`Щоб поточна сума збільшилась на 100грн, курс має бути: ${newUserAcc.getRateToInc100UA(100).toFixed(2)}грн/дол.`)
+
+
+
+	</script>
+
+</body>
+
+</html>
