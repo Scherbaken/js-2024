@@ -81,7 +81,7 @@
 				let possibleBanknoteList = []
 				for (let i = 0; i < this.banknoteList.length && withdrawSum > 0; i++) {
 					let banknote = this.banknoteList[i]
-					if (withdrawSum > banknote.Denomination && banknote.Value > 0) {
+					if (withdrawSum >= banknote.Denomination && banknote.Value > 0) {
 						let banknoteCount = Math.floor(withdrawSum / banknote.Denomination)
 						let possibleBanknoteCount = Math.min(banknoteCount, banknote.Value)
 						possibleBanknoteList.push({ banknote, possibleBanknoteCount })
