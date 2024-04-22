@@ -21,6 +21,161 @@
 	</style>
 	<script>
 
+		// Не став ускладнювати код різними перевірками, приватними полями та toString. Відверто на це вже не було ні сил ні часу. Все виводив у консоль. 
+		// Можливо пізніше повернусь до цієї задачі, щоб доробити по людськи. На даний момент всі пункти задачі виконуються.
+
+		document.write('Всі операції та розрахунки доступні у консолі')
+
+		class Publisher {
+			constructor(title, regNum, foundYear) {
+				this.title = title
+				this.regNum = regNum
+				this.foundYear = foundYear
+			}
+		}
+		class Author {
+			constructor(name, birthYear, descript) {
+				this.name = name
+				this.birthYear = birthYear
+				this.descript = descript
+			}
+		}
+		class Book {
+			constructor(author, title, genre, publisher, origin, avalilable) {
+				this.author = author
+				this.title = title
+				this.genre = genre
+				this.publisher = publisher
+				this.origin = origin
+				this.avalilable = avalilable
+			}
+		}
+
+		class Library {
+			constructor() {
+				this.genreSection = {}
+				this.originSection = { gift: [], purchased: [] }
+				this.availableSection = { available: [], unavailable: [] }
+			}
+			addBook(book) {
+				let genre = book.genre
+				let origin = book.origin
+				this.availableSection.available.push(book)
+				if (!this.genreSection[book.genre]) {
+					this.genreSection[book.genre] = []
+					this.genreSection[book.genre].push(book)
+				}
+				else {
+					this.genreSection[book.genre].push(book)
+				}
+				if (origin === 'gift') {
+					this.originSection.gift.push(book)
+				}
+				else if (origin === 'purchased') {
+					this.originSection.purchased.push(book)
+				}
+				else {
+					this.originSection[book.origin] = []
+					this.originSection[book.origin].push(book)
+				}
+			}
+
+			withdrawalBook(bookTitle) {
+				for (const book of this.availableSection.available) {
+					if (book['title'] === bookTitle) {
+						book['available'] = false
+						let bookInd = this.availableSection.available.findIndex(book => book['title'] === bookTitle)
+						delete this.availableSection.available.splice(bookInd, 1)
+						this.availableSection.unavailable.push(book)
+					}
+				}
+			}
+			getBookByTitle(bookTitle) {
+				for (const property in this.availableSection) {
+					for (const book of this.availableSection[property]) {
+						if (book['title'] === bookTitle) {
+							console.log(book);
+						}
+					}
+				}
+			}
+			getBookByAuthor(bookAuthor) {
+				for (const property in this.availableSection) {
+					for (const book of this.availableSection[property]) {
+						if (book.author['name'] === bookAuthor) {
+							console.log(book);
+						}
+					}
+				}
+			}
+			getBookByPublisher(bookPublisher) {
+				for (const property in this.availableSection) {
+					for (const book of this.availableSection[property]) {
+						if (book.publisher['title'] === bookPublisher) {
+							console.log(book);
+						}
+					}
+				}
+			}
+
+		}
+		console.log('Створюємо бібліотеку та заповнюємо її книжками');
+		let newLib = new Library()
+		let book1 = new Book(new Author('Ivanov I. I.', 2000, '...some description...'), 'Good Book', 'fantasy', new Publisher('Nova', 10000001, 1999),
+			'purchased', true)
+		newLib.addBook(book1)
+		let book2 = new Book(new Author('Petrov I. I.', 1999, '...some description...'), 'Bad Book', 'drama', new Publisher('OldPublish', 10000002, 1999), 'purchased', true)
+		newLib.addBook(book2)
+
+		let book3 = new Book(new Author('Sidorov I. I.', 1998, '...some description...'), 'Not Good Book', 'action', new Publisher('Creative', 10000003, 1999), 'finded', true)
+		newLib.addBook(book3)
+
+		let book4 = new Book(new Author('Ivanenko I. I.', 1997, '...some description...'), 'Not too Bad Book', 'mystic', new Publisher('SomePublish', 10000004, 1999), 'purchased', true)
+		newLib.addBook(book4)
+
+		let book5 = new Book(new Author('Ivashenko I. I.', 1996, '...some description...'), 'Ordinary Book', 'criminal', new Publisher('Be happy', 10000005, 1999), 'purchased', true)
+		newLib.addBook(book5)
+
+		let book6 = new Book(new Author('Slusarenko I. I.', 1995, '...some description...'), 'First Book', 'fantasy', new Publisher('Kava', 10000006, 1999), 'gift', true)
+		newLib.addBook(book6)
+
+		let book7 = new Book(new Author('Petrushenko I. I.', 1994, '...some description...'), 'Second Book', 'drama', new Publisher('Standart', 10000007, 1999), 'purchased', true)
+		newLib.addBook(book7)
+
+		let book8 = new Book(new Author('Zelenskiy I. I.', 1930, '...some description...'), 'Third Book', 'action', new Publisher('Origin', 10000008, 1999), 'purchased', true)
+		newLib.addBook(book8)
+
+		let book9 = new Book(new Author('Poroshenko I. I.', 1920, '...some description...'), 'Green Book', 'mystic', new Publisher('Silver', 10000009, 1999), 'gift', true)
+		newLib.addBook(book9)
+
+		let book10 = new Book(new Author('Yuschenko I. I.', 1910, '...some description...'), 'Blue Book', 'criminal', new Publisher('Gold', 10000010, 1999), 'purchased', true)
+		newLib.addBook(book10)
+
+		let book11 = new Book(new Author('Timoshenko I. I.', 1900, '...some description...'), 'Red Book', 'fantasy', new Publisher('Incredible', 10000011, 1999), 'purchased', true)
+		newLib.addBook(book11)
+
+		let book12 = new Book(new Author('Kuchma I. I.', 1890, '...some description...'), 'Cool Book', 'drama', new Publisher('Creative', 10000003, 1999), 'purchased', true)
+		newLib.addBook(book12)
+
+		let book13 = new Book(new Author('Grushevskiy I. I.', 1880, '...some description...'), 'Hard Book', 'criminal', new Publisher('Nova', 10000001, 1999), 'gift', true)
+		newLib.addBook(book13)
+
+
+		console.log('Забираємо із бібліотеки книжки "Green Book", та "Cool Book":');
+		newLib.withdrawalBook('Green Book')
+		newLib.withdrawalBook('Cool Book')
+
+		console.log('Шукаю книгу із назвою "First Book":');
+		newLib.getBookByTitle('First Book')
+		console.log('Шукаю книги за авторством Zelenskiy I. I.:');
+		newLib.getBookByAuthor('Zelenskiy I. I.')
+		console.log('Шукає книги, яку публікувало видавництво "Nova"');
+		newLib.getBookByPublisher('Nova')
+
+		console.log('Наразі бібліотека має такий вигляд:');
+		console.log(newLib);
+
+
 	</script>
 
 </body>

@@ -19,6 +19,144 @@
 
 	</style>
 	<script>
+		class Storage {
+			static storageRef
+			#productList
+			get ProductList() {
+				if (this.#productList.length === 0) throw new Error('Склад порожній')
+				return this.#productList
+			}
+			set ProductList(value) {
+				if (typeof value !== "object") throw new Error('Некоректні дані')
+				this.#productList = value
+			}
+			constructor(productList) {
+				if (Storage.storageRef) return Storage.storageRef
+				this.ProductList = productList
+				Storage.storageRef = this
+			}
+			getListByProductName(value) {
+				if (value.length < 1 || typeof value !== "string") throw new Error('Некоректні дані')
+				let res = this.ProductList.filter(el => el.Title === value)
+				if (res.length === 0) throw new Error('Такого товару на складі немає')
+				return res
+			}
+			getListByProducerName(value) {
+				if (value.length < 1 || typeof value !== "string") throw new Error('Некоректні дані')
+				let res = this.ProductList.filter(el => el.producer.Title === value)
+				if (res.length === 0) throw new Error('Такого виробника немає')
+				return res
+			}
+			addNewProduct(newProduct) {
+				if (typeof newProduct !== "object") throw new Error('Некоректні дані')
+				let change = false
+				for (const product of this.ProductList) {
+					if (product.Title === newProduct.Title && product.Producer === newProduct.Producer) {
+						product.Amount += newProduct.Amount
+						change = true
+					}
+				}
+				if (change === false) this.ProductList.push(newProduct)
+			}
+			decProduct(prodName, producerName, amount) {
+				if (typeof prodName !== "string" || typeof producerName !== "string" || amount <= 0 || typeof amount !== "number") throw new Error('Некоректні дані')
+				let change = false
+				for (let i = 0; i < this.ProductList.length; i++) {
+					if (this.ProductList[i].Title === prodName && this.ProductList[i].producer.Title === producerName) {
+						if (amount > this.ProductList[i].Amount) throw new Error(`Немає стільки товару на складі. На складі: ${this.ProductList[i].Amount}`)
+						else if (amount === this.ProductList[i].Amount) {
+							this.ProductList.splice(i, 1)
+							change = true
+						}
+						else {
+							this.ProductList[i].Amount -= amount
+							change = true
+						}
+					}
+				}
+				if (change = false) throw new Error('Такого товару немає на складі')
+			}
+			toString() {
+				return this.ProductList
+			}
+		}
+
+		class Product {
+			#title
+			get Title() {
+				return this.#title
+			}
+			set Title(value) {
+				if (value.length === 0 || typeof value !== "string") throw new Error('Некоректні дані')
+				this.#title = value
+			}
+			#amount
+			get Amount() {
+				return this.#amount
+			}
+			set Amount(value) {
+				if (value < 0 || typeof value !== "number") throw new Error('Некоректні дані')
+				this.#amount = value
+			}
+			constructor(title, unit, amount, producer) {
+				this.Title = title
+				this.unit = unit
+				this.Amount = amount
+				this.producer = producer
+			}
+			toString() {
+				return `<br>${this.Title}: ${this.Amount}${this.unit} (${this.producer})`
+			}
+		}
+		class Producer {
+			#title
+			get Title() {
+				return this.#title
+			}
+			set Title(value) {
+				if (value.length === 0 || typeof value !== "string") throw new Error('Некоректні дані')
+				this.#title = value
+			}
+			#regNum
+			get RegNum() {
+				return this.#regNum
+			}
+			set RegNum(value) {
+				if (value < 1 || typeof value !== "number") throw new Error('Некоректні дані')
+				this.#regNum = value
+			}
+			constructor({ title, regNum }) {
+				this.Title = title
+				this.RegNum = regNum
+			}
+			toString() {
+				return `"${this.Title}"(num.${this.RegNum})`
+			}
+		}
+		let productList = [
+			new Product('Tea', 'pack', 100, new Producer({ title: 'Nuri', regNum: 111111 })),
+			new Product('Candy', 'kg', 1000, new Producer({ title: 'Roshen', regNum: 222222 })),
+			new Product('Coffe', 'pack', 500, new Producer({ title: 'Nescafe', regNum: 333333 })),
+			new Product('Cake', 'pcs', 10, new Producer({ title: 'Silpo', regNum: 444444 })),
+			new Product('Milk', 'l', 200, new Producer({ title: 'Zagor', regNum: 555555 }))
+		]
+
+
+		let storage = new Storage(productList)
+
+		document.write(`Товари на складі:<br> ${storage.toString()}<hr>`)
+		document.write(`Шукаємо на складі товари з назвою Cake: <br>${storage.getListByProductName('Cake')}<hr>`)
+		document.write(`Шукаємо на складі товари, виробник якого Zagor:<br>${storage.getListByProducerName('Zagor')}<hr>`)
+
+		document.write('Додамо на склад новий продукт Sauseges та додамо до існуючих Candy ще 500 кг. Тепер склад виглядає так:<br>')
+		storage.addNewProduct(new Product('Sausages', 'kg', 500, new Producer({ title: 'Meat & Vine', regNum: 777777 })))
+		storage.addNewProduct(new Product('Candy', 'kg', 500, new Producer({ title: 'Roshen', regNum: 222222 })))
+		document.write(`${storage.toString()}<hr>`)
+
+		document.write('Відвантажимо 100 упаковок Coffe та весь запас Cake. Склад матиме вигляд:<br>')
+		storage.decProduct('Coffe', 'Nescafe', 100)
+		storage.decProduct('Cake', 'Silpo', 10)
+		document.write(`${storage.toString()}<hr>`)
 
 	</script>
 

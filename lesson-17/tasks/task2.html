@@ -15,10 +15,30 @@
 
 	<hr>
 	<style>
-
 	</style>
 	<script>
 
+		class CompanyCar {
+			static companyCarRef
+			constructor(initData) {
+				if (CompanyCar.companyCarRef) {
+					return CompanyCar.companyCarRef
+				}
+				Object.assign(this, initData)
+				CompanyCar.companyCarRef = this
+			}
+			toString() {
+				return `${this.driverName} - ${this.carName}, ${this.carNum}`
+			}
+		}
+
+
+		let companyCar = new CompanyCar({ driverName: 'Ivan Yuhno', carName: 'Volkswagen Passat', carNum: 'BM 2414 EE' })
+		document.write(`Створимо службове авто за допомогою нашого класу:<br> ${companyCar}<hr>`)
+		document.write('Зараз спробуємо створити нове авто, з іншими значеннями за допомогою того ж класу:<br>')
+		let companyCar2 = new CompanyCar({ driverName: 'Petro Yuhimenko', carName: 'Volkswagen Caddy', carNum: 'AA 1748 AM' })
+		document.write(`${companyCar2}<br>`);
+		document.write('Як бачимо, результат той самий. Отже створити ще один екземпляр неможливо')
 	</script>
 
 </body>

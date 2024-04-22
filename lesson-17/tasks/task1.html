@@ -19,6 +19,27 @@
 	</style>
 	<script>
 
+		class ArrayHandler {
+			static getPositiveTotal(userArray) {
+				let res = userArray.reduce((prevCount, el) => el > 0 ? prevCount + 1 : prevCount, 0)
+				return res
+			}
+			static getNegativeTotal(userArray) {
+				let res = userArray.reduce((prevCount, el) => el < 0 ? prevCount + 1 : prevCount, 0)
+				return res
+			}
+			static getTotalEntering(userArray, userNum) {
+				let res = userArray.reduce((prevCount, el) => el === userNum ? prevCount + 1 : prevCount, 0)
+				return res
+			}
+		}
+
+		let userArray = [11, 37, -12, -130, 58, 5, 11, -200, 64, 26, -12, 11, 13, 27, 148]
+
+		document.write(`Заданий масив чисел: [${userArray}]<br>`)
+		document.write(`Кількість позитивних чисел: ${ArrayHandler.getPositiveTotal(userArray)}<br>`)
+		document.write(`Кількість негативних чисел: ${ArrayHandler.getNegativeTotal(userArray)}<br>`);
+		document.write(`Кількість входжень у масив числа 11: ${ArrayHandler.getTotalEntering(userArray, 11)}<br>`);
 	</script>
 
 </body>

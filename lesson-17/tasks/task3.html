@@ -21,6 +21,35 @@
 	</style>
 	<script>
 
+
+		class Reminder {
+			static reminderRef
+			constructor(event, msec) {
+				if (Reminder.reminderRef) return Reminder.reminderRef
+				this.event = event
+				this.msec = msec
+				this.count = 1
+				this.reminder = setInterval(() => {
+					document.write(`${this.event} (${this.count})<br>`)
+					this.count++
+				}, this.msec)
+				Reminder.reminderRef = this
+			}
+			changeEvent(value) {
+				this.event = value
+			}
+			stopRemind() {
+				clearInterval(this.reminder)
+			}
+		}
+
+		let newReminder = new Reminder('Вимкни праску', 3000)
+		let newReminder2 = new Reminder('Hello', 2000)
+
+		// newReminder.changeEvent('Час збиратись на роботу')
+		// newReminder.stopRemind()
+
+
 	</script>
 
 </body>

@@ -34,6 +34,87 @@
 	</style>
 	<script>
 
+		// Довго мучався із таймером і тим, куди його приткнути. Дякую Світлані (@hudym_so), підглянув у неї рішення. Авторське право залишається за нею!
+
+		class TestManager {
+			static testManagerRef
+			constructor(countOfTasks, min, max) {
+				if (TestManager.testManagerRef) return TestManager.testManagerRef
+				this.countOfTasks = countOfTasks
+				this.min = min
+				this.max = max
+				this.userHistory = new History()
+				this.intervalID = null
+				TestManager.testManagerRef = this
+			}
+			test() {
+				let operator = Math.floor(Math.random() * 2)
+				if (operator === 0) {
+					let task = new MultChecker(this.min, this.max)
+					this.userHistory.getResults(task.getMult())
+				}
+				else {
+					let task = new AddChecker(this.min, this.max)
+					this.userHistory.getResults(task.getAdd())
+				}
+			}
+			displayTesting() {
+				let counter = 0
+				this.intervalID = setInterval(() => {
+					this.test()
+					counter++
+					if (counter === this.countOfTasks) {
+						clearInterval(this.intervalID)
+						document.write(this.userHistory.toString())
+					}
+				}, 3000)
+			}
+		}
+
+		class MultChecker {
+			constructor(min, max) {
+				this.num1 = min + Math.floor(Math.random() * (max - min + 1))
+				this.num2 = min + Math.floor(Math.random() * (max - min + 1))
+				this.userAnswer
+				this.correctAnswer = this.num1 * this.num2
+			}
+			getMult() {
+				this.userAnswer = parseFloat(prompt(`${this.num1} * ${this.num2} = `))
+				let res = { firstNum: this.num1, secondNum: this.num2, operation: "*", userAnswer: this.userAnswer, correctAnswer: this.correctAnswer }
+				return JSON.stringify(res)
+			}
+		}
+		class AddChecker {
+			constructor(min, max) {
+				this.num1 = min + Math.floor(Math.random() * (max - min + 1))
+				this.num2 = min + Math.floor(Math.random() * (max - min + 1))
+				this.userAnswer
+				this.correctAnswer = this.num1 + this.num2
+			}
+			getAdd() {
+				this.userAnswer = parseFloat(prompt(`${this.num1} + ${this.num2} = `))
+				let res = { firstNum: this.num1, secondNum: this.num2, operation: "+", userAnswer: this.userAnswer, correctAnswer: this.correctAnswer }
+				return JSON.stringify(res)
+			}
+		}
+
+		class History {
+			constructor() {
+				this.userHistory = []
+			}
+			getResults(res) {
+				this.userHistory.push(res)
+			}
+			toString() {
+				return this.userHistory
+			}
+		}
+		let countOfTasks = parseInt(prompt('Введіть кількість задач', 5))
+		let min = parseInt(prompt('Введіть мінімальне число', '0'))
+		let max = parseInt(prompt('Введіть максимальне число', '100'))
+		let newTest = new TestManager(countOfTasks, min, max)
+		newTest.displayTesting()
+
 	</script>
 
 </body>
