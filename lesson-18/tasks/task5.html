@@ -14,11 +14,32 @@
 	</h3>
 
 	<hr>
-	<style>
 
+	<div class="table"></div>
+	<style>
+		td {
+			border: 2px solid black;
+			padding: 5px;
+		}
 	</style>
 	<script>
 
+		function getTableWithRandNumbers(row = 4, col = 3, min = 0, max = 9) {
+			let table = document.createElement("table")
+			for (let i = 0; i < row; i++) {
+				let row = document.createElement("tr")
+				for (let i = 0; i < col; i++) {
+					let randomNum = min + Math.floor(Math.random() * (max - min + 1))
+					let cell = document.createElement("td")
+					cell.innerText = randomNum
+					row.append(cell)
+				}
+				table.append(row)
+			}
+			document.querySelector(".table").append(table)
+		}
+
+		window.onload = getTableWithRandNumbers()
 
 	</script>
 

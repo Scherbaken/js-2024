@@ -14,13 +14,67 @@
 	<img src="img/task1.png" alt="Image">
 
 	<hr>
+
+	<div><label>First number <input id="firstNum" name="firstNum" type="number" placeholder="0" value=""></label></div>
+	<div><label>Second number <input id="secondNum" name="secondNum" type="number" placeholder="0" value=""></label>
+	</div>
+	<div class="actions">
+		<button onclick="getSum()">Додати</button>
+		<button onclick="getOfftake()">Відняти</button>
+		<button onclick="getProd()">Помножити</button>
+		<button onclick="getDiv()">Поділити</button>
+	</div>
+	<div class="result"><label>Результат <input id="result" name="result" type="number" value=""></label></div>
 	<style>
 		img {
 			width: 500px;
 		}
+
+		div:not(:last-child) {
+			margin-bottom: 10px;
+		}
+
+		input {
+			font-size: 26px;
+		}
+
+		button {
+			font-size: 24px;
+			padding: 5px 10px;
+		}
+
+		.result {
+			max-width: 525px;
+			padding-top: 10px;
+			border-top: 1px solid grey;
+		}
 	</style>
 	<script>
 
+		function getSum() {
+			let firstNum = parseInt(document.getElementById("firstNum").value)
+			let secondNum = parseInt(document.getElementById("secondNum").value)
+			let res = firstNum + secondNum
+			document.getElementById("result").value = res
+		}
+		function getOfftake() {
+			let firstNum = parseInt(document.getElementById("firstNum").value)
+			let secondNum = parseInt(document.getElementById("secondNum").value)
+			let res = firstNum - secondNum
+			document.getElementById("result").value = res
+		}
+		function getProd() {
+			let firstNum = parseInt(document.getElementById("firstNum").value)
+			let secondNum = parseInt(document.getElementById("secondNum").value)
+			let res = firstNum * secondNum
+			document.getElementById("result").value = res
+		}
+		function getDiv() {
+			let firstNum = parseInt(document.getElementById("firstNum").value)
+			let secondNum = parseInt(document.getElementById("secondNum").value)
+			let res = firstNum / secondNum
+			document.getElementById("result").value = res
+		}
 
 	</script>
 

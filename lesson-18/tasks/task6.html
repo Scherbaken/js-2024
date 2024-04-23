@@ -15,13 +15,55 @@
 	<img src="img/task6.png" alt="Image">
 
 	<hr>
+	<div>
+		<label>Кількість оцінок <input id="countOfScores" type="number" name="countOfScores" placeholder="0" class="input"
+				value=""></label>
+		<div class="table"><button onclick="getTable()">Створити таблицю</button></div>
+		<div class="average"><button onclick="getAverage()">Знайти середнє значення</button></div>
+
+	</div>
 	<style>
 		img {
 			width: 500px;
 		}
+
+		input {
+			font-size: 26px;
+			margin: 5px 0;
+		}
+
+		button {
+			font-size: 26px;
+			margin: 10px 0;
+		}
 	</style>
 	<script>
 
+		function getTable() {
+			let countOfScores = parseInt(document.getElementById("countOfScores").value)
+			let table = document.createElement("table")
+			table.className = "inputs"
+			for (let i = 0; i < countOfScores; i++) {
+				let row = document.createElement("tr")
+				let input = document.createElement("input")
+				input.setAttribute("type", "number")
+				row.append(input)
+				table.append(row)
+			}
+			document.querySelector(".table").append(table)
+		}
+		function getAverage() {
+			let inputsList = document.querySelector(".inputs").querySelectorAll("input")
+			console.log(inputsList)
+			let sum = 0
+			for (const input of inputsList) {
+				sum += parseInt(input.value)
+			}
+			let average = sum / inputsList.length
+			let result = document.createElement("p")
+			result.innerText = `Середня оцінка = ${average}`
+			document.querySelector(".average").append(result)
+		}
 
 	</script>
 

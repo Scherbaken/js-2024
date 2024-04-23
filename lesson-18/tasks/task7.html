@@ -15,11 +15,71 @@
 		radio buttons). Ціни визначте самі. Підрахувати загальну вартість.</h3>
 
 	<hr>
-	<style>
 
+	<div class="trip">
+		<h3>Оберіть транспорт:</h3>
+		<select id="transport" name="transport">
+			<option value="500">Авто</option>
+			<option value="300">Автобус</option>
+			<option value="1000">Літак</option>
+		</select>
+		<h3>Оберіть харчування:</h3>
+		<label>Сніданок <input name="eat" type="checkbox" value="100"></label>
+		<label>Обід <input name="eat" type="checkbox" value="350"></label>
+		<label>Вечеря <input name="eat" type="checkbox" value="250"></label>
+		<h3>Оберіть гіда:</h3>
+		<label>Іван<input name="gid" type="radio" value="500"></label>
+		<label>Петро<input name="gid" type="radio" value="600"></label>
+		<label>Микола<input name="gid" type="radio" value="700"></label>
+
+		<button onclick="getTotalSum()">Підрахувати загальну вартість</button>
+		<label>Загальна вартість: <input class="result" type="number" value=""></label>
+	</div>
+
+	<style>
+		select {
+			font-size: 26px;
+			width: 250px;
+		}
+
+		input[type="checkbox"],
+		input[type="radio"] {
+			height: 2em;
+			width: 2em;
+		}
+
+		input[type="number"] {
+			font-size: 26px;
+		}
+
+
+		button {
+			display: block;
+			margin: 30px 0;
+			font-size: 26px;
+			padding: 3px 7px;
+		}
 	</style>
 	<script>
 
+		function getTotalSum() {
+			let transportCost = parseInt(document.getElementById("transport").value)
+			let eatCost = 0
+			let eatList = document.querySelectorAll(`input[name = "eat"]`)
+			for (const input of eatList) {
+				if (input.checked) {
+					eatCost += parseInt(input.value)
+				}
+			}
+			let gidCost = 0
+			let gidList = document.querySelectorAll(`input[name = "gid"]`)
+			for (const input of gidList) {
+				if (input.checked) gidCost = parseInt(input.value)
+			}
+			let totalSum = transportCost + eatCost + gidCost
+			document.querySelector(".result").value = totalSum
+
+		}
 
 	</script>
 

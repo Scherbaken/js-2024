@@ -14,13 +14,50 @@
 	<img src="img/task2.png" alt="Image">
 
 	<hr>
+
+	<label>Сума в гривнях <input id="hrn" type="number" name="sumInHryvna" placeholder="0" value=""></label>
+	<div><button onclick="getConvert()">Конвертувати</button></div>
+	<div class="result">
+		<label>Сума в євро <input id="euro" type="number" name="sumInEuro" placeholder="0" value=""></label>
+		<label>Сума в долларах <input id="usd" type="number" name="sumInUsd" placeholder="0" value=""></label>
+	</div>
 	<style>
 		img {
 			width: 500px;
 		}
+
+		div:not(:last-child) {
+			margin-bottom: 10px;
+		}
+
+		input {
+			font-size: 26px;
+		}
+
+		button {
+			margin: 10px 0;
+			font-size: 24px;
+			padding: 5px 10px;
+		}
+
+		.result {
+			display: grid;
+			gap: 10px;
+			max-width: 525px;
+			padding-top: 10px;
+			border-top: 1px solid grey;
+		}
 	</style>
 	<script>
 
+		const dollarRate = 40
+		const euroRate = 42
+
+		function getConvert() {
+			let hrn = parseInt(document.getElementById("hrn").value)
+			document.getElementById("euro").value = (hrn / euroRate).toFixed(2)
+			document.getElementById("usd").value = (hrn / dollarRate).toFixed(2)
+		}
 
 	</script>
 

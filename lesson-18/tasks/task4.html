@@ -14,12 +14,24 @@
 		відображаються у окремих div (їх треба створити і додати на сторінку)</h3>
 
 	<hr>
+
+	<div class="wishes"></div>
 	<style>
 
 	</style>
 	<script>
 
+		const wishList = ['wish1', 'wish2', 'wish3', 'wish4', 'wish5']
 
+		function getWishes(wishList) {
+			for (let i = 0; i < 3; i++) {
+				let randomWish = wishList[Math.floor(Math.random() * wishList.length)]
+				let wishDiv = document.createElement("div")
+				wishDiv.innerText = randomWish
+				document.querySelector(".wishes").append(wishDiv)
+			}
+		}
+		window.onload = getWishes(wishList)
 	</script>
 
 </body>

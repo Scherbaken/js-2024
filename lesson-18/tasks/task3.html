@@ -14,11 +14,29 @@
 	</h3>
 
 	<hr>
-	<style>
 
+	<label>Введіть рік Вашого народження: <input id="year" type="number" name="birthYear" placeholder="1990"
+			value=""></label>
+	<div><button onclick="getAge()">Розрахувати</button></div>
+	<lable>Ваш вік: <input type="number" name="countOfYears" id="result" placeholder="0" value=""></lable>
+	<style>
+		input {
+			font-size: 26px;
+		}
+
+		button {
+			margin: 10px 0;
+			font-size: 24px;
+			padding: 5px 10px;
+		}
 	</style>
 	<script>
-
+		function getAge() {
+			const currentYear = 2024
+			let birthYear = parseInt(document.getElementById("year").value)
+			let res = currentYear - birthYear
+			document.getElementById("result").value = res
+		}
 
 	</script>
 
