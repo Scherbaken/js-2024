@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #19 Task - 2</title>
+</head>
+
+<body style="font-size: 26px">
+	<h1>Задача 2</h1>
+	<h3>Дано 5 елементів input. При введенні значення у якийсь із них необхідно автоматично заповнювати інші (усі
+		попередні у спадному порядку(кожен попередній має значення на 1 менше за наступний), усі наступні на 1 більше
+		(кожен наступне на 1 більше за попереднього))</h3>
+	<img src="img/task2.png" alt="Image">
+
+	<hr>
+	<div class="labels-list">
+		<label>Value 1 <input type="number"></label>
+		<label>Value 2 <input type="number"></label>
+		<label>Value 3 <input type="number"></label>
+		<label>Value 4 <input type="number"></label>
+		<label>Value 5 <input type="number"></label>
+	</div>
+	<style>
+		img {
+			width: 350px;
+		}
+
+		.labels-list {
+			display: grid;
+		}
+	</style>
+	<script>
+
+		document.addEventListener('input', function (e) {
+			let targLabel = e.target.parentElement
+			while (targLabel.nextElementSibling !== null) {
+				targLabel.nextElementSibling.firstElementChild.value = parseInt(targLabel.firstElementChild.value) + 1
+				targLabel = targLabel.nextElementSibling
+			}
+			while (targLabel.previousElementSibling !== null) {
+				targLabel.previousElementSibling.firstElementChild.value = parseInt(targLabel.firstElementChild.value) - 1
+				targLabel = targLabel.previousElementSibling
+			}
+		})
+
+	</script>
+
+</body>
+
+</html>

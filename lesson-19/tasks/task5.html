@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #19 Task - 5</title>
+</head>
+
+<body style="font-size: 26px">
+	<h1>Задача 5</h1>
+	<h3>Відображаємо картки товарів, які користувач може вибирати. Вибраний товар має зелену рамку (при кліку робити
+		toogle з класом вибраного елемента)</h3>
+	<img src="img/task5.png" alt="Image">
+
+
+	<hr>
+	<div id="task">
+		<div class="task__card">
+			<img src="img/task5/1.jpg" alt="Image" class="task__img">
+		</div>
+		<div class="task__card">
+			<img src="img/task5/2.jpg" alt="Image" class="task__img">
+		</div>
+		<div class="task__card">
+			<img src="img/task5/3.jpg" alt="Image" class="task__img">
+		</div>
+		<div class="task__card">
+			<img src="img/task5/4.jpg" alt="Image" class="task__img">
+		</div>
+	</div>
+	<style>
+		#task {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+		}
+
+		.task__card {
+			width: 250px;
+			border: 1px solid grey;
+		}
+
+		.task__img {
+			width: 100%;
+			object-fit: cover;
+		}
+
+		.select {
+			outline: 3px solid green;
+			border: 1px solid transparent;
+		}
+	</style>
+	<script>
+
+		document.querySelector('#task').addEventListener('click', (e) => {
+			const targetEl = e.target
+			const containerEl = targetEl.parentElement
+			containerEl.classList.toggle('select')
+		})
+
+
+	</script>
+
+</body>
+
+</html>

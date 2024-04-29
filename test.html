@@ -8,31 +8,224 @@
 </head>
 
 <body>
-	<script>
 
-		// function createTable(rowsNum, colsNum, min = 1, max = 100) {
-		// 	const tableEl = document.createElement('table')
-		// 	for (let i = 0; i < rowsNum; i++) {
-		// 		const row = document.createElement('tr')
-		// 		for (let j = 0; j < colsNum; j++) {
-		// 			const col = document.createElement('td')
-		// 			let randNum = min + Math.floor(Math.random() * (max - min + 1))
-		// 			col.innerText = randNum
-		// 			row.append(col)
-		// 		}
-		// 		tableEl.append(row)
-		// 	}
-		// 	return tableEl
-		// }
-
-		// const table = createTable(3, 4)
-		// document.body.append(table)
-
-
-	</script>
+	<div class="task-form"></div>
 	<style>
+		.product-container {
+			border: 2px solid green;
+			width: 600px;
+			height: 80px;
+			padding: 10px;
+			display: flex;
+			align-items: center;
+			margin-bottom: 20px;
+		}
 
+		.product-image {
+			height: 80px;
+			margin-right: 10px;
+		}
+
+		.product-title {
+			width: 200px;
+		}
+
+		.count-section {
+			width: 100px;
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			margin-right: 20px;
+		}
+
+		.total-price {
+			width: 150px;
+		}
+
+		button {
+			padding: 8px 12px;
+		}
 	</style>
+	<script>
+		const electronics = [
+			{
+				id: 1,
+				title: 'LED-індикатор рівня сигналу/заряду KA2284',
+				imageUrl:
+					'https://content2.rozetka.com.ua/goods/images/big/303013209.jpg',
+				price: 40.5,
+				count: 28,
+			},
+			{
+				id: 2,
+				title: 'USB Led лампа підсвічування клавіатури',
+				imageUrl:
+					'https://content2.rozetka.com.ua/goods/images/big/387707182.jpg',
+				price: 41.0,
+				count: 201,
+			},
+			{
+				id: 3,
+				title: 'Цифровий Терморегулятор W1401',
+				imageUrl:
+					'https://content.rozetka.com.ua/goods/images/big/343621355.jpg',
+				price: 158.9,
+				count: 73,
+			},
+		]
+		class Product {
+			constructor(productData) {
+				this.productData = productData
+				this.el = this.render()
+			}
+			createImageSection() {
+				const img = document.createElement('img')
+				img.setAttribute('src', this.productData.imageUrl)
+				img.className = 'product-image'
+				return img
+			}
+			createTitleSection() {
+				const titleEl = document.createElement('div')
+				titleEl.innerText = this.productData.title
+				titleEl.className = 'product-title'
+				return titleEl
+			}
+			createCountSection() {
+				const countSectionEl = document.createElement('div')
+				countSectionEl.className = 'count-section'
+
+				const subtractBtn = document.createElement('button')
+				subtractBtn.innerText = '-'
+				subtractBtn.onclick = this.onSubtractCount.bind(this)
+				countSectionEl.append(subtractBtn)
+
+				this.countSpan = document.createElement('span')
+				this.countSpan.innerText = this.productData.count
+				countSectionEl.append(this.countSpan)
+
+				const addBtn = document.createElement('button')
+				addBtn.innerText = '+'
+				addBtn.onclick = this.onAddCount.bind(this)
+				countSectionEl.append(addBtn)
+				return countSectionEl
+			}
+			get totalPrice() {
+				return this.productData.price * this.productData.count
+			}
+			updateTotalProductPrice() {
+				this.totalPriceSpan.innerText = `${this.totalPrice} грн.`
+			}
+			sendEvent(eventType) {
+				const event = new CustomEvent(eventType, {
+					detail: { product: this.productData },
+					bubbles: true
+				})
+				this.el.dispatchEvent(event)
+			}
+			onAddCount() {
+				this.productData.count++
+				this.updateCounter()
+				this.updateTotalProductPrice()
+				this.sendEvent('add')
+			}
+			onSubtractCount() {
+				if (this.productData.count > 1) {
+					this.productData.count--
+					this.updateCounter()
+					this.updateTotalProductPrice()
+					this.sendEvent('subtract')
+				}
+			}
+			updateCounter() {
+				this.countSpan.innerText = this.productData.count
+			}
+			createTotalProductPriceSection() {
+				const totalPriceEl = document.createElement('div')
+				totalPriceEl.className = 'total-price'
+				totalPriceEl.innerText = 'Загалом: '
+
+				this.totalPriceSpan = document.createElement('span')
+				this.totalPriceSpan.innerText = `${this.totalPrice} грн.`
+				totalPriceEl.append(this.totalPriceSpan)
+				return totalPriceEl
+			}
+			onRemove() {
+				this.sendEvent('delete')
+			}
+			createRemoveSection() {
+				const removeBtn = document.createElement('button')
+				removeBtn.innerText = 'X'
+				removeBtn.onclick = this.onRemove.bind(this)
+				return removeBtn
+			}
+			render() {
+				const productElContainer = document.createElement('div')
+				productElContainer.setAttribute('productId', this.productData.id)
+				productElContainer.className = 'product-container'
+				productElContainer.append(this.createImageSection())
+				productElContainer.append(this.createTitleSection())
+				productElContainer.append(this.createCountSection())
+				productElContainer.append(this.createTotalProductPriceSection())
+				productElContainer.append(this.createRemoveSection())
+				return productElContainer
+			}
+		}
+
+		class ProductManager {
+			constructor(productsList, parentContainerSelector) {
+				this.productsList = productsList
+				this.el = this.render(parentContainerSelector)
+			}
+			getTotalPrice() {
+				return this.productsList.reduce((prevSum, product) => prevSum + product.price * product.count, 0)
+			}
+			totalPriceUpdate() {
+				this.totalPriceSpan.innerText = `${this.getTotalPrice()} грн.`
+			}
+			onAddProduct() {
+				this.totalPriceUpdate()
+			}
+			onSubtractProduct() {
+				this.totalPriceUpdate()
+			}
+			onDeleteProduct(event) {
+				const productId = event.detail.product.id
+				this.productsList = this.productsList.filter(prod => prod.id !== productId)
+				document.querySelector(`[productId="${productId}"]`).remove()
+				this.totalPriceUpdate()
+			}
+			createProductsSection() {
+				const productsContainer = document.createElement('div')
+				for (const productData of this.productsList) {
+					const product = new Product(productData)
+					productsContainer.append(product.el)
+				}
+				productsContainer.addEventListener('add', this.onAddProduct.bind(this))
+				productsContainer.addEventListener('subtract', this.onSubtractProduct.bind(this))
+				productsContainer.addEventListener('delete', this.onDeleteProduct.bind(this))
+				return productsContainer
+			}
+			createTotalPriceSection() {
+				const container = document.createElement('div')
+				container.innerText = 'Загалом до сплати: '
+				this.totalPriceSpan = document.createElement('span')
+				this.totalPriceSpan.innerText = `${this.getTotalPrice()} грн.`
+				container.append(this.totalPriceSpan)
+				return container
+			}
+			render(parentContainerSelector) {
+				const managerContainer = document.createElement('div')
+				managerContainer.append(this.createProductsSection())
+				managerContainer.append(this.createTotalPriceSection())
+				document.querySelector(parentContainerSelector).append(managerContainer)
+				return managerContainer
+			}
+		}
+
+		window.onload = function () {
+			const manager = new ProductManager(electronics, '.task-form')
+		}
+	</script>
 </body>
 
 </html>

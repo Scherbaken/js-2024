@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #19 Task - 7</title>
+</head>
+
+<body style="font-size: 26px">
+	<h1>Задача 7</h1>
+	<h3>Відобразити падаючий сніг. Сніжинка з’являється у верхній частині екрану (top =0) і з випадковою швидкістю
+		рухається вниз (у setInterval викликати метод, у якому додавати крок до top). Як тільки сніжинка досягає нижньої
+		частини екрану (top>maxTop) вона знову повинна з’явитись у верхній частині екрану (top=0).</h3>
+
+	<hr>
+	<div id="task">
+
+
+	</div>
+	<style>
+		#task {
+			border: 3px solid black;
+			width: 800px;
+			height: 600px;
+			margin: 0 auto;
+			position: relative;
+			overflow: hidden;
+			background: url('img/task7/bg.jpg') 0 0 / cover no-repeat;
+		}
+
+		.snow {
+			position: absolute;
+			z-index: 2;
+			background: url('img/task7/snowflakes.png') 0 0 / cover no-repeat;
+		}
+	</style>
+	<script>
+
+		function generateSnowflakes() {
+			const snowflake = document.createElement('div')
+			snowflake.className = 'snow'
+			let snowflakeWidth = 40 + Math.floor(Math.random() * 61)
+			let snowflakeLeft = Math.floor(Math.random() * 851) - 50
+			snowflake.style.cssText = `width: ${snowflakeWidth}px; height: ${snowflakeWidth}px; left: ${snowflakeLeft}px; top: -100px`
+			document.getElementById('task').append(snowflake)
+		}
+		function getAnimatedSnowflakes() {
+			const snowflakes = document.querySelectorAll('.snow')
+			for (const snowflake of snowflakes) {
+				let snowflakeTop = parseFloat(snowflake.style.top)
+				snowflakeTop += Math.floor(Math.random() * 2) + 1
+				snowflake.style.top = snowflakeTop + 'px'
+				if (snowflakeTop >= 600) {
+					snowflake.style.top = '-100'
+				}
+			}
+		}
+		window.onload = function () {
+			setInterval(generateSnowflakes, 300)
+			setInterval(getAnimatedSnowflakes, 10)
+		}
+	</script>
+
+</body>
+
+</html>

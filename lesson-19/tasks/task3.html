@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #19 Task - 3</title>
+</head>
+
+<body style="font-size: 26px">
+	<h1>Задача 3</h1>
+	<h3>Дано 5 випадковим чином згенерованих нумерованих списків з рандомними числами (кількість елементів у списку
+		випадкова від 1 до 10, елементи випадкові – від 1 до 100). При натисненні на кнопку нумеровані списки з парною
+		кількістю елементів зафарбувати у зелений колір, інші у червоний.</h3>
+
+	<hr>
+
+	<button>GET GREEN LISTS</button>
+
+	<div id="lists"></div>
+
+	<style>
+
+	</style>
+	<script>
+
+		function getRandomNum() {
+			const randomNum = Math.floor(Math.random() * 100) + 1
+			return randomNum
+		}
+		function getRandomList() {
+			const randomTotalLi = Math.floor(Math.random() * 10) + 1
+			const list = document.createElement('OL')
+			for (let i = 0; i < randomTotalLi; i++) {
+				const li = document.createElement('LI')
+				li.innerText = getRandomNum()
+				list.append(li)
+			}
+			return list
+		}
+		window.onload = function () {
+			const div = document.getElementById('lists')
+			for (let i = 0; i < 5; i++) {
+				div.append(getRandomList())
+			}
+		}
+		document.querySelector('button').onclick = function () {
+			let listOfLists = document.querySelectorAll('ol')
+			for (const list of listOfLists) {
+				let liCounter = 0
+				for (const li of list.children) {
+					liCounter++
+				}
+				if (liCounter % 2 === 0) {
+					for (const li of list.children) {
+						li.style.color = 'green'
+					}
+				}
+				else {
+					for (const li of list.children) {
+						li.style.color = 'red'
+					}
+				}
+			}
+		}
+	</script>
+
+</body>
+
+</html>

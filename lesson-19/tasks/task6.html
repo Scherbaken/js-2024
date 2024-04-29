@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #19 Task - 6</title>
+</head>
+
+<body style="font-size: 26px">
+	<h1>Задача 6</h1>
+	<h3>Дано список спортсменів. Потрібно сформувати список тих, які будуть брати участь у змаганні. При цьому є два
+		стовпці. В одному відображені всі спортсмени, в іншому – список тих, хто був вибраний. При натисканні на зелену
+		стрілку спортсмен переміщається у список для змагань. При натисканні на червону стрілку спортсмен переміщається у
+		загальний список.</h3>
+	<img src="img/task6.png" alt="Image">
+
+
+	<hr>
+	<div id="task">
+		<div class="all">
+			<h3 class="all__title"> Загальний список спортсменів:</h3>
+			<div class="all__sportsmen">
+				<div class="sportsman">
+					<span class="sportsman__name">John Depp</span>
+					<img class="sportsman__img" src="img/task6/arrow_right.png" alt="Image">
+				</div>
+				<div class="sportsman">
+					<span class="sportsman__name">Sara Wik</span>
+					<img class="sportsman__img" src="img/task6/arrow_right.png" alt="Image">
+				</div>
+				<div class="sportsman">
+					<span class="sportsman__name">Den Miro</span>
+					<img class="sportsman__img" src="img/task6/arrow_right.png" alt="Image">
+				</div>
+				<div class="sportsman">
+					<span class="sportsman__name">Alan Woo</span>
+					<img class="sportsman__img" src="img/task6/arrow_right.png" alt="Image">
+				</div>
+				<div class="sportsman">
+					<span class="sportsman__name">Olga Sich</span>
+					<img class="sportsman__img" src="img/task6/arrow_right.png" alt="Image">
+				</div>
+				<div class="sportsman">
+					<span class="sportsman__name">Ivan Hal</span>
+					<img class="sportsman__img" src="img/task6/arrow_right.png" alt="Image">
+				</div>
+			</div>
+		</div>
+		<div class="select">
+			<h3 class="select__title">Список обраних спортсменів:</h3>
+			<div class="select__sportsmen"></div>
+		</div>
+	</div>
+	<style>
+		h3+img {
+			width: 500px;
+		}
+
+		#task {
+			display: flex;
+			gap: 50px;
+		}
+
+		.all,
+		.select {
+			width: 300px;
+		}
+
+		[class*='__sportsmen'] {
+			border: 4px solid black;
+			padding: 10px;
+			min-height: 55px;
+		}
+
+		.sportsman {
+			border: 4px solid black;
+			padding: 5px 10px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			cursor: pointer;
+		}
+
+		.sportsman:not(:last-child) {
+			margin-bottom: 10px;
+		}
+
+		.sportsman__img {
+			width: 50px;
+		}
+	</style>
+	<script>
+		document.querySelector('#task').addEventListener('click', (e) => {
+			if (e.target.closest('.sportsman')) {
+				const targetEl = e.target.closest('.sportsman')
+				const newEl = targetEl.cloneNode(true)
+
+				if (e.target.closest('.all')) {
+					newEl.querySelector('img').setAttribute('src', 'img/task6/arrow_left.png')
+					document.querySelector('.select__sportsmen').append(newEl)
+					targetEl.remove()
+				}
+				if (e.target.closest('.select')) {
+					newEl.querySelector('img').setAttribute('src', 'img/task6/arrow_right.png')
+					document.querySelector('.all__sportsmen').append(newEl)
+					targetEl.remove()
+				}
+			}
+		})
+
+
+
+
+
+	</script>
+
+</body>
+
+</html>
