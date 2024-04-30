@@ -71,6 +71,7 @@
 			// --------------------- методи ---------------------------
 			getMinWithdraw() {
 				let res = this.banknoteList.reduce((prevNote, note) => note.Denomination < prevNote.Denomination && note.Value !== 0 ? prevNote = note : prevNote)
+				if (res = 0) throw new Error('Вибачте, банкомат порожній')
 				return res.Denomination
 			}
 			getMaxWithdraw() {
