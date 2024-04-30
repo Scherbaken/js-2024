@@ -31,7 +31,9 @@
 				document.querySelector(".wishes").append(wishDiv)
 			}
 		}
-		window.onload = getWishes(wishList)
+		window.onload = function () {
+			getWishes(wishList)
+		}
 	</script>
 
 </body>

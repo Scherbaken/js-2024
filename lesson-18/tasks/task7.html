@@ -17,26 +17,79 @@
 	<hr>
 
 	<div class="trip">
-		<h3>Оберіть транспорт:</h3>
-		<select id="transport" name="transport">
-			<option value="500">Авто</option>
-			<option value="300">Автобус</option>
-			<option value="1000">Літак</option>
-		</select>
-		<h3>Оберіть харчування:</h3>
-		<label>Сніданок <input name="eat" type="checkbox" value="100"></label>
-		<label>Обід <input name="eat" type="checkbox" value="350"></label>
-		<label>Вечеря <input name="eat" type="checkbox" value="250"></label>
-		<h3>Оберіть гіда:</h3>
-		<label>Іван<input name="gid" type="radio" value="500"></label>
-		<label>Петро<input name="gid" type="radio" value="600"></label>
-		<label>Микола<input name="gid" type="radio" value="700"></label>
+		<div class="stages">
+			<div class="first-stage">
+				<h2 class="first-stage__title">Етап №1</h2>
+				<h3 class="first-stage__subtitle">Оберіть транспорт:</h3>
+				<select name="first-stage__transport">
+					<option value="500">Авто</option>
+					<option value="300">Автобус</option>
+					<option value="1000">Літак</option>
+				</select>
+				<h3 class="first-stage__subtitle">Оберіть харчування:</h3>
+				<label>Сніданок <input name="first-stage__eat" type="checkbox" value="100"></label>
+				<label>Обід <input name="first-stage__eat" type="checkbox" value="350"></label>
+				<label>Вечеря <input name="first-stage__eat" type="checkbox" value="250"></label>
+				<h3 class="first-stage__subtitle">Оберіть гіда:</h3>
+				<label>Іван<input name="first-stage__gid" type="radio" value="500"></label>
+				<label>Петро<input name="first-stage__gid" type="radio" value="600"></label>
+				<label>Микола<input name="first-stage__gid" type="radio" value="700"></label>
+			</div>
+			<div class="second-stage">
+				<h2 class="second-stage__title">Етап №2</h2>
+				<h3 class="second-stage__subtitle">Оберіть транспорт:</h3>
+				<select name="second-stage__transport">
+					<option value="500">Авто</option>
+					<option value="300">Автобус</option>
+					<option value="1000">Літак</option>
+				</select>
+				<h3 class="second-stage__subtitle">Оберіть харчування:</h3>
+				<label>Сніданок <input name="second-stage__eat" type="checkbox" value="100"></label>
+				<label>Обід <input name="second-stage__eat" type="checkbox" value="350"></label>
+				<label>Вечеря <input name="second-stage__eat" type="checkbox" value="250"></label>
+				<h3 class="second-stage__subtitle">Оберіть гіда:</h3>
+				<label>Іван<input name="second-stage__gid" type="radio" value="500"></label>
+				<label>Петро<input name="second-stage__gid" type="radio" value="600"></label>
+				<label>Микола<input name="second-stage__gid" type="radio" value="700"></label>
+			</div>
+			<div class="third-stage">
+				<h2 class="third-stage__title">Етап №3</h2>
+				<h3 class="third-stage__subtitle">Оберіть транспорт:</h3>
+				<select name="third-stage__transport">
+					<option value="500">Авто</option>
+					<option value="300">Автобус</option>
+					<option value="1000">Літак</option>
+				</select>
+				<h3 class="third-stage__subtitle">Оберіть харчування:</h3>
+				<label>Сніданок <input name="third-stage__eat" type="checkbox" value="100"></label>
+				<label>Обід <input name="third-stage__eat" type="checkbox" value="350"></label>
+				<label>Вечеря <input name="third-stage__eat" type="checkbox" value="250"></label>
+				<h3 class="third-stage__subtitle">Оберіть гіда:</h3>
+				<label>Іван<input name="third-stage__gid" type="radio" value="500"></label>
+				<label>Петро<input name="third-stage__gid" type="radio" value="600"></label>
+				<label>Микола<input name="third-stage__gid" type="radio" value="700"></label>
+			</div>
+		</div>
 
-		<button onclick="getTotalSum()">Підрахувати загальну вартість</button>
+		<button class="result-button">Підрахувати загальну вартість</button>
 		<label>Загальна вартість: <input class="result" type="number" value=""></label>
 	</div>
 
 	<style>
+		.stages {
+			display: flex;
+			gap: 10px;
+			margin-bottom: 40px;
+		}
+
+		.stages>div {
+			padding: 0 10px;
+		}
+
+		.stages>div:not(:last-child) {
+			border-right: 2px solid grey;
+		}
+
 		select {
 			font-size: 26px;
 			width: 250px;
@@ -62,23 +115,28 @@
 	</style>
 	<script>
 
+		document.querySelector('button').addEventListener('click', () => getTotalSum())
+
 		function getTotalSum() {
-			let transportCost = parseInt(document.getElementById("transport").value)
+			let transportCost = 0
+			const transportList = document.querySelectorAll('select')
+			for (const transport of transportList) {
+				transportCost += parseInt(transport.value)
+			}
 			let eatCost = 0
-			let eatList = document.querySelectorAll(`input[name = "eat"]`)
+			const eatList = document.querySelectorAll(`input[type = "checkbox"]`)
 			for (const input of eatList) {
 				if (input.checked) {
 					eatCost += parseInt(input.value)
 				}
 			}
 			let gidCost = 0
-			let gidList = document.querySelectorAll(`input[name = "gid"]`)
+			const gidList = document.querySelectorAll(`input[type = "radio"]`)
 			for (const input of gidList) {
-				if (input.checked) gidCost = parseInt(input.value)
+				if (input.checked) gidCost += parseInt(input.value)
 			}
 			let totalSum = transportCost + eatCost + gidCost
 			document.querySelector(".result").value = totalSum
-
 		}
 
 	</script>

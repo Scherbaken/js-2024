@@ -16,7 +16,7 @@
 	<hr>
 
 	<label>Сума в гривнях <input id="hrn" type="number" name="sumInHryvna" placeholder="0" value=""></label>
-	<div><button onclick="getConvert()">Конвертувати</button></div>
+	<div><button id="convert-btn">Конвертувати</button></div>
 	<div class="result">
 		<label>Сума в євро <input id="euro" type="number" name="sumInEuro" placeholder="0" value=""></label>
 		<label>Сума в долларах <input id="usd" type="number" name="sumInUsd" placeholder="0" value=""></label>
@@ -50,14 +50,13 @@
 	</style>
 	<script>
 
-		const dollarRate = 40
-		const euroRate = 42
-
-		function getConvert() {
+		function getConvert(euroRate = 42, dollarRate = 40) {
 			let hrn = parseInt(document.getElementById("hrn").value)
 			document.getElementById("euro").value = (hrn / euroRate).toFixed(2)
 			document.getElementById("usd").value = (hrn / dollarRate).toFixed(2)
 		}
+		const convertBtn = document.getElementById('convert-btn')
+		convertBtn.addEventListener('click', () => getConvert())
 
 	</script>
 

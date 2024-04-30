@@ -19,10 +19,10 @@
 	<div><label>Second number <input id="secondNum" name="secondNum" type="number" placeholder="0" value=""></label>
 	</div>
 	<div class="actions">
-		<button onclick="getSum()">Додати</button>
-		<button onclick="getOfftake()">Відняти</button>
-		<button onclick="getProd()">Помножити</button>
-		<button onclick="getDiv()">Поділити</button>
+		<button class="sum">Додати</button>
+		<button class="subtract">Відняти</button>
+		<button class="mult">Помножити</button>
+		<button class="divide">Поділити</button>
 	</div>
 	<div class="result"><label>Результат <input id="result" name="result" type="number" value=""></label></div>
 	<style>
@@ -51,30 +51,40 @@
 	</style>
 	<script>
 
-		function getSum() {
+		const buttonList = document.getElementsByTagName('button')
+		for (const button of buttonList) {
+			button.addEventListener('click', () => {
+				switch (button.className) {
+					case 'sum': getResult('sum')
+						break
+					case 'subtract': getResult('subtract')
+						break
+					case 'mult': getResult('multiply')
+						break
+					case 'divide': getResult('divide')
+						break
+				}
+			})
+		}
+
+		function getResult(action) {
 			let firstNum = parseInt(document.getElementById("firstNum").value)
 			let secondNum = parseInt(document.getElementById("secondNum").value)
-			let res = firstNum + secondNum
+			let res
+			switch (action) {
+				case 'sum': res = firstNum + secondNum
+					break
+				case 'subtract': res = firstNum - secondNum
+					break
+				case 'multiply': res = firstNum * secondNum
+					break
+				case 'divide': res = firstNum / secondNum
+					break
+			}
 			document.getElementById("result").value = res
 		}
-		function getOfftake() {
-			let firstNum = parseInt(document.getElementById("firstNum").value)
-			let secondNum = parseInt(document.getElementById("secondNum").value)
-			let res = firstNum - secondNum
-			document.getElementById("result").value = res
-		}
-		function getProd() {
-			let firstNum = parseInt(document.getElementById("firstNum").value)
-			let secondNum = parseInt(document.getElementById("secondNum").value)
-			let res = firstNum * secondNum
-			document.getElementById("result").value = res
-		}
-		function getDiv() {
-			let firstNum = parseInt(document.getElementById("firstNum").value)
-			let secondNum = parseInt(document.getElementById("secondNum").value)
-			let res = firstNum / secondNum
-			document.getElementById("result").value = res
-		}
+
+
 
 	</script>
 
