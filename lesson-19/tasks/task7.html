@@ -15,57 +15,57 @@
 		частини екрану (top>maxTop) вона знову повинна з’явитись у верхній частині екрану (top=0).</h3>
 
 	<hr>
-	<div id="task">
 
-
-	</div>
 	<style>
-		#task {
-			border: 3px solid black;
-			width: 800px;
-			height: 600px;
-			margin: 0 auto;
+		body {
 			position: relative;
-			overflow: hidden;
-			background: url('img/task7/bg.jpg') 0 0 / cover no-repeat;
-		}
-
-		.snow {
-			position: absolute;
-			z-index: 2;
-			background: url('img/task7/snowflakes.png') 0 0 / cover no-repeat;
 		}
 	</style>
 	<script>
 
-		function generateSnowflakes() {
-			const snowflake = document.createElement('div')
-			snowflake.className = 'snow'
-			let snowflakeWidth = 40 + Math.floor(Math.random() * 61)
-			let snowflakeLeft = Math.floor(Math.random() * 851) - 50
-			snowflake.style.cssText = `width: ${snowflakeWidth}px; height: ${snowflakeWidth}px; left: ${snowflakeLeft}px; top: -100px`
-			document.getElementById('task').append(snowflake)
-		}
-		function getAnimatedSnowflakes() {
-			const snowflakes = document.querySelectorAll('.snow')
-			for (const snowflake of snowflakes) {
-				let snowflakeTop = parseFloat(snowflake.style.top)
-				snowflakeTop += Math.floor(Math.random() * 2) + 1
-				snowflake.style.top = snowflakeTop + 'px'
-				if (snowflakeTop >= 600) {
-					snowflake.style.top = '-100px'
-				}
+		class Snowflake {
+			constructor() {
+				this.snowflake = document.createElement('div')
+				this.size = 40 + Math.floor(Math.random() * 61)
+				this.positionHor = Math.floor(Math.random() * (window.innerWidth + 1))
+				this.positionVert = -100
 			}
+
+			createSnowflake() {
+				this.snowflake.className = 'snowflake'
+				this.snowflake.style.cssText = `
+				position: absolute;
+				background: url('img/task7/snowflakes.png') 0 0 / cover no-repeat;
+				left: ${this.positionHor}px;
+				top: ${this.positionVert}px;
+				width: ${this.size}px;
+				height: ${this.size}px;
+				`
+				document.body.append(this.snowflake)
+			}
+
+			changeTop(step) {
+				let snowflakeTop = parseInt(this.snowflake.style.top)
+				snowflakeTop += step
+				if (snowflakeTop > window.innerHeight) snowflakeTop = -100
+				this.snowflake.style.top = snowflakeTop + 'px'
+			}
+
 		}
-		window.onload = function () {
-			let counter = 0
-			const intervalID = setInterval(() => {
-				counter++
-				generateSnowflakes()
-				if (counter === 20) clearInterval(intervalID)
-			}, 1000);
-			setInterval(getAnimatedSnowflakes, 10)
+
+		function snow() {
+			let totalSnowflakes = 0
+			let intervalCreate = setInterval(() => {
+				let snowflakeObj = new Snowflake()
+				snowflakeObj.createSnowflake()
+				let step = Math.floor(Math.random() * 3) + 1
+				let intervalAnimation = setInterval(() => snowflakeObj.changeTop(step), 10)
+				totalSnowflakes++
+				if (totalSnowflakes === 30) clearInterval(intervalCreate)
+			}, 500)
 		}
+
+		window.onload = function () { snow() }
 	</script>
 
 </body>
