@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #20 - Task -</title>
+</head>
+
+<body>
+
+	<style>
+		.game {
+			font-size: 26px;
+			position: relative;
+			width: 100%;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.start-btn {
+			font-size: 26px;
+			padding: 10px 15px;
+			border-radius: 4px;
+			box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+		}
+
+		.cucaracha {
+			position: absolute;
+			width: 70px;
+			height: 90px;
+			background: url('img/1.png') center / cover no-repeat;
+		}
+	</style>
+	<script>
+
+
+		class Cucaracha {
+			constructor() {
+				this.stepX = this.getStep()
+				this.stepY = this.getStep()
+				this.el = this.render()
+			}
+
+			getStep() {
+				const step = Math.floor(Math.random() * 10) - 5
+				if (step === 0) return this.getStep()
+				else return step
+			}
+
+			moveTo(stepX, stepY) {
+				const newLeft = parseFloat(this.el.style.left) + stepX
+				const newTop = parseFloat(this.el.style.top) + stepY
+				this.el.style.left = newLeft + 'px'
+				this.el.style.top = newTop + 'px'
+			}
+			move() {
+				const left = parseFloat(this.el.style.left)
+				const top = parseFloat(this.el.style.top)
+				const maxLeft = window.innerWidth - 50
+				const maxTop = window.innerHeight - 70
+				if (left < 0 || left > maxLeft) this.stepX = -this.stepX
+				if (top < 0 || top > maxTop) this.stepY = -this.stepY
+				this.moveTo(this.stepX, this.stepY)
+			}
+			start() {
+				const interval = setInterval(() => {
+					this.move()
+					this.el.onmousedown = () => {
+						clearInterval(interval)
+						this.el.style.background = "url('img/2.png') center / cover no-repeat"
+					}
+				}, 10);
+			}
+
+			render() {
+				const cucarachaEl = document.createElement('div')
+				cucarachaEl.className = 'cucaracha'
+				const startLeft = window.innerWidth / 2 - 25
+				const startTop = window.innerHeight / 2 - 35
+				cucarachaEl.style.left = startLeft + 'px'
+				cucarachaEl.style.top = startTop + 'px'
+				document.querySelector('.game').append(cucarachaEl)
+				return cucarachaEl
+			}
+		}
+
+
+		class Game {
+			constructor() {
+				this.el = this.render()
+			}
+			startGame() {
+				for (let i = 0; i < 10; i++) {
+					const cucaracha = new Cucaracha()
+					cucaracha.start()
+				}
+			}
+			createStartButton() {
+				const btn = document.createElement('button')
+				btn.innerText = 'START'
+				btn.className = 'start-btn'
+				btn.onclick = () => {
+					btn.style.visibility = 'hidden'
+					this.startGame()
+				}
+				return btn
+			}
+			render() {
+				const gameField = document.createElement('div')
+				gameField.className = 'game'
+				gameField.append(this.createStartButton())
+				document.body.prepend(gameField)
+				return gameField
+			}
+		}
+
+		const tryToCatchCucaracha = new Game()
+
+	</script>
+
+</body>
+
+</html>
