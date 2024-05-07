@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #21 Task №2 </title>
+</head>
+
+<body>
+
+	<h1>Задача №2</h1>
+	<h3>Створити клас Bank, у якому зберігається масив клієнтів. Виконати такі операції</h3>
+	<ul>
+		<li>Вивести всіх простих клієнтів;</li>
+		<li>Вивести всіх клієнтів GoldenClient;</li>
+		<li>Знайти сумарну кількість грошей на рахунку;</li>
+	</ul>
+
+	<hr>
+	<style>
+		body {
+			font-size: 24px;
+		}
+	</style>
+	<script>
+		class Client {
+			constructor(id, fullName, totalMoney) {
+				this.id = id
+				this.fullName = fullName
+				this.totalMoney = totalMoney
+			}
+			addMoney(value) {
+				this.totalMoney += value
+			}
+			withdrawMoney(value) {
+				if (value > this.totalMoney) throw new Error('Не вистачає коштів')
+				this.totalMoney -= value
+			}
+			toString() {
+				return `${this.fullName} (#${this.id}): ${this.totalMoney}$`
+			}
+		}
+
+		class GoldenClient extends Client {
+			constructor(id, fullName, totalMoney, creditLimit, percentForUsingCredit) {
+				super(id, fullName, totalMoney)
+				this.creditLimit = creditLimit
+				this.percentForUsingCredit = percentForUsingCredit
+			}
+			withdrawMoney(value) {
+				if (value > this.totalMoney) {
+					if (value > this.totalMoney + this.creditLimit) throw new Error('Недостатньо коштів')
+					this.creditLeft = this.creditLimit - value + this.totalMoney
+					this.totalMoney = 0
+				}
+				else this.totalMoney -= value
+			}
+
+			addMoney(value) {
+				if (this.totalMoney === 0) {
+					let creditInUse = this.creditLimit - this.creditLeft
+					if (value >= creditInUse) {
+						this.totalMoney = value - creditInUse
+						this.creditLeft = this.creditLimit
+					}
+					else this.creditLeft += value
+				}
+			}
+			getYearPenalty() {
+				return (this.creditLimit - this.creditLeft) * this.percentForUsingCredit / 100
+			}
+			getMonthPenalty() {
+				return this.getYearPenalty() / 12
+			}
+			toString() {
+				return `${super.toString()} / credit - ${this.creditLeft ?? this.creditLimit}$ (${this.percentForUsingCredit}%)`
+			}
+		}
+
+
+		const clientList = [
+			new Client('00001', 'Ivan Ivanov', 1000),
+			new Client('00002', 'Petro Petrov', 2000),
+			new Client('00003', 'Sidor Sidorov', 3000),
+			new GoldenClient('00004', 'Cristiano Ronaldo', 5000000, 20000000, 12),
+			new GoldenClient('00005', 'Killian Mbappe', 3000000, 10000000, 12),
+			new GoldenClient('00006', 'Tony Kroos', 2000000, 7000000, 12)
+		]
+
+		class Bank {
+			constructor(clientList) {
+				this.clientList = clientList
+			}
+			getListOfSimpleClients() {
+				return this.clientList.filter(client => !client.creditLimit)
+			}
+			getListOfGoldenClients() {
+				return this.clientList.filter(client => client.creditLimit)
+			}
+			getTotalMoney() {
+				return this.clientList.reduce((prevSum, client) => prevSum + client.totalMoney, 0)
+			}
+		}
+
+
+		const bank = new Bank(clientList)
+
+		// bank.clientList[3].withdrawMoney(4000000)
+
+		document.write(`${bank.getListOfSimpleClients()}<br>`)
+		document.write(`${bank.getListOfGoldenClients()}<br>`)
+		document.write(`Загальна сума грошей на рахунках у банку: ${bank.getTotalMoney()}$`)
+
+	</script>
+
+</body>
+
+</html>

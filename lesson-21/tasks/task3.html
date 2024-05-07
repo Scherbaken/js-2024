@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #21 Task №3 </title>
+</head>
+
+<body>
+
+	<h1>Задача №3</h1>
+	<h3>Розробити Класи</h3>
+	<table border="2px">
+		<tr>
+			<th>House</th>
+			<th>Dog</th>
+			<th>Bird</th>
+		</tr>
+		<tr>
+			<td><span>---властивості---</span>
+				<ul>
+					<li>Координата Х</li>
+					<li>Координата У</li>
+					<li>Шлях до зображення</li>
+					<li>Інтервал оновлення</li>
+				</ul>
+				<span>---методи---</span>
+				<ul>
+					<li>Генерування елемента розмітки</li>
+					<li>Оновлення через вказаний інтервал (збільшення або зменшення масштабу (об'єкт не рухається))</li>
+				</ul>
+			</td>
+			<td><span>---властивості---</span>
+				<ul>
+					<li>Координата Х</li>
+					<li>Координата У</li>
+					<li>Шлях до зображення</li>
+					<li>Інтервал оновлення</li>
+				</ul>
+				<span>---методи---</span>
+				<ul>
+					<li>Генерування елемента розмітки</li>
+					<li>Оновлення через вказаний інтервал (випадкове зміщення по горизонталі (зміна координати Х))</li>
+				</ul>
+			</td>
+			<td><span>---властивості---</span>
+				<ul>
+					<li>Координата Х</li>
+					<li>Координата У</li>
+					<li>Шлях до зображення</li>
+					<li>Інтервал оновлення</li>
+				</ul>
+				<span>---методи---</span>
+				<ul>
+					<li>Генерування елемента розмітки</li>
+					<li>Оновлення через вказаний інтервал (випадкове переміщення у довільному порядку)</li>
+				</ul>
+			</td>
+		</tr>
+	</table>
+	<h3>Подумайте яким має бути спільний клас предок.</h3>
+	<hr>
+
+	<div class="task">
+		<div class="cnt1"></div>
+		<div class="cnt2"></div>
+		<div class="cnt3"></div>
+	</div>
+	<style>
+		body {
+			font-size: 24px;
+		}
+
+		th,
+		td {
+
+			padding: 5px;
+		}
+
+		p {
+			margin: 0;
+		}
+
+		.task {
+			display: flex;
+			gap: 20px;
+			flex-wrap: wrap;
+			justify-content: space-evenly;
+		}
+
+		[class*="cnt"] {
+			width: 400px;
+			height: 300px;
+			position: relative;
+			border: 2px solid blue;
+			border-radius: 10px;
+		}
+
+		img {
+			position: absolute;
+		}
+	</style>
+	<script>
+
+		class Image {
+			constructor(left, top, imgSrc, interval, operation) {
+				this.left = left
+				this.top = top
+				this.imgSrc = imgSrc
+				this.interval = interval
+				this.el = this.render()
+				this.refreshImg(operation)
+			}
+			render() {
+				const img = document.createElement('img')
+				img.setAttribute('src', this.imgSrc)
+				img.style.left = `${this.left}px`
+				img.style.top = `${this.top}px`
+				img.style.width = '200px'
+				img.style.height = '200px'
+				return img
+			}
+
+			scaleImg() {
+				const step = 50
+				let elWidth = parseInt(this.el.style.width)
+				let newWidth
+				if (elWidth <= 200) {
+					newWidth = elWidth + step
+				}
+				else {
+					newWidth = elWidth - step
+				}
+				let newHeight = newWidth
+				this.el.style.width = `${newWidth}px`
+				this.el.style.height = `${newHeight}px`
+			}
+			getRandom(min, max) {
+				let res = min + Math.floor(Math.random() * (max - min + 1))
+				return res
+			}
+			moveImgToX() {
+				let randomLeft = this.getRandom(20, 180)
+				this.el.style.left = `${randomLeft}px`
+			}
+
+			moveImgToRandPos() {
+				let randomLeft = this.getRandom(20, 180)
+				let randomTop = this.getRandom(10, 90)
+				this.el.style.left = `${randomLeft}px`
+				this.el.style.top = `${randomTop}px`
+			}
+
+			refreshImg(operation) {
+				if (operation === 1) setInterval(() => this.scaleImg(), this.interval)
+				if (operation === 2) setInterval(() => this.moveImgToX(), this.interval)
+				if (operation === 3) setInterval(() => this.moveImgToRandPos(), this.interval)
+			}
+		}
+
+		class House extends Image {
+			constructor(left, top, imgSrc, interval, operation) {
+				super(left, top, imgSrc, interval, operation)
+			}
+			scale() { super.refreshImg(operation) }
+		}
+
+		class Dog extends Image {
+			constructor(left, top, imgSrc, interval, operation) {
+				super(left, top, imgSrc, interval, operation)
+			}
+			move() { super.refreshImg(operation) }
+		}
+
+		class Bird extends Image {
+			constructor(left, top, imgSrc, interval, operation) {
+				super(left, top, imgSrc, interval, operation)
+			}
+			randomMove() { super.refreshImg(operation) }
+		}
+		const houseImg = new House(50, 20, 'img/task3/house.png', 2000, 1)
+		document.querySelector('.cnt1').append(houseImg.el)
+		const dogImg = new Dog(50, 20, 'img/task3/dog.png', 2000, 2)
+		document.querySelector('.cnt2').append(dogImg.el)
+		const birdImg = new Bird(50, 20, 'img/task3/bird.jpg', 2000, 3)
+		document.querySelector('.cnt3').append(birdImg.el)
+	</script>
+
+</body>
+
+</html>
