@@ -17,14 +17,130 @@
 
 	<hr>
 
+	<div class="task">
+		<h4>Чи можна виправити оцінку</h4>
+		<label>Введіть місяць навчання (від 1 до 12): <input name="month" class="month" type="text"></label>
+		<label>Введіть оцінку (від 1 до 12): <input name="grade" class="grade" type="text"></label>
+		<button>Результат</button>
+		<span class="result"></span>
+	</div>
+
 	<style>
 		body {
+			font-size: 24px;
+		}
+
+		.task {
+			display: grid;
+			gap: 20px;
+		}
+
+		button {
+			justify-self: start;
+			font-size: 24px;
+		}
+
+		input {
 			font-size: 24px;
 		}
 	</style>
 	<script>
 
+		const result = document.querySelector('.result')
+		const calcBtn = document.querySelector('button')
+		calcBtn.onclick = () => {
+			let monthValue = parseFloat(document.querySelector('.month').value)
+			let gradeValue = parseFloat(document.querySelector('.grade').value)
+			isCorrectPossible(monthValue, gradeValue)
+		}
 
+
+		class IsNotNumber extends Error {
+			constructor() {
+				super()
+				this.message = 'Не коректний ввід даних. Не є числом'
+				this.name = 'IsNotNumber'
+			}
+		}
+		class IsNotInRange extends Error {
+			constructor() {
+				super()
+				this.message = 'Не коректний ввід даних. За межами допустимих значень'
+				this.name = 'IsNotInRange'
+			}
+		}
+		class IsHoliday extends Error {
+			constructor() {
+				super()
+				this.name = 'IsHoliday'
+				this.message = 'Колледж закритий на канікули'
+			}
+		}
+
+
+		function isCorrectPossible(month, grade) {
+			let isMonthTrue = monthValidate(month)
+			let isGradeTrue = gradeValidate(grade)
+
+			if (isMonthTrue && isGradeTrue) {
+				if (grade <= 5) {
+					if (month === 5 || month === 12) {
+						result.style.color = 'red'
+						result.innerText = 'Оцінку вже не виправити. Останній місяць семестру'
+					}
+					else {
+						result.style.color = 'green'
+						result.innerText = 'Оцінку можна виправити'
+					}
+				}
+				else {
+					result.style.color = 'blue'
+					result.innerText = 'У вас не погана оцінка'
+				}
+			}
+		}
+
+		function monthValidate(value) {
+			try {
+				if (isNaN(value)) throw new IsNotNumber()
+				if (value <= 0 || value > 12) throw new IsNotInRange()
+				if (value === 1 || (value >= 6 && value <= 8)) throw new IsHoliday()
+			}
+			catch (err) {
+				if (err instanceof IsNotNumber) {
+					result.innerText = err.message
+				}
+				else if (err instanceof IsNotInRange) {
+					result.innerText = err.message
+				}
+				else if (err instanceof IsHoliday) {
+					result.innerText = err.message
+				}
+				else result.innerText = err.message
+				result.style.color = 'red'
+				return false
+			}
+			return true
+		}
+
+		function gradeValidate(value) {
+			try {
+				if (isNaN(value)) throw new IsNotNumber()
+				if (value <= 0 || value > 12) throw new IsNotInRange()
+			}
+			catch (err) {
+				if (err instanceof IsNotNumber) {
+					result.innerText = err.message
+				}
+				else if (err instanceof IsNotInRange) {
+					result.innerText = err.message
+				}
+				else result.innerText = err.message
+				result.style.color = 'red'
+				return false
+			}
+			return true
+		}
 
 	</script>
 
