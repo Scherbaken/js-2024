@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #22 - Task 10 </title>
+</head>
+
+<body>
+
+	<h1>Задача 10</h1>
+	<h3>Дано дата виробництва йогурта (вводимо рік, місяць, день) та кількість днів придатності. Визначити чи є він
+		придатним на даний момент.</h3>
+	<hr>
+
+	<div class="task">
+		<h4 class="title">Введіть дату виробництва:</h4>
+		<label>Введіть рік: <input name="year" type="number"></label>
+		<label>Введіть місяць: <input name="month" type="number"></label>
+		<label>Введіть число: <input name="day" type="number"></label>
+		<label>Введіть кількість днів придатності: <input name="total-days" type="number"></label>
+		<button class="result-btn">Отримати результат</button>
+		<div class="result"></div>
+	</div>
+
+	<style>
+		body,
+		input,
+		.result-btn {
+			font-size: 26px;
+		}
+
+		.task {
+			display: grid;
+			justify-items: start;
+			gap: 15px;
+		}
+	</style>
+	<script>
+
+		document.querySelector('.result-btn').onclick = () => getResult(getProduceDate())
+
+		function getProduceDate() {
+			const year = document.querySelector('[name = "year"]').value
+			const month = document.querySelector('[name = "month"]').value
+			const dayNum = document.querySelector('[name = "day"]').value
+			let produceDate = new Date(year, month - 1, dayNum)
+			return produceDate
+		}
+
+		function getResult(produceDate) {
+			const currentDate = new Date()
+			const totalDays = document.querySelector('[name = "total-days"]').value
+			const resultDiv = document.querySelector('.result')
+			if (produceDate > currentDate) {
+				resultDiv.textContent = 'Не вірно вказана дата виробництва'
+				return
+			}
+			let difference = currentDate - produceDate
+			let totalMs = totalDays * 24 * 60 * 60 * 1000
+			if (difference > totalMs) resultDiv.textContent = 'Не придатний до вживання'
+			else resultDiv.textContent = 'Придатний до вживання'
+		}
+
+
+
+
+	</script>
+</body>
+
+</html>
