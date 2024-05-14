@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #22 - Task 4 </title>
+</head>
+
+<body>
+
+	<h1>Задача 4</h1>
+	<h3>Створити функцію, яка дозволяє визначити, чи знаходиться вказана дата і час у межах поточного тижня (від
+		понеділка 0 год, 0хв, до неділі 23год.59хв)</h3>
+	<hr>
+
+	<div class="task">
+		<h4 class="title">Введіть дату:</h4>
+		<label>Введіть рік: <input name="year" type="number"></label>
+		<label>Введіть місяць: <input name="month" type="number"></label>
+		<label>Введіть число: <input name="day" type="number"></label>
+		<label>Введіть години: <input name="hour" type="number"></label>
+		<label>Введіть хвилини: <input name="minute" type="number"></label>
+		<button class="result-btn">Отримати результат</button>
+		<div class="result"></div>
+	</div>
+
+	<style>
+		body,
+		input,
+		.result-btn {
+			font-size: 26px;
+		}
+
+		.task {
+			display: grid;
+			justify-items: start;
+			gap: 15px;
+		}
+	</style>
+	<script>
+
+		document.querySelector('.result-btn').onclick = () => getResult(getCheckDate())
+
+		function getCheckDate() {
+			const year = document.querySelector('[name = "year"]').value
+			const month = document.querySelector('[name = "month"]').value
+			const dayNum = document.querySelector('[name = "day"]').value
+			const hour = document.querySelector('[name = "hour"]').value
+			const minute = document.querySelector('[name = "minute"]').value
+			let checkDate = new Date(year, month - 1, dayNum, hour, minute)
+			return checkDate
+		}
+
+		function getResult(day) {
+			const currentDate = new Date()
+			const currentDay = currentDate.getDay()
+			let startWeek = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - (currentDay - 1), 0, 0, 0)
+			let endWeek = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + (7 - currentDay), 23, 59, 59)
+			if (day > startWeek && day < endWeek) document.querySelector('.result').innerText = 'Вказаний день знаходиться у межах поточного тижня'
+			else document.querySelector('.result').innerText = 'Вказаний день не у заданих межах поточного тижня'
+		}
+
+
+
+
+	</script>
+</body>
+
+</html>

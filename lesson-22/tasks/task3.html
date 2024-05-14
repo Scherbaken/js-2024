@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #22 - Task 3 </title>
+</head>
+
+<body>
+
+	<h1>Задача 3</h1>
+	<h3>Визначити скільки залишилось до кінця робочого дня (до 17.00)</h3>
+	<hr>
+
+	<div class="task">
+		<h4 class="title">До кінця робочого дня залишилось:</h4>
+		<span class="timeleft"></span>
+
+	</div>
+
+	<style>
+		body {
+			font-size: 26px;
+		}
+
+		.task {
+			display: flex;
+			gap: 10px;
+			align-items: center;
+		}
+	</style>
+	<script>
+
+		function getTimeLeft(value) {
+			const curentTime = new Date()
+			const endWorkDay = new Date()
+			endWorkDay.setHours(value)
+			endWorkDay.setMinutes(0)
+			endWorkDay.setSeconds(0)
+			let timeLeft = endWorkDay - curentTime
+			if (timeLeft < 0) return -1
+			return getTimeFromMs(timeLeft)
+
+		}
+		function getTimeFromMs(value) {
+			const seconds = Math.floor(value / 1000);
+			const secondsLeft = seconds % 60
+			const minutes = Math.floor(seconds / 60)
+			const minutesLeft = minutes % 60
+			const hours = Math.floor(minutes / 60)
+			const hoursLeft = hours % 24
+
+			return `${hoursLeft}:${minutesLeft.toString().padStart(2, '0')}:${secondsLeft.toString().padStart(2, '0')}`;
+		}
+
+
+		let interval = setInterval(() => {
+			let res = getTimeLeft(22)
+			if (res === -1) {
+				document.querySelector('.title').innerText = 'Робочий день скінчився'
+				clearInterval(interval)
+			}
+			else document.querySelector('.timeleft').innerText = res
+		}, 1000)
+
+
+	</script>
+</body>
+
+</html>

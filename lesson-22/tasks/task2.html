@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #22 - Task 2 </title>
+</head>
+
+<body>
+
+	<h1>Задача 2</h1>
+	<h3>Вводимо час початку процедури (процедура триває 30хв). Визначити, чи процедура ще триває.</h3>
+	<hr>
+
+	<div class="task">
+		<h5>Поточний час:</h5>
+		<span class="current"></span>
+		<h4>Введіть час початку процедури: </h4>
+		<label>Години: <input class="hours" name="hours" type="number"></label>
+		<label>Хвилини: <input class="minutes" name="minutes" type="number"></label>
+		<button>Чи триває ще процедура</button>
+		<span class="result"></span>
+	</div>
+
+	<style>
+		body {
+			font-size: 26px;
+		}
+
+		.task {
+			display: grid;
+			gap: 20px;
+		}
+
+		h5 {
+			margin-bottom: 0;
+		}
+
+		input {
+			font-size: 24px;
+			width: 100px;
+		}
+
+		button {
+			justify-self: start;
+			font-size: 24px;
+			padding: 5px;
+		}
+	</style>
+	<script>
+
+
+		setInterval(() => {
+			let date = new Date()
+			const currentDate = document.querySelector('.current')
+			currentDate.innerText = date.toTimeString()
+		}, 1)
+
+		function isProcedureContinue(hour, min, duration = 30) {
+			let startProcedure = new Date()
+			startProcedure.setHours(hour)
+			startProcedure.setMinutes(min)
+			let durationInMs = duration * 60 * 1000
+			const currentDate = new Date()
+			let differenceTime = currentDate - startProcedure
+			if (differenceTime < 0) return 1
+			else if (differenceTime > 0 && differenceTime < durationInMs) return 2
+			else return 3
+		}
+		function getResult() {
+			let hours = parseInt(document.querySelector('.hours').value)
+			let minutes = parseInt(document.querySelector('.minutes').value)
+			let res = isProcedureContinue(hours, minutes)
+			const resContainer = document.querySelector('.result')
+			if (res === 1) resContainer.innerText = 'Процедура ще не почалась'
+			else if (res === 2) resContainer.innerText = 'Процедура ще триває'
+			else resContainer.innerText = 'Процедура завершилась'
+		}
+
+		const resBtn = document.querySelector('button')
+		resBtn.onclick = getResult
+
+
+	</script>
+</body>
+
+</html>
