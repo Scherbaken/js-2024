@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lesson #23 - Tasks - </title>
+</head>
+
+<body>
+	<style>
+		body {
+			font-size: 26px;
+		}
+
+		p {
+			margin: 0px;
+		}
+	</style>
+
+
+	<ul type="none">
+		<li>Задача 1. Дано масив рядків. Вивести ті, у яких є цифри (використати метод test та регулярні вирази).</li>
+		<li>Задача 2. Дано масив рядків. Вивести ті, у яких немає цифр.</li>
+		<li>Задача 3. Дано масив рядків. Вивести ті, у яких є голосні літери.</li>
+		<li>Задача 4. Дано масив рядків. Вивести ті, у яких немає голосних літер.</li>
+		<li>Задача 5. Дано масив рядків. Вивести ті, у яких є або цифра 1 або цифра 3.</li>
+		<li>Задача 6. Дано рядок тексту, вивести усі числа, які є у тексті.</li>
+		<li>Задача 7. Дано рядок тексту. Знайти усі знаки пунктуації, які були використано.</li>
+		<li>Задача 8. Дано рядок тексту. Вивести усі складові, які розділені розділовими знаками.</li>
+		<li>Задача 9. Дано рядок тексту. Перевірити, чи містить він дату у форматі dd.mm.yyyy (dd- день, mm- місяць, yyyy-
+			рік).</li>
+		<li>Задача 10. Дано рядок тексту. Підрахувати кількість двоцифрових чисел у рядку.</li>
+		<li>Задача 11. Визначити чи може бути рядок тексту номером банківської картки (приклад: «4142-3433-2323-3434»).
+			Знайти усі такі номери.</li>
+		<li>Задача 12. Дано адресу сайту. Визначити, чи є він урядовим (містить домен “gov”)</li>
+		<li>Задача 13. Вибрати усі роки після 2021 року з отриманого повідомлення</li>
+		<li>Задача 14. Дано номер телефону. Перевірити, чи є цей телефон телефоном з України (починаєтсья на «+38»)</li>
+		<li>Задача 15. Користувач вводить прізвище та ім’я в одному рядку через пробіл. Замінити пробіл на дефіс.</li>
+		<li>Задача 16. Користувач вводить дату у форматі «день.місяць.рік». Отримати рядкове представлення дати у форматі
+			«день/місяць/рік»</li>
+		<li>Задача 17. Користувач вводить день (номер дня (0-6) або «sun,mon,tue,wed,thu,fri,sat»). Визначити, чи є це
+			день вихідним</li>
+	</ul>
+
+	<hr>
+	<div>
+		<div class="task1"></div>
+		<hr>
+		<div class="task2"></div>
+		<hr>
+		<div class="task3"></div>
+		<hr>
+		<div class="task4"></div>
+		<hr>
+		<div class="task5"></div>
+		<hr>
+		<div class="task6"></div>
+		<hr>
+		<div class="task7"></div>
+		<hr>
+		<div class="task8"></div>
+		<hr>
+		<div class="task9"></div>
+		<hr>
+		<div class="task10"></div>
+		<hr>
+		<div class="task11"></div>
+		<hr>
+		<div class="task12"></div>
+		<hr>
+		<div class="task13"></div>
+		<hr>
+		<div class="task14"></div>
+		<hr>
+		<div class="task15"></div>
+		<hr>
+		<div class="task16"></div>
+		<hr>
+		<div class="task17"></div>
+		<hr>
+	</div>
+	<script>
+
+		// Дано масив рядків:
+
+		let stringsList = ['1998', 'Hello', 'AM3786BB', 'Bye', 'zzzzzz', '2000000', 'California', 'rbtnzkhrf']
+
+		// Задача 1. Вивести ті, у яких є цифри (використати метод test та регулярні вирази).
+
+		stringsList.forEach(elem => {
+			if (/\d/.test(elem)) {
+				const resDiv = document.querySelector('.task1')
+				let res = document.createElement('p')
+				res.innerText = elem
+				resDiv.append(res)
+			}
+		});
+
+		//Задача 2. Вивести ті, у яких немає цифр.
+
+		stringsList.forEach(elem => {
+			if (/^\D*$/.test(elem)) {
+				const resDiv = document.querySelector('.task2')
+				let res = document.createElement('p')
+				res.innerText = elem
+				resDiv.append(res)
+			}
+		})
+
+		//Задача 3. Вивести ті, у яких є голосні літери.
+
+		stringsList.forEach(elem => {
+			if (/[aoeui]/i.test(elem)) {
+				const resDiv = document.querySelector('.task3')
+				let res = document.createElement('p')
+				res.innerText = elem
+				resDiv.append(res)
+			}
+		})
+
+		// Задача 4. Вивести ті, у яких немає голосних літер.
+
+		stringsList.forEach(elem => {
+			if (/^[^aoeui0-9]*$/i.test(elem)) {
+				const resDiv = document.querySelector('.task4')
+				let res = document.createElement('p')
+				res.innerText = elem
+				resDiv.append(res)
+			}
+		})
+		// Задача 5. Вивести ті, у яких є або цифра 1 або цифра 3.
+
+		stringsList.forEach(elem => {
+			if (/[13]/.test(elem)) {
+				const resDiv = document.querySelector('.task5')
+				let res = document.createElement('p')
+				res.innerText = elem
+				resDiv.append(res)
+			}
+		})
+
+		// Дано рядок тексту:
+
+		let userString = 'Sarah returned home on 25.06.2023, feeling rejuvenated and inspired by her journey! She had just turned 29. She booked a flight to Italy, where she planned to spend 10 days traveling from city to city.'
+
+		// Задача 6. Вивести усі числа, які є у тексті.
+
+		document.querySelector('.task6').innerText = userString.match(/\d+/g)
+
+		// Задача 7. Знайти усі знаки пунктуації, які були використано.
+
+		document.querySelector('.task7').innerText = userString.match(/[.,!?:;]/g).join(' ')
+
+		// Задача 8. Вивести усі складові, які розділені розділовими знаками.
+
+		let stringPartsArray = userString.split(/[.,!?:;]/)
+		stringPartsArray.forEach(elem => {
+			const resDiv = document.querySelector('.task8')
+			let res = document.createElement('p')
+			res.innerText = elem
+			resDiv.append(res)
+		})
+
+		// Задача 9. Перевірити, чи містить він дату у форматі dd.mm.yyyy (dd- день, mm- місяць, yyyy-рік).
+
+		if (/\b\d{2}.\d{2}.\d{4}\b/.test(userString)) {
+			document.querySelector('.task9').innerText = `Рядок містить дату у форматі dd.mm.yyyy (dd- день, mm- місяць, yyyy-рік): ${userString.match(/\b\d{2}.\d{2}.\d{4}\b/)}`
+		}
+		else document.querySelector('.task9').innerText = 'Рядок не містить дату у форматі dd.mm.yyyy (dd- день, mm- місяць, yyyy-рік)'
+
+		// Задача 10. Підрахувати кількість двоцифрових чисел у рядку.
+
+		document.querySelector('.task10').innerText = userString.match(/\b\d{2}\b/g).length
+
+		//Задача 11. Визначити чи може бути рядок тексту номером банківської картки (приклад: «4142-3433-2323-3434»). Знайти усі такі номери.
+
+		let userString2 = 'The first charge was on her Visa card with the number 4142-3433-2323-3434, and it was for $78.99 at a store she had never heard of. The second charge was on her MasterCard, numbered 5154-6767-8989-1010, for $120.50 at a restaurant in a different city.'
+
+		if (/\b\d{4}-\d{4}-\d{4}-\d{4}\b/g.test(userString2)) {
+			document.querySelector('.task11').innerText = userString2.match(/\b\d{4}-\d{4}-\d{4}-\d{4}\b/g)
+		}
+		else document.querySelector('.task11').innerText = 'Номерів карток у форматі «4142-3433-2323-3434» в тексті не знайдено'
+
+		// Задача 12. Дано адресу сайту. Визначити, чи є він урядовим (містить домен “gov”)
+
+		let userString3 = 'https://www.rnbo.gov.ua/'
+
+		if (/\.gov\.?/.test(userString3)) {
+			document.querySelector('.task12').innerText = `Так, цей сайт є урядовим (${userString3})`
+		}
+		else document.querySelector('.task12').innerText = `Цей сайт не є урядовим (${userString3})`
+
+		// Задача 13. Вибрати усі роки після 2021 року з отриманого повідомлення
+
+		let userString4 = 'In the years 2005, 2018, 2010, 2021, 2145, 2234, 2450, 2653, 2765, 2879, 3002, and 3056, significant advancements in technology and society were observed.'
+
+		document.querySelector('.task13').innerText = userString4.match(/(\b202[2-9]\b)|(\b20[3-9]\d\b)|(\b2[1-9]\d{2}\b)|(\b[3-9]\d{3}\b)/g)
+
+		// Задача 14. Дано номер телефону. Перевірити, чи є цей телефон телефоном з України (починаєтсья на «+38»)
+
+		let userPhoneNumber = '+34(555)123-4567'
+		if (userPhoneNumber.startsWith("+38")) {
+			document.querySelector('.task14').innerText = `Номер ${userPhoneNumber} є телефоном України`
+		}
+		else document.querySelector('.task14').innerText = `Номер ${userPhoneNumber} не є телефоном України`
+
+		// Задача 15. Користувач вводить прізвище та ім’я в одному рядку через пробіл. Замінити пробіл на дефіс.
+
+		let userName = prompt('Введіть ім\'я та прізвище через пробіл:')
+		document.querySelector('.task15').innerText = userName.replace(' ', '-')
+
+		// Задача 16. Користувач вводить дату у форматі «день.місяць.рік». Отримати рядкове представлення дати у форматі «день/місяць/рік»
+
+		let userData = prompt('Введіть дату у форматі «день.місяць.рік»')
+		document.querySelector('.task16').innerText = userData.replaceAll('.', '/')
+
+		// Задача 17. Користувач вводить день (номер дня (0-6) або «sun,mon,tue,wed,thu,fri,sat»). Визначити, чи є це день вихідним
+
+		let userDay = prompt('Введіть день у форматі 0-6 або «sun,mon,tue,wed,thu,fri,sat»:')
+		if (/[06s]/.test(userDay)) {
+			document.querySelector('.task17').innerText = 'Це вихідний день'
+		} else document.querySelector('.task17').innerText = 'Це робочий день'
+
+	</script>
+</body>
+
+</html>
